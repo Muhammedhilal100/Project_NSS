@@ -1,0 +1,217 @@
+.na {
+    display: block;
+    margin-top: 20px;
+    height: 50px;
+    box-shadow: 1px 2px 2px 1px;    
+    background-color: #8F94BC;
+  }
+  .shadow1{
+      box-shadow: 1px 2px 3px 1px;
+      width: 200px;
+      height: 720px;
+      text-align: center;
+      line-height: 35px; 
+      
+  }
+
+  .ilogo{
+    height: 50px;
+    padding-left: 500px     ;
+  }
+  .h{
+    margin-left: 600px;
+    font-style: italic;
+    font-size: x-large;
+  }
+
+  .ab{
+    margin-top: 130px;
+    margin-left: 350px;
+
+  }
+
+  .abc{
+    width: 750px;
+      height:1550px ;
+      background-color: #D8D9E7;
+      margin-left: 50px;
+      line-height: 5px;
+      border-radius: 30px;
+  }
+  .abc1{
+    width: 750px;
+      height:2300px ;
+      background-color: #D8D9E7;
+      margin-left: 50px;
+      line-height: 5px;
+      border-radius: 30px;
+  }
+  .abc2{
+    width: 350px;
+      height:350px ;
+      background-color: #D8D9E7;
+      margin-left: 50px;
+      line-height: 20px;
+      border-radius: 30px; 
+  }
+  .abc3{
+    width: 550px;
+      height:400px ;
+      background-color: #D8D9E7;
+      margin-left: 50px;
+      line-height: 20px;
+      border-radius: 30px;
+      align-items: center; 
+  }
+  .abc4{
+    width: 550px;
+      height:300px ;
+      background-color: #D8D9E7;
+      margin-left: 60px;
+      line-height: 20px;
+      border-radius: 30px;
+      align-items: center; 
+  }
+  .ap{
+    padding:  20px;
+    width: 750px;
+    margin-left: 30px;
+    border-radius: 20px;
+
+    
+  }
+  .af {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+}
+  
+.abutton{
+    background-image: linear-gradient(to right, #006175 0%, #303983 100%);
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: #ededed;
+    display: block;
+    height: 30px;
+    font-size: 1em;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+    width: 6em;
+    z-index: 2;
+    margin-left: 300px;
+  }
+  .abutton1{
+    background-image: linear-gradient(to right, #006175 0%, #303983 100%);
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: #ededed;
+    display: block;
+    height: 40px;
+    width: 80px;
+    font-size: 1em;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+    width: 6em;
+    z-index: 2;
+    margin-left: 40px;
+  }
+  .abutton2{
+    background-image: linear-gradient(to right, #006175 0%, #303983 100%);
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: #ededed;
+    display: block;
+    height: 30px;
+    font-size: 1em;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+    width: 6em;
+    z-index: 2;
+    margin-left: 250px;
+  }
+  .aaimg{
+    height: 150px;
+    width: 150px;
+    border-radius: 5000px;
+    margin-top: 40px;
+  }
+
+  .abimg{
+    height: 80px;
+    width: 200px;
+    margin-left: 50px;
+  }
+
+  .acimg{
+    height: 50px;
+    width: 50px;
+    border-radius: 5000px;
+    margin-top: 40px;
+  }
+
+  .atd{
+    color: #000000;
+    background-color:#8F94BC ;
+  }
+
+  .atr{
+    color: #01225f;
+    background-color:#8F94BC ;
+  }
+
+  .dimg{
+    height: 50px;
+    width: 50px;
+    border-radius: 5000px;
+  }
+
+.ah{
+  margin-left: 20px;
+  margin-top: 20px;
+  color: #303983;
+}
+
+.am{
+  
+  width: 600px;
+  height: 40px;
+  margin-left: 40px;
+ 
+}
+ 
+.aba{
+  width: 300px;
+  height: 40px;
+  margin-left: 40px;
+ 
+}
+.at{
+    margin-top: -10rem;
+    margin-left: 3.5rem;
+    line-height: 30px;
+    
+}
+.aaa{
+  width: 500px;
+  height: 40px;
+  margin-left: 40px;
+  border-radius: 30px;
+  box-shadow: 1px 2px 3px 1px;
+}
+
+.aa{
+  width: 200px;
+  height: 40px;
+  margin-left: 40px;
+  border-radius: 30px;
+  box-shadow: 1px 2px 2px 1px;
+}
+
+.ata{
+  width: 200px;
+}
+

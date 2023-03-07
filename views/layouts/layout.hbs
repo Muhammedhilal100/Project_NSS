@@ -4,10 +4,17 @@
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="/stylesheets/admin.css">
+    <link rel="stylesheet" href="/stylesheets/unicod.css">
   </head>
   <body>
     {{#if adminroute}}
     {{>adminpartial}}
+    {{/if}}
+     {{#if unicodroute}}
+    {{>unicodpartial}}
+    {{/if}}
+     {{#if volunteerroute}}
+    {{>volunteerpartial}}
     {{/if}}
     {{!-- {{{body}}} --}}
   </body>

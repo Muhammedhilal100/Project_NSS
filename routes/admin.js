@@ -42,6 +42,18 @@ router.get('/admin_index_view', function(req, res, next) {
   res.render('admin/admin_index_view',{adminroute:true});
 });
 
+router.get('/admin_unicod_views', function(req, res, next) {
+  res.render('admin/admin_unicod_views',{adminroute:true});
+});
+
+router.get('/admin_po_views', function(req, res, next) {
+  res.render('admin/admin_po_views',{adminroute:true});
+});
+
+router.get('/admin_volunteer_views', function(req, res, next) {
+  res.render('admin/admin_volunteer_views',{adminroute:true});
+});
+
 router.get('/admin_unicod_view', function(req, res, next) {
   res.render('admin/admin_unicod_view',{adminroute:true});
 });
@@ -52,18 +64,6 @@ router.get('/admin_po_view', function(req, res, next) {
 
 router.get('/admin_volunteer_view', function(req, res, next) {
   res.render('admin/admin_volunteer_view',{adminroute:true});
-});
-
-router.get('/unicod_view', function(req, res, next) {
-  res.render('admin/unicod_view',{adminroute:true});
-});
-
-router.get('/po_view', function(req, res, next) {
-  res.render('admin/po_view',{adminroute:true});
-});
-
-router.get('/volunteer_view', function(req, res, next) {
-  res.render('admin/volunteer_view',{adminroute:true});
 });
 
 router.get('/admin_report', function(req, res, next) {

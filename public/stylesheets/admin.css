@@ -63,15 +63,7 @@
       border-radius: 30px;
       align-items: center; 
   }
-  .abc4{
-    width: 550px;
-      height:300px ;
-      background-color: #D8D9E7;
-      margin-left: 60px;
-      line-height: 20px;
-      border-radius: 30px;
-      align-items: center; 
-  }
+  
   .ap{
     padding:  20px;
     width: 750px;
@@ -187,6 +179,11 @@
   width: 300px;
   height: 40px;
   margin-left: 40px;
+}
+  .abb{
+    width: 300px;
+    height: 8 0px;
+    margin-left: 40px;
  
 }
 .at{

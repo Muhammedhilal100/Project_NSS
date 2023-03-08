@@ -18,6 +18,14 @@ router.get('/', function(req, res, next) {
     res.render('volunteer/volunteer_workdairy_view',{volunteerroute:true});
   });
 
+  router.get('/volunteer_extra', function(req, res, next) {
+    res.render('volunteer/volunteer_extra',{volunteerroute:true});
+  });
+
+  router.get('/volunteer_extra_view', function(req, res, next) {
+    res.render('volunteer/volunteer_extra_view',{volunteerroute:true});
+  });
+
 
 
 module.exports = router;

@@ -70,4 +70,19 @@ router.get('/admin_report', function(req, res, next) {
   res.render('admin/admin_report',{adminroute:true});
 });
 
+router.get('/admin_project_report_views', function(req, res, next) {
+  res.render('admin/admin_project_report_views',{adminroute:true});
+});
+router.get('/admin_camp_report_views', function(req, res, next) {
+  res.render('admin/admin_camp_report_views',{adminroute:true});
+});
+router.get('/admin_project_report_view', function(req, res, next) {
+  res.render('admin/admin_project_report_view',{adminroute:true});
+});
+router.get('/admin_camp_report_view', function(req, res, next) {
+  res.render('admin/admin_camp_report_view',{adminroute:true});
+});
+
+
+
 module.exports = router;

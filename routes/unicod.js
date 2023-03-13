@@ -49,5 +49,18 @@ router.get('/unicod_message', function(req, res, next) {
 router.get('/unicod_feedback', function(req, res, next) {
   res.render('unicod/unicod_feedback',{unicodroute:true});
 });
+router.get('/unicod_project_report_views', function(req, res, next) {
+  res.render('unicod/unicod_project_report_views',{unicodroute:true});
+});
+router.get('/unicod_camp_report_views', function(req, res, next) {
+  res.render('unicod/unicod_camp_report_views',{unicodroute:true});
+});
+
+router.get('/unicod_project_report_view', function(req, res, next) {
+  res.render('unicod/unicod_project_report_view',{unicodroute:true});
+});
+router.get('/unicod_camp_report_view', function(req, res, next) {
+  res.render('unicod/unicod_camp_report_view',{unicodroute:true});
+});
 
 module.exports = router;

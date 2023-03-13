@@ -42,7 +42,33 @@ router.get('/', function(req, res, next) {
   router.get('/po_attendance', function(req, res, next) {
     res.render('po/po_attendance',{poroute:true});
   });
-
+  router.get('/po_meeting', function(req, res, next) {
+    res.render('po/po_meeting',{poroute:true});
+  });
+  router.get('/po_project_creation', function(req, res, next) {
+    res.render('po/po_project_creation',{poroute:true});
+  });
+  router.get('/po_camp_creation', function(req, res, next) {
+    res.render('po/po_camp_creation',{poroute:true});
+  });
+  router.get('/po_project_report', function(req, res, next) {
+    res.render('po/po_project_report',{poroute:true});
+  });
+  router.get('/po_camp_report', function(req, res, next) {
+    res.render('po/po_camp_report',{poroute:true});
+  });
+  router.get('/po_project_report_views', function(req, res, next) {
+    res.render('po/po_project_report_views',{poroute:true});
+  });
+  router.get('/po_camp_report_views', function(req, res, next) {
+    res.render('po/po_camp_report_views',{poroute:true});
+  });
+  router.get('/po_project_report_view', function(req, res, next) {
+    res.render('po/po_project_report_view',{poroute:true});
+  });
+  router.get('/po_camp_report_view', function(req, res, next) {
+    res.render('po/po_camp_report_view',{poroute:true});
+  });
 
 
 

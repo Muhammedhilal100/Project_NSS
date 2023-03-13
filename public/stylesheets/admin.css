@@ -91,13 +91,58 @@
   }
   .abc7{
     width: 650px;
-      height:2000px ;
+      height:1750px ;
       background-color: #D8D9E7;
       margin-left: 120px;
       line-height: 20px;
       border-radius: 30px;
-      align-items: center; 
-      
+      align-items: center;   
+  }
+  .abc8{
+    width: 650px;
+      height:800px ;
+      background-color: #D8D9E7;
+      margin-left: 120px;
+      line-height: 20px;
+      border-radius: 30px;
+      align-items: center;   
+  }
+
+  .abc9{
+    width: 650px;
+      height:500px ;
+      background-color: #D8D9E7;
+      margin-left: 120px;
+      line-height: 20px;
+      border-radius: 30px;
+      align-items: center;   
+  }
+  .abc10{
+    width: 650px;
+      height:1250px ;
+      background-color: #D8D9E7;
+      margin-left: 120px;
+      line-height: 20px;
+      border-radius: 30px;
+      align-items: center;   
+  }
+  .abc11{
+    width: 650px;
+      height:3300px ;
+      background-color: #D8D9E7;
+      margin-left: 120px;
+      line-height: 20px;
+      border-radius: 30px;
+      align-items: center;   
+  }
+  .abc12{
+    width: 650px;
+      height:3900px ;
+      background-color: #D8D9E7;
+      margin-left: 120px;
+      line-height: 20px;
+      border-radius: 30px;
+      align-items: center;   
   }
 
   .ap{
@@ -180,6 +225,22 @@
     border-radius: 5000px;
     margin-top: 40px;
   }
+  .acimg1{
+    height: 50px;
+    width: 50px;
+    border-radius: 5000px;
+  }
+
+.pimg{
+    height: 150px;
+    width: 250px;
+    margin-left: 20px;
+}
+.pimg1{
+  height: 150px;
+  width: 250px;
+  margin-right: 120px;
+}
 
   .atd{
     color: #000000;
@@ -200,6 +261,11 @@
 .ah{
   margin-left: 20px;
   margin-top: 20px;
+  color: #303983;
+}
+
+.ah1{
+  margin-left: 20px;
   color: #303983;
 }
 
@@ -257,5 +323,49 @@
   width: 400px;
   height: 80px;
   margin-left: 40px;
+}
 
+.m{
+  width: 580px;
+  height: 200px;
+  margin-left: 20px;
+  border-radius: 20px;
+}
+.m1{
+  width: 500px;
+  height: 40px;
+  margin-left: 50px;
+  border-radius: 20px;
+}
+.m2{
+  width: 130px;
+  height: 40px;
+  margin-left: 450px;
+  border-radius: 20px;
+}
+.m3{
+  width: 230px;
+  height: 40px;
+  border-radius: 20px;
+  margin-left: 30px;
+}
+.m4{
+  width: 230px;
+  height: 40px;
+  border-radius: 20px;
+  margin-left: -30px;
+}
+
+
+.form-check1 {
+  position: relative;
+  display: block;
+  padding-left: 20px;
+  margin-left: 10px;
+
+}
+.form-check-input1 {
+  position: absolute;
+  margin-top: 0.9rem;
+  margin-left: -1.1rem;
 }

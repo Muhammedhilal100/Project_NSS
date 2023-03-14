@@ -65,11 +65,7 @@ router.get('/admin_po_view', function(req, res, next) {
 router.get('/admin_volunteer_view', function(req, res, next) {
   res.render('admin/admin_volunteer_view',{adminroute:true});
 });
-
-router.get('/admin_report', function(req, res, next) {
-  res.render('admin/admin_report',{adminroute:true});
-});
-
+  
 router.get('/admin_project_report_views', function(req, res, next) {
   res.render('admin/admin_project_report_views',{adminroute:true});
 });

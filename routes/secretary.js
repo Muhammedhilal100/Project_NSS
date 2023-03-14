@@ -14,4 +14,10 @@ router.get('/', function(req, res, next) {
     res.render('secretary/secretary_camp',{secretaryroute:true});
   });
 
+  router.get('/secretary_message', function(req, res, next) {
+    res.render('secretary/secretary_message',{secretaryroute:true});
+  });
+
+
+
 module.exports = router;

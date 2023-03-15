@@ -5,6 +5,25 @@
     box-shadow: 1px 2px 2px 1px;    
     background-color: #8F94BC;
   }
+  .na1 {
+    display: block;
+    margin-top: 20px;
+    height: 50px;
+    box-shadow: 1px 2px 2px 1px;    
+    background-color: #8F94BC;
+    display: flex;
+    text-decoration: none;
+  }
+
+  .fa{
+    color: #fff5f5;
+    padding: 10px 17px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin-left: 150px;
+    font-size: x-large;
+  }
   .shadow1{
       box-shadow: 1px 2px 3px 1px;
       width: 220px;
@@ -38,6 +57,11 @@
       line-height: 5px;
       border-radius: 30px;
   }
+.p{
+  width: 50px;
+  height: 100px;
+}
+  
   .abc1{
     width: 750px;
       height:2300px ;
@@ -46,6 +70,8 @@
       line-height: 5px;
       border-radius: 30px;
   }
+ 
+
   .abc2{
     width: 350px;
       height:350px ;
@@ -145,6 +171,16 @@
       align-items: center;   
   }
 
+  .abc13{
+    width: 550px;
+      height:600px ;
+      background-color: #D8D9E7;
+      margin-left: 50px;
+      line-height: 20px;
+      border-radius: 30px;
+      align-items: center; 
+  }
+
   .ap{
     padding:  20px;
     width: 750px;
@@ -211,6 +247,21 @@
     width: 150px;
     border-radius: 5000px;
     margin-top: 40px;
+  }
+  .aaimg1{
+    height: 100px;
+    width: 100px;
+    border-radius: 5000px;
+    margin-top: 40px;
+  }
+
+  .aaimg2{
+    height: 70px;
+    width: 70px;
+    border-radius: 5000px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+   
   }
 
   .abimg{
@@ -355,7 +406,13 @@
   border-radius: 20px;
   margin-left: -30px;
 }
-
+.m5{
+  width: 300px;
+  height: 40px;
+  border-radius: 20px;
+  margin-left: 25px;
+  border-style: solid;
+}
 
 .form-check1 {
   position: relative;
@@ -371,4 +428,9 @@
 }
 .l{
   list-style: none;
+}
+
+.iimg{
+  margin-top: 2px;
+  width: 1420px;
 }

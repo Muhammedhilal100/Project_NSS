@@ -11,6 +11,10 @@
   margin-top: -550px;
    margin-left: 50px;  
 }
+.att2{
+  margin-bottom: 50px;
+   margin-left: 30px;  
+}
 
 .w1{
   margin-left: 20px;
@@ -20,4 +24,35 @@
 }
 .w3{
   margin-left: 150px;
+}
+
+.up:hover{
+
+color: #000000;
+}
+
+.l1{
+  background-color: #ffffff;
+  height: 500px;
+  width: 350px;
+  box-shadow: 2px 2px 2px 2px; 
+  border-radius: 30px; 
+  align-items: center;
+  margin-left: 500px;
+  margin-top: 100px;
+}
+
+.lck{
+  margin-left: 30px;
+  background-color: #EE5684;
+}
+
+.btn{
+  width:220px;
+  height: 30px;
+  background-color: #EE5684;
+  border-radius: 40px;
+  margin-left: 65px;
+  border: none;
+  color: #ffffff  ;
 }

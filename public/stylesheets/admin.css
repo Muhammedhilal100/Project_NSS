@@ -31,6 +31,13 @@
       text-align: left;
       line-height: 35px;    
   }
+  .shadow2{
+    box-shadow: 1px 2px 3px 1px;
+    width: 220px;
+    height: 100px;
+    text-align: left;
+    line-height: 35px;    
+}
 
 
   .ilogo{
@@ -175,7 +182,6 @@
     width: 550px;
       height:600px ;
       background-color: #D8D9E7;
-      margin-left: 50px;
       line-height: 20px;
       border-radius: 30px;
       align-items: center; 
@@ -227,6 +233,7 @@
     z-index: 2;
     margin-left: 40px;
   }
+  
   .abutton2{
     background-image: linear-gradient(to right, #006175 0%, #303983 100%);
     border-radius: 40px;
@@ -261,7 +268,6 @@
     border-radius: 5000px;
     margin-top: 40px;
     margin-bottom: 20px;
-   
   }
 
   .abimg{
@@ -433,4 +439,104 @@
 .iimg{
   margin-top: 2px;
   width: 1420px;
+}
+
+.ilogo2{
+  height: 50px;
+  padding-left: 400px;
+}
+
+.att{
+ margin-bottom: 50px;
+  margin-left: 50px;  
+}
+.att1{
+margin-top: -550px;
+ margin-left: 50px;  
+}
+.att2{
+margin-bottom: 50px;
+ margin-left: 30px;  
+}
+
+.w1{
+margin-left: 20px;
+}
+.w2{
+margin-left: 130px;
+}
+.w3{
+margin-left: 150px;
+}
+
+.up:hover{
+color: #000000;
+}
+
+.l1{
+background-color: #ffffff;
+height: 500px;
+width: 350px;
+box-shadow: 2px 2px 2px 2px; 
+border-radius: 30px; 
+align-items: center;
+margin-left: 200px;
+margin-top: 100px;
+}
+
+.lck{
+margin-left: 30px;
+background-color: #EE5684;
+}
+
+.btn{
+width:220px;
+height: 30px;
+background-color: #EE5684;
+border-radius: 40px;
+margin-left: 65px;
+border: none;
+color: #ffffff  ;
+}
+
+.ib{
+  width: 400px;
+  height: 500px;
+  background-color: antiquewhite;
+  margin-top: 50px;
+  margin-left: 420px;
+}
+.ib1{
+  width: 400px;
+  height: 500px;
+  background-color: antiquewhite;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+.ibh{
+width: 400px;
+height: 50px;
+background-color: #303983;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #5E902A;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  text-align: center;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  background-color: #8F94BC;
+  color: #2a7c90;
 }

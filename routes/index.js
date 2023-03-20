@@ -1,9 +1,24 @@
 var express = require('express');
+const home_mongo = require('../mongodb_helper/home_mongo');
 var router = express.Router();
+
+router.post('/unicod_register', function(req, res, next) {
+  home_mongo.unicod_register(req.body)
+  res.render('home/index',{indexhome:true});
+});
+
+
+
+
+
+
+
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('home/index',{indexRoute:true});
+  res.render('home/index',{indexhome:true});
 });
 router.get('/unicod_register', function(req, res, next) {
   res.render('home/unicod_register',{indexRoute:true});

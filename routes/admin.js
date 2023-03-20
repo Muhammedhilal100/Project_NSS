@@ -1,6 +1,31 @@
 var express = require('express');
+const db = require('../config/connection');
 var router = express.Router();
-const mongoose = require("mongoose");
+
+router.post('/login', function(req, res, next) {
+  // db.collection('admin').insertOne({name:'hilal',age:'22'})
+  console.log(req.body)
+  res.render('admin/admin_home',{adminroute:true});
+});
+router.post('/admin_profile', function(req, res, next) {
+  console.log(req.body)
+  res.render('admin/admin_profile',{adminroute:true});
+});
+router.post('/admin_account', function(req, res, next) {
+  console.log(req.body)
+  res.render('admin/admin_account',{adminroute:true});
+});
+router.post('/admin_index', function(req, res, next) {
+  console.log(req.body)
+  res.render('admin/admin_index',{adminroute:true});
+});
+
+
+
+
+
+
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

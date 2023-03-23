@@ -1,16 +1,18 @@
 <div class="abc2 ap">
     <div >
         <center>
-        
+        <form action="/admin/admin_message" method="post">
     <h4 class="ah ">Message to all Univercity Coordinator </h4><br><br><br>
    </center></div>
-       <select class="am">
-        <option >Manu</option>
+       <select name="to" class="am">
+        <option value="manu" >Manu</option>
+        <option value="hilal" >Hilal</option>
        </select><br><br><br>    
-      <textarea class="am" ></textarea><br><br>
+      <textarea name="message" class="am" ></textarea><br><br>
 
-      <button class="abutton">Send</button>
+      <button type="submit" class="abutton">Send</button>
     </div>
+    </form>
 </div>
 </div>
 

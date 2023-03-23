@@ -1,5 +1,47 @@
 var express = require('express');
+const po_mongo = require('../mongodb_helper/po_mongo');
 var router = express.Router();
+
+router.post('/po_account', function(req, res, next) {
+  po_mongo.po_account(req.body)
+  res.render('po/po_account',{poroute:true});
+});
+router.post('/po_workdairy', function(req, res, next) {
+  po_mongo.po_workdairy(req.body)
+  res.render('po/po_workdairy',{poroute:true});
+});
+
+router.post('/po_meeting', function(req, res, next) {
+  po_mongo.po_meeting(req.body)
+  res.render('po/po_meeting',{poroute:true});
+});
+router.post('/po_project_creation', function(req, res, next) {
+  po_mongo.po_project_creation(req.body)
+  res.render('po/po_project_creation',{poroute:true});
+});
+router.post('/po_camp_creation', function(req, res, next) {
+  po_mongo.po_camp_creation(req.body)
+  res.render('po/po_camp_creation',{poroute:true});
+});
+router.post('/po_project_report', function(req, res, next) {
+  po_mongo.po_project_report(req.body)
+  res.render('po/po_project_report',{poroute:true});
+});
+router.post('/po_camp_report', function(req, res, next) {
+  po_mongo.po_camp_report(req.body)
+  res.render('po/po_camp_report',{poroute:true});
+});
+router.post('/po_message', function(req, res, next) {
+  po_mongo.po_message(req.body)
+  res.render('po/po_message',{poroute:true});
+});
+
+
+
+
+
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -69,7 +111,12 @@ router.get('/', function(req, res, next) {
   router.get('/po_camp_report_view', function(req, res, next) {
     res.render('po/po_camp_report_view',{poroute:true});
   });
-
+  router.get('/po_secretary', function(req, res, next) {
+    res.render('po/po_secretary',{poroute:true});
+  });
+  router.get('/po_secretary_view', function(req, res, next) {
+    res.render('po/po_secretary_view',{poroute:true});
+  });
 
 
 module.exports = router;

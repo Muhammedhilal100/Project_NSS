@@ -4,116 +4,147 @@
 </head>
 <br><br><br>
 <div class="abc1">
+  <form action="/po_register" method="post">
    <div class="text-center">
     <img class="aaimg1" src="/images/logo.png"><br>
-    <h4>PROGRAM OFFICER <br>REGISTRATION</h4>
+    <h4>PROGRAM OFFICER <br>REGISTRATION</h4> 
    </div>
+   {{!--  --}}
+      <input name="status" type="text" value="false" hidden>
+      <input name="type" type="text" value="po" hidden >
+    {{!--  --}}
    <div >
     <h3 class="ah">Institution details </h3>
    </div>
    <div class="row ap">
     <div class="col">
-      <label class="af">University</label><input type="text" class="form-control" >
+      <label class="af">University</label><input name="university" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Institute Name</label><input type="text" class="form-control">
+      <label class="af">Institute Name</label><input name="institute_name" type="text" class="form-control">
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">Institute Address  </label><textarea class="form-control" ></textarea>
+      <label class="af">Institute Address  </label><textarea name="institute_address" class="form-control" ></textarea>
     </div>
     <div class="col">
-      <label class="af">District</label><input type="text" class="form-control">
+      <label class="af">District</label><input name="district" type="text" class="form-control">
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">Pincode</label><input type="text" class="form-control" >
+      <label class="af">Pincode</label><input name="pincode" type="number" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Contact Number</label><input type="text" class="form-control">
+      <label class="af">Contact Number</label><input name="contact_number" type="text" class="form-control">
     </div></div>
-   <div >
+  <div >
     <h3 class="ah">Bank Details</h3>
    </div>
    <div class="row ap">
     <div class="col">
-      <label class="af">Bank Name</label><input type="text" class="form-control" >
+      <label class="af">Bank Name</label><input name="bank_name" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">A/c Number</label><input type="text" class="form-control">
+      <label class="af">A/c Number</label><input name="ac_number" type="text" class="form-control">
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">IFSC Code</label><input type="text" class="form-control" >
+      <label class="af">IFSC Code</label><input name="ifsc_code" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Branch Name</label><input type="text" class="form-control">
+      <label class="af">Branch Name</label><input name="branch_name" type="text" class="form-control">
     </div></div>
+    <div >
+    <h3 class="ah">Login details </h3>
+   </div>
+   <div class="row ap">
+    <div class="col">
+      <label class="af">username</label><input name="username" type="text" class="form-control" >
+    </div>
+    <div class="col">
+      <label class="af">Password</label><input name="password" type="text" class="form-control">
+    </div></div>
+    
     <div >
     <h3 class="ah">Personal Details</h3>
    </div>
-  <div class="row ap">
+   <div class="row ap">
     <div class="col">
-      <label class="af">Name</label><input type="text" class="form-control" >
+      <label class="af">Name</label><input name="name" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Gender</label><input type="text" class="form-control">
+      <label class="af">Gender</label>
+      <select class="form-control" name="gender" >
+        <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+      </select>
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">Date of Birth</label><input type="text" class="form-control" >
+      <label class="af">Date of Birth</label><input name="dob" type="date" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Condact Number</label><input type="text" class="form-control">
+      <label class="af">Contact Number</label><input name="condact_number" type="number" maxlength="10" class="form-control">
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">WhatsApp Number </label><input type="text" class="form-control" >
+      <label class="af">WhatsApp Number </label><input name="whatsapp_number" type="number" maxlength="10" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Religion</label><input type="text" class="form-control">
+      <label class="af">Religion</label><input name="religion" type="text" class="form-control">
     </div></div>
      <div class="row ap">
     <div class="col">
-      <label class="af">Community </label><input type="text" class="form-control" >
+      <label class="af">Community </label><input name="community" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Blood Group </label><input type="text" class="form-control">
+      <label class="af">Blood Group</label>
+      <select class="form-control" name="blood_group" >
+        <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+      </select>
     </div></div>
      <div class="row ap">
     <div class="col">
-      <label class="af">Height </label><input type="text" class="form-control" >
+      <label class="af">Height </label><input name="height" type="number" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Weight</label><input type="text" class="form-control">
+      <label class="af">Weight</label><input name="weight" type="number" class="form-control">
     </div></div>
      <div class="row ap">
     <div class="col">
-      <label class="af">District </label><input type="text" class="form-control" >
+      <label class="af">District </label><input name="district" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Taluk</label><input type="text" class="form-control">
+      <label class="af">Taluk</label><input name="taluk" type="text" class="form-control">
     </div></div>
      <div class="row ap">
     <div class="col">
-      <label class="af">Village </label><input type="text" class="form-control" >
+      <label class="af">Village </label><input name="village" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Pincode</label><input type="text" class="form-control">
+      <label class="af">Pincode</label><input name="pincode" type="number" class="form-control">
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">Name of Parent / Guardian  </label><input type="text" class="form-control" >
+      <label class="af">Name of Parent / Guardian  </label><input name="name_of_parent" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Parent's Contact Number </label><input type="text" class="form-control">
+      <label class="af">Parent's Contact Number </label><input name="parent_condact_number" type="number" maxlength="10" class="form-control">
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">Permanent Address  </label><textarea class="form-control" ></textarea>
+      <label class="af">Permanent Address  </label><textarea name="permanent_address" class="form-control" ></textarea>
     </div>
     <div class="col">
-      <label class="af">Contact Address </label><textarea class="form-control" ></textarea>
+      <label class="af">Contact Address </label><textarea name="condact_address" class="form-control" ></textarea>
     </div></div>
         <div class="row ap">
     <div class="col">
@@ -121,37 +152,38 @@
     <div class="col">
 <input type="file">    
 </div></div>
-    <div class="row ap">
+<div class="row ap">
     <div class="col">
       <b><label class="ah">Languages Known </label><br></b><br><br>
-      <input type="checkbox"> &nbsp;<label class="af">English </label> 
-      <input type="checkbox">&nbsp;<label class="af">Hindi </label> 
-      <input type="checkbox">&nbsp;<label class="af">Malayalam </label> 
-       <input type="checkbox">&nbsp;<label class="af">Others </label>
+      <input name="language_known" value="English" type="checkbox"> &nbsp;<label class="af">English </label> 
+      <input name="language_known" value="Hindi" type="checkbox">&nbsp;<label class="af">Hindi </label> 
+      <input name="language_known" value="Malayalam" type="checkbox">&nbsp;<label class="af">Malayalam </label> 
+       <input name="language_known" value="Others" type="checkbox">&nbsp;<label class="af">Others </label>
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">Area of Interest </label><textarea class="form-control" ></textarea>
+      <label class="af">Area of Interest </label><textarea name="area_of_intrest" class="form-control" ></textarea>
     </div>
     <div class="col">
-      <label class="af">Hobbies</label><textarea class="form-control" ></textarea>
+      <label class="af">Hobbies</label><textarea name="hobbies" class="form-control" ></textarea>
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">Prior Experience   </label><textarea class="form-control" ></textarea>
+      <label class="af">Prior Experience   </label><textarea name="prior_experience" class="form-control" ></textarea>
     </div>
     <div class="col">
-      <label class="af">Cultural talents </label><textarea class="form-control" ></textarea>
+      <label class="af">Cultural talents </label><textarea name="cultural_talents" class="form-control" ></textarea>
     </div></div>
     <div class="row ap">
     <div class="col">
-      <b><label class="ah">Are you interested in camps</label><br></b><br><br>
-      <input type="checkbox"> &nbsp;<label class="af">State </label> 
-      <input type="checkbox">&nbsp;<label class="af">National </label> 
-      <input type="checkbox">&nbsp;<label class="af">International </label> 
+      <b><label class="ah">Are you interested in camps</label></b><br><br>
+      <input name="interested_in_camps" value="State" type="checkbox"> &nbsp;<label class="af">State </label> 
+      <input name="interested_in_camps" value="National" type="checkbox">&nbsp;<label class="af">National </label> 
+      <input name="interested_in_camps" value="International" type="checkbox">&nbsp;<label class="af">International </label> 
     </div>
     <div class="row ap">
     <div class="col">
 <button class="abutton">Submit</button> </div>
    </div>
+   </form>
 </div>

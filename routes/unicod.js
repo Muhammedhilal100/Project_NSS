@@ -1,5 +1,20 @@
 var express = require('express');
+const unicod_mongo = require('../mongodb_helper/unicod_mongo');
 var router = express.Router();
+
+router.post('/unicod_account', function(req, res, next) {
+  unicod_mongo.unicod_account(req.body)
+  res.render('unicod/unicod_account',{unicodroute:true});
+});
+router.post('/unicod_message', function(req, res, next) {
+  unicod_mongo.unicod_message(req.body)
+  res.render('unicod/unicod_message',{unicodroute:true});
+});
+
+
+
+
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

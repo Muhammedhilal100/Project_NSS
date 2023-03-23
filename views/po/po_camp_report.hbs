@@ -1,40 +1,41 @@
 <div class="abc11">
     <br><br>
-    <input class="m2" type="date">
+    <form action="/po/po_camp_report" method="post">
+    <input name="date" class="m2" type="date">
 <br><br>
 <div class="col">
-    <select class="m1 ">
-        <option >Camp Name</option>
-        <option >Blood Donation</option>
+    <select name="camp_name" class="m1 ">
+        <option value="camp n" >Camp Name</option>
+        <option value="blood donation" >Blood Donation</option>
        </select><br><br>
     </div><br>
     <div class="row ap">
     <div class="col">
-      <input type="number" class="m3" placeholder="Year">
+      <input name="year" type="number" class="m3" placeholder="Year">
     </div>
     <div class="col">
-      <input type="text" class="m4" placeholder="Category">
+      <input name="category" type="text" class="m4" placeholder="Category">
     </div></div>
       <div class="row ap" >
     <div class="col">
-      <input type="number" class="m3" placeholder="Expence">
+      <input name="expence" type="number" class="m3" placeholder="Expence">
     </div>
     <div class="col">
-      <input type="text" class="m4" placeholder="District">
+      <input name="district" type="text" class="m4" placeholder="District">
     </div></div>
       <div class="row ap">
     <div class="col">
-      <input type="text" class="m3" placeholder="Taluk">
+      <input name="taluk" type="text" class="m3" placeholder="Taluk">
     </div>
     <div class="col">
-      <input type="text" class="m4" placeholder="Village">
+      <input name="village" type="text" class="m4" placeholder="Village">
     </div></div>
        <div class="row ap">
     <div class="col">
-      <input type="text" class="m3" placeholder="Venue">
+      <input name="venue" type="text" class="m3" placeholder="Venue">
     </div>
     <div class="col">
-      <input type="date" class="m4" placeholder="Starting Date">
+      <input name="starting_date" type="date" class="m4" placeholder="Starting Date">
     </div></div><br>
     <b><h5 class="ah1 ">Day 1 </h5></b>
        <div class="row ap">
@@ -44,7 +45,7 @@
     <div class="col">
       <input type="file" class="m4" >
     </div></div>
-    <textarea class="m" placeholder="   Description" ></textarea><br><br>
+    <textarea name="description_1" class="m" placeholder="   Description" ></textarea><br><br>
     <b><h5 class="ah1 ">Day 2 </h5></b>
        <div class="row ap">
     <div class="col">
@@ -53,7 +54,7 @@
     <div class="col">
       <input type="file" class="m4" >
     </div></div>
-    <textarea class="m" placeholder="   Description" ></textarea><br><br>
+    <textarea name="description_2" class="m" placeholder="   Description" ></textarea><br><br>
     <b><h5 class="ah1 ">Day 3 </h5></b>
        <div class="row ap">
     <div class="col">
@@ -62,7 +63,7 @@
     <div class="col">
       <input type="file" class="m4" >
     </div></div>
-    <textarea class="m" placeholder="   Description" ></textarea><br><br>
+    <textarea name="description_3" class="m" placeholder="   Description" ></textarea><br><br>
      <b><h5 class="ah1 ">Day 4 </h5></b>
        <div class="row ap">
     <div class="col">
@@ -71,7 +72,7 @@
     <div class="col">
       <input type="file" class="m4" >
     </div></div>
-    <textarea class="m" placeholder="   Description" ></textarea><br><br>
+    <textarea name="description_4" class="m" placeholder="   Description" ></textarea><br><br>
      <b><h5 class="ah1 ">Day 5 </h5></b>
        <div class="row ap">
     <div class="col">
@@ -80,7 +81,7 @@
     <div class="col">
       <input type="file" class="m4" >
     </div></div>
-    <textarea class="m" placeholder="   Description" ></textarea><br><br>
+    <textarea name="description_5" class="m" placeholder="   Description" ></textarea><br><br>
      <b><h5 class="ah1 ">Day 6 </h5></b>
        <div class="row ap">
     <div class="col">
@@ -89,7 +90,7 @@
     <div class="col">
       <input type="file" class="m4" >
     </div></div>
-    <textarea class="m" placeholder="   Description" ></textarea><br><br>
+    <textarea name="description_6" class="m" placeholder="   Description" ></textarea><br><br>
      <b><h5 class="ah1 ">Day 7 </h5></b>
        <div class="row ap">
     <div class="col">
@@ -98,7 +99,7 @@
     <div class="col">
       <input type="file" class="m4" >
     </div></div>
-    <textarea class="m" placeholder="   Description" ></textarea><br><br><br>
+    <textarea name="description_7" class="m" placeholder="   Description" ></textarea><br><br><br>
     
     
              <div class="form-check1">
@@ -154,9 +155,9 @@
   <label class="form-check-label1" >Muhamme Hilal M</label>
   </div><br><br><br>
     
-  <button class="abutton2">Submit</button>
+  <button type="submit" class="abutton2">Submit</button>
 
     </div>
 
-
+</form>
 </div>

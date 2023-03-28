@@ -12,10 +12,10 @@
     {{#each data}}
     <tr>
       <th scope="row">1</th>
-      <td><img class="dimg" src="/images/a.jpeg"></td>
+      <td><img class="dimg" src="/images/photo/{{this._id}}.jpg"></td>
       <td>{{this.name}}</td>
       <td>{{this.university_name}}</td>
-      <td>{{this._id}}</td>
+      <td></td>
       <td> <a href="/admin/approval_unicod_view/{{this._id}}"><button class="abutton">more</button></td></a>
     </tr>
     {{/each}}

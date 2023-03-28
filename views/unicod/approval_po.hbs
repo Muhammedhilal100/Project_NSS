@@ -4,25 +4,19 @@
       <th scope="col"></th>
       <th scope="col"></th>
       <th scope="col">Name</th>
-      <th scope="col">Collage Name</th>
+      <th scope="col">Institute Name</th>
       <th scope="col">  </th>
     </tr>
   </thead>
   <tbody class="atd">
+    {{#each data}}
     <tr>
       <th scope="row">1</th>
-      <td><img class="dimg" src="/images/a.jpeg"></td>
-      <td>Hilal</td>
-      <td>KTU</td>
-      <td> <a href="/unicod/approval_po_view"><button class="abutton">more</button></td></a>
+      <td><img class="dimg" src="/images/photo/{{this._id}}.jpg"></td>
+      <td>{{this.name}}</td>
+      <td>{{this.institute_name}}</td>
+      <td> <a href="/unicod/approval_po_view/{{this._id}}"><button class="abutton">more</button></td></a>
     </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td><img class="dimg" src="/images/a.jpeg"></td>
-      <td>Hilal</td>
-      <td>KTU</td>
-      <td> <a href="/unicod/approval_po_view"><button class="abutton">more</button></td></a>
-    </tr>
-   
 
+   {{/each}}
 </table>

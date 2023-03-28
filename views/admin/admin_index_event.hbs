@@ -1,0 +1,39 @@
+<div class="abc4 ">
+    <form action="/admin/admin_index_event" method="post">
+    <b><label class="ah">ADD EVENTS</label><br></b><br><br><br>
+     <table class="at">
+             <tr><td><label class="af">Event Date</label></td><td><input name="event_date" class="aba" type="date" class="form-control" ></td></tr><br><br>
+
+     <tr><td><label class="af">Event Name</label></td><td><input name="event_name" class="aba" type="text" class="form-control" ></td></tr><br><br>
+
+     <tr><td><label class="af">Event Location</label></td><td><input name="event_location" class="aba" type="text" class="form-control" ></td></tr><br><br>
+</table><br><br>
+
+<button  class="abutton2">ADD</button>
+    </div></form>
+<br><br>
+
+<h4 class="ah ">Events </h4><br>
+<table class="table">
+  <thead >
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Event Date</th>
+      <th scope="col">Event Name</th>
+      <th scope="col">Event Location</th>
+      <th scope="col">  </th>
+    </tr>
+  </thead>
+  <tbody class="atd">
+    {{#each data}}
+    <tr>
+      <td></td>
+      <td>{{this.event_date}}</td>
+      <td>{{this.event_name}}</td>
+      <td>{{this.event_location}}</td>
+      <td><form action="/admin/delete/{{this._id}}" method="post">
+          <input class="abutton" type="submit"  value="Delete" >
+          </form> </td></a>
+    </tr>
+   {{/each}}
+</table>

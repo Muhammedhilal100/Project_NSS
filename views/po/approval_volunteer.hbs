@@ -9,20 +9,13 @@
     </tr>
   </thead>
   <tbody class="atd">
+    {{#each data}}
     <tr>
       <th scope="row">1</th>
-      <td><img class="dimg" src="/images/a.jpeg"></td>
-      <td>Hilal</td>
-      <td>BCA</td>
-      <td> <a href="/po/approval_volunteer_view"><button class="abutton">more</button></td></a>
+      <td><img class="dimg" src="/images/photo/{{this._id}}.jpg"></td>
+      <td>{{this.name}}</td>
+      <td>{{this.course}}</td>
+      <td> <a href="/po/approval_volunteer_view/{{this._id}}"><button class="abutton">more</button></td></a>
     </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td><img class="dimg" src="/images/a.jpeg"></td>
-      <td>Hilal</td>
-      <td>bca</td>
-      <td> <a href="/po/approval_volunteer_view"><button class="abutton">more</button></td></a>
-    </tr>
-   
-
+    {{/each}}
 </table>

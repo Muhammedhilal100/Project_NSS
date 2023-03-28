@@ -1,0 +1,43 @@
+
+<div class="abc4 ">
+    <form action="/admin/admin_index_news" method="post">
+    <b><label class="ah">ADD NEWS</label><br></b><br><br><br>
+     <table class="at">
+             <tr><td><label class="af"> Date</label></td><td><input name="news_date" class="aba" type="date" class="form-control" ></td></tr><br><br>
+
+     <tr><td><label class="af">Heading</label></td><td><input name="heading" class="aba" type="text" class="form-control" ></td></tr><br><br>
+
+     <tr><td><label class="af">News</label></td><td><input name="news" class="aba" type="text" class="form-control" ></td></tr><br><br>
+</table><br><br>
+
+<button  class="abutton2">ADD</button>
+    </div>
+
+</form>
+
+<br><br>
+<h4 class="ah ">News </h4><br>
+<table class="table">
+  <thead >
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"> Date</th>
+      <th scope="col">Heading</th>
+      <th scope="col">News</th>
+      <th scope="col">  </th>
+    </tr>
+  </thead>
+  <tbody class="atd">
+    {{#each data}}
+    <tr>
+      <td></td>
+      <td>{{this.news_date}}</td>
+      <td>{{this.heading}}</td>
+      <td>{{this.news}}</td>
+       <td><form action="/admin/delete1/{{this._id}}" method="post">
+          <input class="abutton" type="submit"  value="Delete">
+          </form> </td></a>
+    </tr>
+    {{/each}}
+
+</table>

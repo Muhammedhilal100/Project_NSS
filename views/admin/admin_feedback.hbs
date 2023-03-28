@@ -6,41 +6,16 @@
       <th scope="col">University</th>
       <th scope="col">Collage</th>
       <th scope="col">Comments</th>
-      <th scope="col">Rating</th>
     </tr>
   </thead>
   <tbody class="atd">
+     {{#each data}}
     <tr>
-      <th scope="row">Hilal</th>
-      <td>KTU</td>
-      <td>AWH</td>
-      <td>Awsome</td>
-      <td> *****</td></a>
+      <td>{{this.name}}</td>
+      <td>{{this.university_name}}</td>
+      <td>{{this.institute_name}}</td>
+      <td>{{this.description}}</td>
     </tr>
-
-     <tr>
-      <th scope="row">Hilal</th>
-      <td>KTU</td>
-      <td>AWH</td>
-      <td>Awsome</td>
-      <td> *****</td></a>
-    </tr>
+     {{/each}}
 </table><br><br>
 
-<h3 class="ah">Suggestion </h3><br>
-<table class="table">
-  <thead >
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Suggestions</th>
-    </tr>
-  </thead>
-  <tbody class="atd">
-    <tr>
-      <th scope="row">Hilal</th>
-      <td>hilal@gmail.com</td>
-      <td>asdfghvfrtyu</td>
-    </tr>
-
-</table>

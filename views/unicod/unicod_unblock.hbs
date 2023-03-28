@@ -1,0 +1,25 @@
+<table class="table">
+  <thead >
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col">Name</th>
+      <th scope="col">Institute Name</th>
+      <th scope="col">  </th>
+    </tr>
+  </thead>
+  <tbody class="atd">
+    {{#each data}}
+    <tr>
+      <th scope="row">1</th>
+      <td><img class="dimg" src="/images/photo/{{this._id}}.jpg"></td>
+      <td>{{this.name}}</td>
+      <td>{{this.institute_name}}</td>
+      <td></td>
+<td><form action="/unicod/unblock/{{this._id}}" method="post">
+          <input class="abutton" type="submit"  value="Unblock" >
+          </form> </td></a>    </tr>
+    {{/each}}
+    
+
+</table>

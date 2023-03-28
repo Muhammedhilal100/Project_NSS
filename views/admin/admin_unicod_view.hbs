@@ -1,145 +1,176 @@
 <div class="abc1">
-   <div class="text-center">
+  {{#if data}}
+  <div class="text-center">
     <img class="aaimg" src="/images/a.jpeg">
-   </div>
-   <div >
+  </div>
+  <div>
     <h3 class="ah">University details </h3>
-   </div>
-   <div class="row ap">
-    <div class="col">
-      <label class="af">University Name</label><input type="text" class="form-control" >
-    </div>
-    <div class="col">
-      <label class="af">State</label><input type="text" class="form-control">
-    </div></div>
-    <div class="row ap">
-    <div class="col">
-      <label class="af">University Address  </label><textarea class="form-control" ></textarea>
-    </div>
-    <div class="col">
-      <label class="af">State</label><input type="text" class="form-control">
-    </div></div>
-    <div class="row ap">
-    <div class="col">
-      <label class="af">Pincode</label><input type="text" class="form-control" >
-    </div>
-    <div class="col">
-      <label class="af">Contact Number</label><input type="text" class="form-control">
-    </div></div>
-   <div >
-    <h3 class="ah">Bank Details</h3>
-   </div>
-   <div class="row ap">
-    <div class="col">
-      <label class="af">Bank Name</label><input type="text" class="form-control" >
-    </div>
-    <div class="col">
-      <label class="af">A/c Number</label><input type="text" class="form-control">
-    </div></div>
-    <div class="row ap">
-    <div class="col">
-      <label class="af">IFSC Code</label><input type="text" class="form-control" >
-    </div>
-    <div class="col">
-      <label class="af">Branch Name</label><input type="text" class="form-control">
-    </div></div>
-    <div >
-    <h3 class="ah">Personal Details</h3>
-   </div>
+  </div>
   <div class="row ap">
     <div class="col">
-      <label class="af">Name</label><input type="text" class="form-control" >
+      <label class="af">University Name</label><input readonly value="{{data.university_name}}"  readonly type="text"  class="form-control">
     </div>
     <div class="col">
-      <label class="af">Gender</label><input type="text" class="form-control">
-    </div></div>
-    <div class="row ap">
+      <label class="af">State</label><input readonly value="{{data.state}}" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row ap">
     <div class="col">
-      <label class="af">Date of Birth</label><input type="text" class="form-control" >
+      <label class="af">University Address </label><textarea readonly   class="form-control">{{data.university_address}}</textarea>
     </div>
     <div class="col">
-      <label class="af">Condact Number</label><input type="text" class="form-control">
-    </div></div>
-    <div class="row ap">
+      <label class="af">District</label><input readonly value="{{data.district}}" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row ap">
     <div class="col">
-      <label class="af">WhatsApp Number </label><input type="text" class="form-control" >
+      <label class="af">Pincode</label><input readonly value="{{data.pincode}}" type="text" class="form-control">
     </div>
     <div class="col">
-      <label class="af">Religion</label><input type="text" class="form-control">
-    </div></div>
-     <div class="row ap">
+      <label class="af">Contact Number</label><input readonly value="{{data.condact_number}}" type="text" class="form-control">
+    </div>
+  </div>
+  <div>
+    <h3 class="ah">Bank Details</h3>
+  </div>
+  <div class="row ap">
     <div class="col">
-      <label class="af">Community </label><input type="text" class="form-control" >
+      <label class="af">Bank Name</label><input readonly value="{{data.bank_name}}" type="text" class="form-control">
     </div>
     <div class="col">
-      <label class="af">Blood Group </label><input type="text" class="form-control">
-    </div></div>
-     <div class="row ap">
+      <label class="af">A/c Number</label><input readonly value="{{data.ac_number}}" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row ap">
     <div class="col">
-      <label class="af">Height </label><input type="text" class="form-control" >
+      <label class="af">IFSC Code</label><input readonly value="{{data.ifsc_code}}" type="text" class="form-control">
     </div>
     <div class="col">
-      <label class="af">Weight</label><input type="text" class="form-control">
-    </div></div>
-     <div class="row ap">
+      <label class="af">Branch Name</label><input readonly value="{{data.branch_name}}" type="text" class="form-control">
+    </div>
+  </div>
+  <div >
+    <h3 class="ah">Login details </h3>
+   </div>
+   <div class="row ap">
     <div class="col">
-      <label class="af">District </label><input type="text" class="form-control" >
+      <label class="af">username</label><input readonly value="{{data.username}}" name="username" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Taluk</label><input type="text" class="form-control">
+      <label class="af">Password</label><input readonly value="{{data.password}}" name="password" type="text" class="form-control">
     </div></div>
-     <div class="row ap">
+  <div>
+    <h3 class="ah">Personal Details</h3>
+  </div>
+  <div class="row ap">
     <div class="col">
-      <label class="af">Village </label><input type="text" class="form-control" >
+      <label class="af">Name</label><input readonly value="{{data.name}}" readonly type="text" value="{{data.name}}" class="form-control">
     </div>
     <div class="col">
-      <label class="af">Pincode</label><input type="text" class="form-control">
-    </div></div>
-    <div class="row ap">
+      <label class="af">Gender</label><input readonly value="{{data.gender}}" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row ap">
     <div class="col">
-      <label class="af">Name of Parent / Guardian  </label><input type="text" class="form-control" >
+      <label class="af">Date of Birth</label><input readonly value="{{data.dob}}" type="text" class="form-control">
     </div>
     <div class="col">
-      <label class="af">Parent's Contact Number </label><input type="text" class="form-control">
-    </div></div>
-    <div class="row ap">
+      <label class="af">Condact Number</label><input readonly value="{{data.condact_number}}" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row ap">
     <div class="col">
-      <label class="af">Permanent Address  </label><textarea class="form-control" ></textarea>
+      <label class="af">WhatsApp Number </label><input readonly value="{{data.whatsapp_number}}" type="text" class="form-control">
     </div>
     <div class="col">
-      <label class="af">Contact Address </label><textarea class="form-control" ></textarea>
-    </div></div>
-    <div class="row ap">
+      <label class="af">Religion</label><input readonly value="{{data.religion}}" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row ap">
+    <div class="col">
+      <label class="af">Community </label><input readonly value="{{data.community}}" type="text" class="form-control">
+    </div>
+    <div class="col">
+      <label class="af">Blood Group </label><input readonly value="{{data.blood_group}}" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row ap">
+    <div class="col">
+      <label class="af">Height </label><input readonly value="{{data.height}}" type="text" class="form-control">
+    </div>
+    <div class="col">
+      <label class="af">Weight</label><input readonly value="{{data.weight}}" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row ap">
+    <div class="col">
+      <label class="af">District </label><input readonly value="{{data.district}}" type="text" class="form-control">
+    </div>
+    <div class="col">
+      <label class="af">Taluk</label><input readonly value="{{data.taluk}}" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row ap">
+    <div class="col">
+      <label class="af">Village </label><input readonly value="{{data.village}}" type="text" class="form-control">
+    </div>
+    <div class="col">
+      <label class="af">Pincode</label><input readonly value="{{data.pincode}}" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row ap">
+    <div class="col">
+      <label class="af">Name of Parent / Guardian </label><input readonly value="{{data.name_of_parent}}" type="text" class="form-control">
+    </div>
+    <div class="col">
+      <label class="af">Parent's Contact Number </label><input readonly value="{{data.parent_condact_number}}" type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row ap">
+    <div class="col">
+      <label class="af">Permanent Address </label><textarea readonly class="form-control"></textarea>
+    </div>
+    <div class="col">
+      <label class="af">Contact Address </label><textarea readonly class="form-control"></textarea>
+    </div>
+  </div>
+  <div class="row ap">
     <div class="col">
       <b><label class="ah">Languages Known </label><br></b><br><br>
-      <input type="checkbox"> &nbsp;<label class="af">English </label> 
-      <input type="checkbox">&nbsp;<label class="af">Hindi </label> 
-      <input type="checkbox">&nbsp;<label class="af">Malayalam </label> 
-       <input type="checkbox">&nbsp;<label class="af">Others </label>
-    </div></div>
-    <div class="row ap">
+      <input readonly value="{{data.language_known}}" type="checkbox"> &nbsp;<label class="af">English </label>
+      <input readonly value="{{data.language_known}}" type="checkbox">&nbsp;<label class="af">Hindi </label>
+      <input readonly value="{{data.language_known}}" type="checkbox">&nbsp;<label class="af">Malayalam </label>
+      <input readonly value="{{data.language_known}}" type="checkbox">&nbsp;<label class="af">Others </label>
+    </div>
+  </div>
+  <div class="row ap">
     <div class="col">
-      <label class="af">Area of Interest </label><textarea class="form-control" ></textarea>
+      <label class="af">Area of Interest </label><textarea readonly class="form-control"></textarea>
     </div>
     <div class="col">
-      <label class="af">Hobbies</label><textarea class="form-control" ></textarea>
-    </div></div>
-    <div class="row ap">
+      <label class="af">Hobbies</label><textarea readonly class="form-control"></textarea>
+    </div>
+  </div>
+  <div class="row ap">
     <div class="col">
-      <label class="af">Prior Experience   </label><textarea class="form-control" ></textarea>
+      <label class="af">Prior Experience </label><textarea readonly class="form-control"></textarea>
     </div>
     <div class="col">
-      <label class="af">Cultural talents </label><textarea class="form-control" ></textarea>
-    </div></div>
-    <div class="row ap">
+      <label class="af">Cultural talents </label><textarea readonly class="form-control"></textarea>
+    </div>
+  </div>
+  <div class="row ap">
     <div class="col">
       <b><label class="ah">Are you interested in camps</label><br></b><br><br>
-      <input type="checkbox"> &nbsp;<label class="af">State </label> 
-      <input type="checkbox">&nbsp;<label class="af">National </label> 
-      <input type="checkbox">&nbsp;<label class="af">International </label> 
+      <input readonly value="{{data.interested_in_camps}}" type="checkbox"> &nbsp;<label class="af">State </label>
+      <input readonly value="{{data.interested_in_camps}}" type="checkbox">&nbsp;<label class="af">National </label>
+      <input readonly value="{{data.interested_in_camps}}" type="checkbox">&nbsp;<label class="af">International </label>
     </div>
     <div class="col">
       <img class="abimg" src="/images/b.jpeg">
     </div>
-    </div>
+  </div>
+
+
+  {{/if}}
 </div>

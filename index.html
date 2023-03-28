@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <style>
+        body { padding-top: 30px; }
+    </style>
+</head>
+<body>
+    <div class="container" ng-app="bookApp" ng-controller="bookController">
+        <div class="row">
+            <div class="col-md-4">
+                Search By:
+                <select class="form-control" ng-model='SearchTerm'>
+                    <option value='$'>Any</option>
+                    <option value='id'>Book Id</option>
+                    <option value='title'>Book Title</option>
+                    <option value='author'>Author</option>
+                    <option value='price'>Price</option>
+                </select>
+            </div>
+            <div class="col-md-8">
+                Search Key:
+                <input type="text" class="form-control" ng-model="searchKeyword[SearchTerm]">
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <td>Book Id</td>
+                            <td>Book Title </td>
+                            <td>Author</td>
+                            <td>Price</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="book in bookList | filter: searchKeyword">
+                            <td>{{ book.id }}</td>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.author }}</td>
+                            <td>{{ book.price }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var bookApp = angular.module("bookApp", []);
+
+        bookApp.controller('bookController', function ($scope) {
+            $scope.searchKeyword = {}
+            $scope.SearchTerm = '$';
+            $scope.bookList = [
+                    { "id": 1, "title": "Hobbit", "author": "Aman", "price": 700 },
+                    { "id": 2, "title": "Lord of the rings", "author": "Sameer", "price": 1000 },
+
+                    { "id": 3, "title": "Harry Porter", "author": "Anuj", "price": 650 },
+                    { "id": 4, "title": "The little prince", "author": "Jatin", "price": 870 },
+                    { "id": 5, "title": "Angels and Demons", "author": "Shivam", "price": 890 }
+            ];
+        });
+    </script>
+</body>
+</html>

@@ -4,13 +4,13 @@
 </head>
 <br><br><br> 
 <div class="abc1">
-  <form action="/volunteer_register" method="post">
+  <form action="/volunteer_register" method="post" enctype="multipart/form-data">
    <div class="text-center">
     <img class="aaimg1" src="/images/logo.png"><br>
     <h4>VOLUNTEER <br>REGISTRATION</h4>
    </div>
    {{!--  --}}
-      <input name="status" type="text" value="false" hidden>
+      <input name="status" type="text" value="pending" hidden>
       <input name="type" type="text" value="volunteer" hidden >
       <input name="secretary_satatus" type="text" value="false" hidden >
     {{!--  --}}
@@ -148,9 +148,9 @@
     </div></div>
         <div class="row ap">
     <div class="col">
-<input class="m3" type="file">    </div>
+<input class="m3" type="file" name="photo">    </div>
     <div class="col">
-<input type="file">    
+<input type="file" name="sign">    
 </div></div>
 <div class="row ap">
     <div class="col">

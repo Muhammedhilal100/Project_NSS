@@ -2,24 +2,19 @@
 <table class="table ">
   <thead >
     <tr>
+      <th></th>
       <th scope="col">Name</th>
-      <th scope="col">Collage</th>
+      <th scope="col">Institute Name</th>
       <th scope="col">Comments</th>
-      <th scope="col">Rating</th>
     </tr>
   </thead>
   <tbody class="atd">
+     {{#each data}}
     <tr>
-      <th scope="row">Hilal</th>
-      <td>AWH</td>
-      <td>Awsome</td>
-      <td> *****</td></a>
+      <td> </td>
+      <td>{{this.name}}</td>
+      <td>{{this.institute_name}}</td>
+      <td>{{this.description}}</td>
     </tr>
-
-     <tr>
-      <th scope="row">Hilal</th>
-      <td>AWH</td>
-      <td>Awsome</td>
-      <td> *****</td></a>
-    </tr>
+     {{/each}}
 </table>

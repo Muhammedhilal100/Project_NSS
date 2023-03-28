@@ -1,0 +1,18 @@
+<h3 class="ah">Suggestion </h3><br>
+<table class="table">
+  <thead >
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Suggestions</th>
+    </tr>
+  </thead>
+  {{#each data}}
+  <tbody class="atd">
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.description}}</td>
+    </tr>
+{{/each}}
+</table>

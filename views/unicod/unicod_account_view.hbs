@@ -1,7 +1,7 @@
 <table>
     <tr>
 <td><select class="aaa">
-        <option >University Name</option>
+        <option >Institute Name</option>
         <option >KTU</option>
        </select></td>
        
@@ -18,12 +18,13 @@
       <th scope="col">Date</th>
     </tr>
     <tbody class="atd">
+      {{#each data}}
     <tr>
-      <th scope="row">Anual Fund</th>
-      <td>10000</td>
-      <td>Hilal</td>
-      <td>10/06/2000</td>
+      <td>{{this.fund_type}}</td>
+      <td>{{this.amount}}</td>
+      <td>{{this.accountant}}</td>
+      <td>{{this.date}}</td>
     </tr>
-
+{{/each}}
   </thead>
 </table>

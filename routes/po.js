@@ -1,6 +1,10 @@
 var express = require('express');
 const po_mongo = require('../mongodb_helper/po_mongo');
 var router = express.Router();
+const mongoose = require('mongoose');
+const {ObjectId} = require('mongodb');
+const db = require('../config/connection');
+
 
 router.post('/po_account', function(req, res, next) {
   po_mongo.po_account(req.body)
@@ -37,6 +41,27 @@ router.post('/po_message', function(req, res, next) {
 });
 
 
+router.post('/accept/:id', async function(req, res, next) {
+  req.params.id
+  const objectID =  new ObjectId(req.params.id)
+  await db.collection('volunteer_register').updateOne({_id :objectID },{$set:{status:true}})
+  let data = await db.collection('volunteer_register').findOne({_id :objectID })
+  let obj = {
+    username:data.username,
+    password:data.password,
+    type:data.type,
+  }
+  await db.collection('login').insertOne(obj)
+  res.render('po/approval_volunteer',{unicodroute:true});
+});
+
+router.post('/reject/:id',async function(req, res, next) {
+  req.params.id
+  const objectID =  new ObjectId(req.params.id)
+  await db.collection('volunteer_register').updateOne({_id :objectID },{$set:{status:false}})
+  res.render('po/approval_volunteer',{unicodroute:true});
+});
+
 
 
 
@@ -50,13 +75,19 @@ router.get('/', function(req, res, next) {
   router.get('/po_profile', function(req, res, next) {
     res.render('po/po_profile',{poroute:true});
   });
-  router.get('/approval_volunteer', function(req, res, next) {
-    res.render('po/approval_volunteer',{poroute:true});
+
+  router.get('/approval_volunteer',async function(req, res, next) {
+    let data =await db.collection('volunteer_register').find({status:'pending'}).toArray()
+    res.render('po/approval_volunteer',{poroute:true,data});
   });
-  
-  router.get('/approval_volunteer_view', function(req, res, next) {
-    res.render('po/approval_volunteer_view',{poroute:true});
+
+  router.get('/approval_volunteer_view/:id',async function(req, res, next) {
+    req.params.id
+    const objectID =  new ObjectId(req.params.id)
+    let data =await db.collection('volunteer_register').findOne({_id :objectID })
+    res.render('po/approval_volunteer_view',{poroute:true,data});
   });
+
   router.get('/po_account', function(req, res, next) {
     res.render('po/po_account',{poroute:true});
   });

@@ -3,17 +3,31 @@ const home_mongo = require('../mongodb_helper/home_mongo');
 var router = express.Router();
 
 router.post('/unicod_register', function(req, res, next) {
-  home_mongo.unicod_register(req.body)
-  res.render('home/index',{indexhome:true});
-});
+  home_mongo.unicod_register(req.body,(callback)=>{
+    let photo = req.files.photo
+    let sign = req.files.sign
+    photo.mv('public/images/photo/'+callback.insertedId+'.jpg')
+    photo.mv('public/images/sign/'+callback.insertedId+'.jpg')
+    res.render('home/index',{indexhome:true});
+  })});
+
 router.post('/po_register', function(req, res, next) {
-  home_mongo.po_register(req.body)
+  home_mongo.po_register(req.body,(callback)=>{
+    let photo = req.files.photo
+    let sign = req.files.sign
+    photo.mv('public/images/photo/'+callback.insertedId+'.jpg')
+    photo.mv('public/images/sign/'+callback.insertedId+'.jpg')
   res.render('home/index',{indexhome:true});
-});
+})});
+
 router.post('/volunteer_register', function(req, res, next) {
-  home_mongo.volunteer_register(req.body)
+  home_mongo.volunteer_register(req.body,(callback)=>{
+    let photo = req.files.photo
+    let sign = req.files.sign
+    photo.mv('public/images/photo/'+callback.insertedId+'.jpg')
+    photo.mv('public/images/sign/'+callback.insertedId+'.jpg')
   res.render('home/index',{indexhome:true});
-});
+})});
 router.post('/suggestion', function(req, res, next) {
   home_mongo.suggestion(req.body)
   res.render('home/index',{indexhome:true});

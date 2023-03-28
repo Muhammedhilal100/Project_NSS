@@ -22,19 +22,16 @@
       <th scope="col">  </th>
     </tr>
   </thead>
+  {{#each data}}
   <tbody class="atd">
     <tr>
-      <th scope="row">1</th>
-      <td><img class="dimg" src="/images/a.jpeg"></td>
-      <td>Hilal</td>
-      <td> <a href="/unicod/unicod_volunteer_view"><button class="abutton1">more</button></td></a>
+      <td></td>
+      <td><img class="dimg" src="/images/photo/{{this._id}}.jpg"></td>
+      <td>{{this.name}}</td>
+      <td> <a href="/unicod/unicod_volunteer_view/{{this._id}}"><button class="abutton1">more</button></td></a>
     </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td><img class="dimg" src="/images/a.jpeg"></td>
-      <td>Hilal</td>
-      <td> <a href="/unicod/unicod_volunteer_view"><button class="abutton1">more</button></td></a>
-    </tr>
+   
+{{/each}}
    
 
 </table>

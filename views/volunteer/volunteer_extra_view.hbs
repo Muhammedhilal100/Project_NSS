@@ -1,8 +1,13 @@
-<div class="abc4"><b>
-    <div class="abc5">
-        <a class="w1">Pree RD Camp</a>
-        <a class="w2">24 hrs</a>
-        <a class="w3">12/03/2023</a>
+
+{{#each data}}
+<div class="abc4">
+    
+    <div class="abc5"><b>
+        <a class="w1">{{this.project_name}}</a>
+        <a class="w2">{{this.hours}}</a>
+        <a class="w3">{{this.date}}</a>
     </div></b>
-    <div class="abc6"></div>
+    <div class="abc6"> <p>{{this.description}}</p></div>
+
 </div>
+{{/each}}

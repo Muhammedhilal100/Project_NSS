@@ -1,13 +1,16 @@
 <div class="abc10">
+ 
+    <form action="/po/po_project_report/{{data._id}}" method="post" >
+  
     <br><br>
-    <form action="/po/po_project_report" method="post">
     <input name="date" class="m2" type="date">
 <br><br>
 <div class="col">
-    <select name="project_name" class="m1 ">
-        <option value="project name" >Project Name</option>
-        <option value="blood donation" >Blood Donation</option>
-       </select><br><br>
+
+
+    <input readonly  type="text" class="m1" value="  {{data.project_name}}" placeholder="Project Name">
+        
+    <br><br>
     </div><br>
     <div class="row ap">
     <div class="col">
@@ -39,10 +42,10 @@
     </div></div><br>
        <div class="row ap">
     <div class="col">
-      <input type="file" class="m3" >
+      <input type="file" class="m3" name="pr1">
     </div>
     <div class="col">
-      <input type="file" class="m4" >
+      <input type="file" class="m4" name="pr2" >
     </div></div>
 
     <textarea name="description" class="m" placeholder="   Description" ></textarea><br><br><br>
@@ -100,8 +103,10 @@
   <label class="form-check-label1" >Muhamme Hilal M</label>
   </div><br><br><br>
     
-  <button type="submit" class="abutton2">Submit</button>
+<input type="submit" class="abutton2" >
+  
 
+  
     </div>
 
 </form>

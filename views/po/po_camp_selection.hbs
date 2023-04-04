@@ -1,0 +1,24 @@
+
+<table>
+    <tr>
+<td><select class="aaa" onchange="urlPath(this.value)">
+
+        <option></option>
+         {{#each data}}
+        <option value="{{this._id}}"  >{{this.camp_name}}</option>
+        
+        {{/each}}
+<td> <a href="#"><button class="abutton1">Submit</button></a>
+        
+       </select></td>
+       <script>
+        const urlPath = (url)=> {
+            
+          window.location.href=`/po/po_camp_report/${url}`
+        }
+       </script>
+       
+</td>
+</tr>
+</table>
+</table>

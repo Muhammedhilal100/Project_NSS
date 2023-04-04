@@ -12,7 +12,13 @@ var unicodRouter = require('./routes/unicod');
 var volunteerRouter = require('./routes/volunteer');
 var secretaryRouter = require('./routes/secretary');
 var poRouter = require('./routes/po');
+const { handlebars } = require('hbs');
 
+
+
+ handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
 
 var app = express();
 

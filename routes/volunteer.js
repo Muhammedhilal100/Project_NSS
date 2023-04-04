@@ -1,4 +1,5 @@
 var express = require('express');
+const db = require('../config/connection');
 const volunteer_mongo = require('../mongodb_helper/volunteer_mongo');
 var router = express.Router();
 
@@ -28,16 +29,18 @@ router.get('/', function(req, res, next) {
     res.render('volunteer/volunteer_workdairy',{volunteerroute:true});
   });
 
-  router.get('/volunteer_workdairy_view', function(req, res, next) {
-    res.render('volunteer/volunteer_workdairy_view',{volunteerroute:true});
+  router.get('/volunteer_workdairy_view',async function(req, res, next) {
+    let data=await db.collection('volunteer_workdairy').find().toArray()
+    res.render('volunteer/volunteer_workdairy_view',{volunteerroute:true,data});
   });
 
   router.get('/volunteer_extra', function(req, res, next) {
     res.render('volunteer/volunteer_extra',{volunteerroute:true});
   });
 
-  router.get('/volunteer_extra_view', function(req, res, next) {
-    res.render('volunteer/volunteer_extra_view',{volunteerroute:true});
+  router.get('/volunteer_extra_view',async function(req, res, next) {
+    let data=await db.collection('volunteer_extra').find().toArray()
+    res.render('volunteer/volunteer_extra_view',{volunteerroute:true,data});
   });
 
 

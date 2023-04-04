@@ -7,7 +7,7 @@ router.post('/unicod_register', function(req, res, next) {
     let photo = req.files.photo
     let sign = req.files.sign
     photo.mv('public/images/photo/'+callback.insertedId+'.jpg')
-    photo.mv('public/images/sign/'+callback.insertedId+'.jpg')
+    sign.mv('public/images/sign/'+callback.insertedId+'.jpg')
     res.render('home/index',{indexhome:true});
   })});
 
@@ -16,7 +16,7 @@ router.post('/po_register', function(req, res, next) {
     let photo = req.files.photo
     let sign = req.files.sign
     photo.mv('public/images/photo/'+callback.insertedId+'.jpg')
-    photo.mv('public/images/sign/'+callback.insertedId+'.jpg')
+    sign.mv('public/images/sign/'+callback.insertedId+'.jpg')
   res.render('home/index',{indexhome:true});
 })});
 
@@ -25,7 +25,7 @@ router.post('/volunteer_register', function(req, res, next) {
     let photo = req.files.photo
     let sign = req.files.sign
     photo.mv('public/images/photo/'+callback.insertedId+'.jpg')
-    photo.mv('public/images/sign/'+callback.insertedId+'.jpg')
+    sign.mv('public/images/sign/'+callback.insertedId+'.jpg')
   res.render('home/index',{indexhome:true});
 })});
 router.post('/suggestion', function(req, res, next) {

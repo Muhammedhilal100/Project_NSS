@@ -23,10 +23,12 @@ module.exports={
     po_camp_creation :function(value){
         db.collection('po_camp_creation').insertOne(value)
     },
-    po_project_report :function(value){
+    po_project_report :function(value,arr){
+        value.pr = arr
         db.collection('po_project_report').insertOne(value)
     },
-    po_camp_report :function(value){
+    po_camp_report :function(value,arr){
+        value.cr = arr
         db.collection('po_camp_report').insertOne(value)
     },
     po_message :function(value){

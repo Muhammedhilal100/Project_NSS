@@ -1,6 +1,6 @@
 <div class="abc10">
  
-    <form action="/po/po_project_report/{{data._id}}" method="post" >
+    <form action="/po/po_project_report/{{data._id}}" method="post" enctype="multipart/form-data">
   
     <br><br>
     <input name="date" class="m2" type="date">
@@ -8,7 +8,7 @@
 <div class="col">
 
 
-    <input readonly  type="text" class="m1" value="  {{data.project_name}}" placeholder="Project Name">
+    <input readonly name="project_name"  type="text" class="m1" value="  {{data.project_name}}" placeholder="Project Name">
         
     <br><br>
     </div><br>
@@ -42,10 +42,10 @@
     </div></div><br>
        <div class="row ap">
     <div class="col">
-      <input type="file" class="m3" name="pr1">
+      <input type="file" class="m3" name="pr">
     </div>
     <div class="col">
-      <input type="file" class="m4" name="pr2" >
+      <input type="file" class="m4" name="pr" >
     </div></div>
 
     <textarea name="description" class="m" placeholder="   Description" ></textarea><br><br><br>

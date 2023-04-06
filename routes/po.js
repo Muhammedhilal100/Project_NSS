@@ -24,7 +24,16 @@ router.post('/po_camp_creation', function(req, res, next) {
   res.redirect('/po/po_camp_creation');
 });
 router.post('/po_project_report/:id',async function(req, res, next) {
-  po_mongo.po_project_report(req.body)
+  let arr =[]
+  for (let index = 1; index <= 2; index++) {
+    const objectID =  new ObjectId()
+    arr.push(String(objectID))
+  }
+  for (let index = 0; index <2; index++) {
+    const element = arr[index];
+    req.files.pr[index].mv('public/images/project/'+element+'.jpg')
+  }
+  po_mongo.po_project_report(req.body,arr)
   req.params.id
   const objectID =  new ObjectId(req.params.id)
   await db.collection('po_project_creation').updateOne({_id :objectID },{$set:{status:true}})
@@ -32,11 +41,21 @@ router.post('/po_project_report/:id',async function(req, res, next) {
 });
   
 router.post('/po_camp_report/:id',async function(req, res, next) {
-  po_mongo.po_camp_report(req.body)
+  console.log(req.files.cr);
+  let arr =[]
+  for (let index = 1; index <15; index++) {
+    const objectID =  new ObjectId()
+    arr.push(String(objectID))
+  }
+  for (let index = 0; index <14; index++) {
+    const element = arr[index];
+    req.files.cr[index].mv('public/images/camp/'+element+'.jpg')
+  }
+  po_mongo.po_camp_report(req.body,arr)
   req.params.id
   const objectID =  new ObjectId(req.params.id)
- await db.collection('po_camp_creation').updateOne({_id :objectID },{$set:{status:true}})
-  res.redirect('/po/po_camp_selection');
+  await db.collection('po_camp_creation').updateOne({_id :objectID },{$set:{status:true}})
+  res.redirect('/po/po_camp_selection'); 
 });
 
 router.post('/po_message', function(req, res, next) {

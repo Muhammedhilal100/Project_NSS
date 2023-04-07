@@ -10,20 +10,14 @@
     </tr>
   </thead>
   <tbody class="atd">
+    {{#each data}}
     <tr>
-      <th scope="row">1</th>
-      <td><img class="dimg" src="/images/a.jpeg"></td>
-      <td>Blood Donation</td>
-      <td>2023</td>
-      <td>Donation</td>
-      <td> <a href="/po/po_camp_report_view"><button class="abutton">more</button></td></a>
+      <th scope="row"> </th>
+      <td><img class="dimg" src="/images/camp/{{this.cr.[0]}}.jpg"></td>
+      <td>{{this.camp_name}}</td>
+      <td>{{this.year}}</td>
+      <td>{{this.category}}</td>
+      <td> <a href="/po/po_camp_report_view/{{this._id}}"><button class="abutton">more</button></td></a>
     </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td><img class="dimg" src="/images/a.jpeg"></td>
-      <td>Blood Donation</td>
-      <td>2023</td>
-      <td>Donation</td>
-      <td> <a href="/po/po_camp_report_view"><button class="abutton">more</button></td></a>
-    </tr>
+ {{/each}}
 </table>

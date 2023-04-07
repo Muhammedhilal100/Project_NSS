@@ -1,7 +1,7 @@
 <div class="abc1">
   {{#if data}}
   <div class="text-center">
-    <img class="aaimg" src="/images/a.jpeg">
+    <img class="aaimg" src="/images/photo/{{data._id}}.jpg">
   </div>
   <div>
     <h3 class="ah">University details </h3>
@@ -137,10 +137,10 @@
   <div class="row ap">
     <div class="col">
       <b><label class="ah">Languages Known </label><br></b><br><br>
-      <input readonly value="{{data.language_known}}" type="checkbox"> &nbsp;<label class="af">English </label>
-      <input readonly value="{{data.language_known}}" type="checkbox">&nbsp;<label class="af">Hindi </label>
-      <input readonly value="{{data.language_known}}" type="checkbox">&nbsp;<label class="af">Malayalam </label>
-      <input readonly value="{{data.language_known}}" type="checkbox">&nbsp;<label class="af">Others </label>
+       <input readonly name="{{data.language_known}}" {{#if data.language_known }} checked{{/if}} disabled type="checkbox"> &nbsp;<label class="af">English </label>
+      <input readonly name="{{data.language_known2}}" {{#if data.language_known2 }} checked {{/if}} disabled type="checkbox">&nbsp;<label class="af">Hindi </label>
+      <input readonly name="{{data.language_known3}}"  {{#if data.language_known3 }} checked{{/if}} disabled  type="checkbox">&nbsp;<label class="af">Malayalam </label>
+      <input readonly name="{{data.language_known4}}"  {{#if data.language_known4 }} checked{{/if}} disabled type="checkbox">&nbsp;<label class="af">Others </label>
     </div>
   </div>
   <div class="row ap">
@@ -162,9 +162,9 @@
   <div class="row ap">
     <div class="col">
       <b><label class="ah">Are you interested in camps</label><br></b><br><br>
-      <input readonly value="{{data.interested_in_camps}}" type="checkbox"> &nbsp;<label class="af">State </label>
-      <input readonly value="{{data.interested_in_camps}}" type="checkbox">&nbsp;<label class="af">National </label>
-      <input readonly value="{{data.interested_in_camps}}" type="checkbox">&nbsp;<label class="af">International </label>
+          <input readonly name="{{data.interested_in_camps}}"{{#if data.interested_in_camps }}  checked{{/if}} disabled type="checkbox"> &nbsp;<label class="af">State </label>
+      <input readonly name="{{data.interested_in_camps1}}"{{#if data.interested_in_camps1 }}  checked{{/if}} disabled type="checkbox">&nbsp;<label class="af">National </label>
+      <input readonly name="{{data.interested_in_camps2}}"{{#if data.interested_in_camps2 }}  checked{{/if}} disabled type="checkbox">&nbsp;<label class="af">International </label>
     </div>
     <div class="col">
       <img class="abimg" src="/images/sign/{{data._id}}.jpg">

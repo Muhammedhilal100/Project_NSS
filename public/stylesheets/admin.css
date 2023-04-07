@@ -175,7 +175,7 @@
   align-items: center;
 }
 .abc12 {
-  width: 650px;
+  width: 670px;
   height: 3900px;
   background-color: #d8d9e7;
   margin-left: 120px;
@@ -204,6 +204,13 @@
   font-weight: 400;
   font-size: 16px;
   color: #000000;
+}
+.af1 {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000000;
+  margin-left: -50px;
 }
 
 .abutton {
@@ -389,9 +396,9 @@
   border-radius: 20px;
 }
 .m1 {
-  width: 500px;
+  width: 480px;
   height: 40px;
-  margin-left: 50px;
+  margin-left: 30px;
   border-radius: 20px;
 }
 .m2 {
@@ -404,13 +411,25 @@
   width: 230px;
   height: 40px;
   border-radius: 20px;
-  margin-left: 30px;
+  margin-left: 10px;
+}
+.m3a {
+  width: 230px;
+  height: 40px;
+  border-radius: 20px;
+  margin-left: 3px;
 }
 .m4 {
   width: 230px;
   height: 40px;
   border-radius: 20px;
-  margin-left: -30px;
+  margin-left: 10px;
+}
+.m4a {
+  width: 230px;
+  height: 40px;
+  border-radius: 20px;
+  margin-left: 5px;
 }
 .m5 {
   width: 300px;

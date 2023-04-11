@@ -7,7 +7,7 @@ var router = express.Router();
 
 
 
-router.post('/secretary_project',async function(req, res, next) {
+router.post('/secretary_project/:id',async function(req, res, next) {
   let arr =[]
   for (let index = 1; index <= 2; index++) {
     const objectID =  new ObjectId()
@@ -26,7 +26,7 @@ router.post('/secretary_project',async function(req, res, next) {
 
 
 
-router.post('/secretary_camp',async function(req, res, next) {
+router.post('/secretary_camp/:id',async function(req, res, next) {
   let arr =[]
   for (let index = 1; index <15; index++) {
     const objectID =  new ObjectId()
@@ -73,6 +73,7 @@ router.get('/', function(req, res, next) {
     req.params.id
     const objectID =  new ObjectId(req.params.id)
     let data =await db.collection('po_project_creation').findOne({_id :objectID })
+    console.log(objectID);
     res.render('secretary/secretary_project',{secretaryroute:true,data});
   });
 

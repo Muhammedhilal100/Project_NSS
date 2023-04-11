@@ -1,105 +1,71 @@
 <div class="abc10">
+ {{#if data}}
     <br><br>
-    <input class="m2" type="date">
+   <input readonly value="{{data.date}}" class="m2" type="date">
 <br><br>
 <div class="col">
-    <select class="m1 ">
-        <option >Project Name</option>
-        <option >Blood Donation</option>
-       </select><br><br>
+    <label class="af">Project Name</label><input readonly value="{{data.project_name}}" type="text" class="m1" >
     </div><br>
+    
     <div class="row ap">
     <div class="col">
-      <input type="number" class="m3" placeholder="Year">
+      <label class="af">Year&nbsp;&nbsp;</label><input readonly value="{{data.year}}" type="number" class="m3">
     </div>
     <div class="col">
-      <input type="text" class="m4" placeholder="Category">
+      <label class="af1">Category</label><input readonly value="{{data.category}}" type="text" class="m4a" >
     </div></div>
       <div class="row ap" >
     <div class="col">
-      <input type="number" class="m3" placeholder="Expence">
+      <label class="af">Expence</label><input readonly value="{{data.expence}}" type="number" class="m3a">
     </div>
     <div class="col">
-      <input type="text" class="m4" placeholder="District">
+      <label class="af1">District</label><input readonly value="{{data.district}}" type="text" class="m4" >
     </div></div>
       <div class="row ap">
     <div class="col">
-      <input type="text" class="m3" placeholder="Taluk">
+      <label class="af">Taluk</label><input readonly value="{{data.taluk}}" type="text" class="m3" >
     </div>
     <div class="col">
-      <input type="text" class="m4" placeholder="Village">
+      <label class="af1">Village</label><input readonly value="{{data.village}}" type="text" class="m4" >
     </div></div>
        <div class="row ap">
     <div class="col">
-      <input type="text" class="m3" placeholder="Venue">
+      <label class="af">Venue</label><input readonly value="{{data.venue}}" type="text" class="m3"  >
     </div>
     <div class="col">
-      <input type="number" class="m4" placeholder="Hours">
+      <label class="af1">Hours</label><input readonly value="{{data.hours}}" type="number" class="m4" >
     </div></div><br>
        <div class="row ap">
     <div class="col">
-      <img class="pimg" src="/images/d.jpeg" alt="">
+      <img class="pimg" src="/images/project/{{data.pr.[0]}}.jpg">
     </div>
     <div class="col">
-      <img class="pimg1" src="/images/d.jpeg" alt="">
+      <img class="pimg1" src="/images/project/{{data.pr.[1]}}.jpg">
     </div></div>
 
-    <textarea class="m" placeholder="   Description" ></textarea><br><br><br>
+    <textarea class="m" readonly >{{data.description}}</textarea><br>  
     
-             <div class="form-check1">
-  <input class="form-check-input1 ck" type="checkbox" value="" id="flexCheckIndeterminate">
-  <img class="acimg1" src="/images/a.jpeg">
-  <label class="form-check-label1" >Muhamme Hilal M</label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <input class="form-check-input1 ck" type="checkbox" value="" id="flexCheckIndeterminate">
-  <img class="acimg1" src="/images/a.jpeg">
-  <label class="form-check-label1" >Manu Krishna</label>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <input class="form-check-input1 ck" type="checkbox" value="" id="flexCheckIndeterminate">
-  <img class="acimg1" src="/images/a.jpeg">
-  <label class="form-check-label1" >Muhamme Hilal M</label>
-  </div> <br>
-            <div class="form-check1">
-  <input class="form-check-input1 ck" type="checkbox" value="" id="flexCheckIndeterminate">
-  <img class="acimg1" src="/images/a.jpeg">
-  <label class="form-check-label1" >Muhamme Hilal M</label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <input class="form-check-input1 ck" type="checkbox" value="" id="flexCheckIndeterminate">
-  <img class="acimg1" src="/images/a.jpeg">
-  <label class="form-check-label1" >Manu Krishna</label>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <input class="form-check-input1 ck" type="checkbox" value="" id="flexCheckIndeterminate">
-  <img class="acimg1" src="/images/a.jpeg">
-  <label class="form-check-label1" >Muhamme Hilal M</label>
-  </div><br>
-  <div class="form-check1">
-  <input class="form-check-input1 ck" type="checkbox" value="" id="flexCheckIndeterminate">
-  <img class="acimg1" src="/images/a.jpeg">
-  <label class="form-check-label1" >Muhamme Hilal M</label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <input class="form-check-input1 ck" type="checkbox" value="" id="flexCheckIndeterminate">
-  <img class="acimg1" src="/images/a.jpeg">
-  <label class="form-check-label1" >Manu Krishna</label>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <input class="form-check-input1 ck" type="checkbox" value="" id="flexCheckIndeterminate">
-  <img class="acimg1" src="/images/a.jpeg">
-  <label class="form-check-label1" >Muhamme Hilal M</label>
-  </div><br>
-  <div class="form-check1">
-  <input class="form-check-input1 ck" type="checkbox" value="" id="flexCheckIndeterminate">
-  <img class="acimg1" src="/images/a.jpeg">
-  <label class="form-check-label1" >Muhamme Hilal M</label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <input class="form-check-input1 ck" type="checkbox" value="" id="flexCheckIndeterminate">
-  <img class="acimg1" src="/images/a.jpeg">
-  <label class="form-check-label1" >Manu Krishna</label>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <input class="form-check-input1 ck" type="checkbox" value="" id="flexCheckIndeterminate">
-  <img class="acimg1" src="/images/a.jpeg">
-  <label class="form-check-label1" >Muhamme Hilal M</label>
+
+ 
+      <div class="container">
+  <div class="row m-1">
+ 
+      {{#each data1}}
+    <div class="col-xl-4"  style=" display: flex; align-items: center; /* width: 103px; */ flex-direction: row;    margin: 8px 0px 8px 0px;">
+      <img class="acimg1" src="/images/photo/{{_id}}.jpg">
+      <a href="#" class="scroll-a-tag" style="overflow: auto;display: block;margin-left: 13px;color:black;text-decoration:none">{{name}}</a>
+    </div>  
+{{/each}}
+  
+
+<style>
+  .scroll-a-tag::-webkit-scrollbar{
+    display: none   ;
+  }
+</style>
   </div>
     
     </div>
 
-
+{{/if}}
 </div>

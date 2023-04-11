@@ -23,17 +23,16 @@
     </tr>
   </thead>
   <tbody class="atd">
+      {{#each data}}
     <tr>
       <th scope="row">1</th>
-      <td>Blood Donation</td>
-      <td>AWH</td>
-      <td> <a href="/admin/admin_project_report_view"><button class="abutton1">more</button></td></a>
+      <td><img class="dimg" src="/images/project/{{this.pr.[0]}}.jpg"></td>
+      <td>{{this.project_name}}</td>
+      <td>{{this.ins}}</td>
+      
+      <td> <a href="/admin/admin_project_report_view/{{this._id}}"><button class="abutton">more</button></td></a>
     </tr>
-     <tr>
-      <th scope="row">2</th>
-      <td>Blood Donation</td>
-      <td>AWH</td>
-      <td> <a href="/admin/admin_project_report_view"><button class="abutton1">more</button></td></a>
-    </tr>
+    {{/each}}
+    
 
 </table>

@@ -18,14 +18,19 @@ router.post('/volunteer_extra', function(req, res, next) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  if(req.session.status){
     res.render('volunteer/volunteer_home',{volunteerroute:true});
+  }
+  else{
+    res.redirect('/login')
+  }
   });
 
   router.get('/volunteer_profile', function(req, res, next) {
     res.render('volunteer/volunteer_profile',{volunteerroute:true});
   });
 
-  router.get('/volunteer_workdairy', function(req, res, next) {
+  router.get('/volunteer_workdairy',async function(req, res, next) {
     res.render('volunteer/volunteer_workdairy',{volunteerroute:true});
   });
 

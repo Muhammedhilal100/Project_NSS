@@ -18,22 +18,22 @@
     <tr>
       <th scope="col"></th>
       <th scope="col">Camp Name</th>
-      <th scope="col">Collage Name</th>
-      <th scope="col">  </th>
+      <th scope="col">Year</th>
+      <th scope="col">Category  </th>
+      <td></td>
     </tr>
   </thead>
-  <tbody class="atd">
+    <tbody class="atd">
+    {{#each data}}
     <tr>
-      <th scope="row">1</th>
-      <td>Blood Donation</td>
-      <td>AWH</td>
-      <td> <a href="/admin/admin_camp_report_view"><button class="abutton1">more</button></td></a>
+      <th scope="row"> </th>
+      <td><img class="dimg" src="/images/camp/{{this.cr.[0]}}.jpg"></td>
+      <td>{{this.camp_name}}</td>
+      <td>{{this.year}}</td>
+      <td>{{this.category}}</td>
+      <td> <a href="/admin/admin_camp_report_view/{{this._id}}"><button class="abutton">more</button></td></a>
     </tr>
-     <tr>
-      <th scope="row">2</th>
-      <td>Blood Donation</td>
-      <td>AWH</td>
-      <td> <a href="/admin/admin_camp_report_view"><button class="abutton1">more</button></td></a>
-    </tr>
+ {{/each}}
+  
 
 </table>

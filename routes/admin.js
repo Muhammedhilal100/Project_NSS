@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const {ObjectId} = require('mongodb');
 const db = require('../config/connection');
 const admin_mongo = require('../mongodb_helper/admin_mongo');
+const session = require('express-session');
 var router = express.Router();
 
 
@@ -91,7 +92,12 @@ router.post('/unblock/:id',async function(req, res, next) {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('admin/admin_home',{adminroute:true});
+ if(req.session.status){
+    res.render('admin/admin_home',{adminroute:true});
+ }
+ else{
+  res.redirect('/login')
+ }
 });
 
 router.get('/admin_profile', function(req, res, next) {
@@ -180,17 +186,37 @@ router.get('/admin_volunteer_view/:id',async function(req, res, next) {
   res.render('admin/admin_volunteer_view',{adminroute:true,data});
 });
   
-router.get('/admin_project_report_views', function(req, res, next) {
-  res.render('admin/admin_project_report_views',{adminroute:true});
+router.get('/admin_project_report_views',async function(req, res, next) {
+  let data = await db.collection('po_project_report').find().toArray()
+  res.render('admin/admin_project_report_views',{adminroute:true,data});
 });
-router.get('/admin_camp_report_views', function(req, res, next) {
-  res.render('admin/admin_camp_report_views',{adminroute:true});
+router.get('/admin_camp_report_views',async function(req, res, next) {
+  let data = await db.collection('po_camp_report').find().toArray()
+  res.render('admin/admin_camp_report_views',{adminroute:true,data});
 });
-router.get('/admin_project_report_view', function(req, res, next) {
-  res.render('admin/admin_project_report_view',{adminroute:true});
+router.get('/admin_project_report_view/:id',async function(req, res, next) {
+  req.params.id
+    const objectID =  new ObjectId(req.params.id)
+    let data =await db.collection('po_project_report').findOne({_id :objectID }) 
+    let data1 =[]
+    await Promise.all(data.volunteer.map(async (value) => {
+      const objectID = new ObjectId(value)
+      const volunteer = await db.collection('volunteer_register').findOne({_id: objectID})
+      data1.push(volunteer)
+    }))
+  res.render('admin/admin_project_report_view',{adminroute:true,data,data1});
 });
-router.get('/admin_camp_report_view', function(req, res, next) {
-  res.render('admin/admin_camp_report_view',{adminroute:true});
+router.get('/admin_camp_report_view/:id',async function(req, res, next) {
+  req.params.id
+    const objectID =  new ObjectId(req.params.id)
+    let data =await db.collection('po_camp_report').findOne({_id :objectID })
+    let data1 =[]
+    await Promise.all(data.volunteer.map(async (value) => {
+      const objectID = new ObjectId(value)
+      const volunteer = await db.collection('volunteer_register').findOne({_id: objectID})
+      data1.push(volunteer)
+    }))
+  res.render('admin/admin_camp_report_view',{adminroute:true,data,data1});
 });
 router.get('/admin_block', async function(req, res, next) {
   let data=await db.collection('unicod_register').find({status:true}).toArray()

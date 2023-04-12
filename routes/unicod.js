@@ -59,7 +59,12 @@ router.post('/unblock/:id',async function(req, res, next) {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('unicod/unicod_home',{unicodroute:true});
+  if(req.session.status){
+    res.render('unicod/unicod_home',{unicodroute:true});
+  }
+  else{
+    res.redirect('/login')
+  }
 });
 
 router.get('/unicod_profile', function(req, res, next) {
@@ -119,18 +124,38 @@ router.get('/unicod_feedback',async function(req, res, next) {
   let data =await db.collection('feedback').find().toArray()
   res.render('unicod/unicod_feedback',{unicodroute:true,data});
 });
-router.get('/unicod_project_report_views', function(req, res, next) {
-  res.render('unicod/unicod_project_report_views',{unicodroute:true});
+router.get('/unicod_project_report_views',async function(req, res, next) {
+  let data = await db.collection('po_project_report').find().toArray()
+  res.render('unicod/unicod_project_report_views',{unicodroute:true,data});
 });
-router.get('/unicod_camp_report_views', function(req, res, next) {
-  res.render('unicod/unicod_camp_report_views',{unicodroute:true});
+router.get('/unicod_camp_report_views',async function(req, res, next) {
+  let data = await db.collection('po_camp_report').find().toArray()
+  res.render('unicod/unicod_camp_report_views',{unicodroute:true,data});
 });
 
-router.get('/unicod_project_report_view', function(req, res, next) {
-  res.render('unicod/unicod_project_report_view',{unicodroute:true});
+router.get('/unicod_project_report_view/:id',async function(req, res, next) {
+  req.params.id
+  const objectID =  new ObjectId(req.params.id)
+  let data =await db.collection('po_project_report').findOne({_id :objectID }) 
+  let data1 =[]
+  await Promise.all(data.volunteer.map(async (value) => {
+    const objectID = new ObjectId(value)
+    const volunteer = await db.collection('volunteer_register').findOne({_id: objectID})
+    data1.push(volunteer)
+  }))
+  res.render('unicod/unicod_project_report_view',{unicodroute:true,data,data1});
 });
-router.get('/unicod_camp_report_view', function(req, res, next) {
-  res.render('unicod/unicod_camp_report_view',{unicodroute:true});
+router.get('/unicod_camp_report_view/:id',async function(req, res, next) {
+  req.params.id
+  const objectID =  new ObjectId(req.params.id)
+  let data =await db.collection('po_camp_report').findOne({_id :objectID })
+  let data1 =[]
+  await Promise.all(data.volunteer.map(async (value) => {
+    const objectID = new ObjectId(value)
+    const volunteer = await db.collection('volunteer_register').findOne({_id: objectID})
+    data1.push(volunteer)
+  }))
+  res.render('unicod/unicod_camp_report_view',{unicodroute:true,data,data1});
 });
 
 router.get('/unicod_block', async function(req, res, next) {

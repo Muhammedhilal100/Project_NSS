@@ -4,6 +4,9 @@ var router = express.Router();
 const mongoose = require('mongoose');
 const {ObjectId} = require('mongodb');
 const db = require('../config/connection');
+const auth = require('../auth');
+
+
 
 router.post('/unicod_account', function(req, res, next) {
   unicod_mongo.unicod_account(req.body)
@@ -58,79 +61,88 @@ router.post('/unblock/:id',async function(req, res, next) {
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  if(req.session.status){
-    res.render('unicod/unicod_home',{unicodroute:true});
-  }
-  else{
-    res.redirect('/login')
-  }
+router.get('/',auth,async function(req, res, next) {
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_home',{unicodroute:true,unicod_details});
 });
 
-router.get('/unicod_profile', function(req, res, next) {
-  res.render('unicod/unicod_profile',{unicodroute:true});
+router.get('/unicod_profile',async function(req, res, next) {
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_profile',{unicodroute:true,unicod_details});
 });
 
 router.get('/approval_po',async function(req, res, next) {
   let data =await db.collection('po_register').find({status:'pending'}).toArray()
-  res.render('unicod/approval_po',{unicodroute:true,data});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/approval_po',{unicodroute:true,unicod_details,data});
 });
 
 router.get('/approval_po_view/:id',async function(req, res, next) {
   req.params.id
   const objectID =  new ObjectId(req.params.id)
   let data =await db.collection('po_register').findOne({_id :objectID })
-  res.render('unicod/approval_po_view',{unicodroute:true,data});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/approval_po_view',{unicodroute:true,unicod_details,data});
 });
 
-router.get('/unicod_account', function(req, res, next) {
-  res.render('unicod/unicod_account',{unicodroute:true});
+router.get('/unicod_account',async function(req, res, next) {
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_account',{unicodroute:true,unicod_details});
 });
 
 router.get('/unicod_account_view',async function(req, res, next) {
   let data= await db.collection('unicod_account').find().toArray()
-  res.render('unicod/unicod_account_view',{unicodroute:true,data});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_account_view',{unicodroute:true,unicod_details,data});
 });
 
 router.get('/unicod_po_views',async function(req, res, next) {
   let data=await db.collection('po_register').find({status:true}).toArray()
-  res.render('unicod/unicod_po_views',{unicodroute:true,data});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_po_views',{unicodroute:true,unicod_details,data});
 });
 
 router.get('/unicod_volunteer_views',async function(req, res, next) {
   let data=await db.collection('volunteer_register').find({status:true}).toArray()
-  res.render('unicod/unicod_volunteer_views',{unicodroute:true,data});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_volunteer_views',{unicodroute:true,unicod_details,data});
 });
 
 router.get('/unicod_po_view/:id', async function(req, res, next) {
   req.params.id
   const objectID =  new ObjectId(req.params.id)
   let data=await db.collection('po_register').findOne({_id :objectID })
-  res.render('unicod/unicod_po_view',{unicodroute:true,data});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_po_view',{unicodroute:true,unicod_details,data});
 });
 
 router.get('/unicod_volunteer_view/:id',async function(req, res, next) {
   req.params.id
   const objectID =  new ObjectId(req.params.id)
   let data=await db.collection('volunteer_register').findOne({_id :objectID }) 
-  res.render('unicod/unicod_volunteer_view',{unicodroute:true,data});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_volunteer_view',{unicodroute:true,unicod_details,data});
 });
 
-router.get('/unicod_message', function(req, res, next) {
-  res.render('unicod/unicod_message',{unicodroute:true});
+router.get('/unicod_message',async function(req, res, next) {
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_message',{unicodroute:true,unicod_details});
 });
 
 router.get('/unicod_feedback',async function(req, res, next) {
   let data =await db.collection('feedback').find().toArray()
-  res.render('unicod/unicod_feedback',{unicodroute:true,data});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_feedback',{unicodroute:true,unicod_details,data});
 });
 router.get('/unicod_project_report_views',async function(req, res, next) {
   let data = await db.collection('po_project_report').find().toArray()
-  res.render('unicod/unicod_project_report_views',{unicodroute:true,data});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_project_report_views',{unicodroute:true,unicod_details,data});
 });
 router.get('/unicod_camp_report_views',async function(req, res, next) {
   let data = await db.collection('po_camp_report').find().toArray()
-  res.render('unicod/unicod_camp_report_views',{unicodroute:true,data});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_camp_report_views',{unicodroute:true,unicod_details,data});
 });
 
 router.get('/unicod_project_report_view/:id',async function(req, res, next) {
@@ -143,7 +155,8 @@ router.get('/unicod_project_report_view/:id',async function(req, res, next) {
     const volunteer = await db.collection('volunteer_register').findOne({_id: objectID})
     data1.push(volunteer)
   }))
-  res.render('unicod/unicod_project_report_view',{unicodroute:true,data,data1});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_project_report_view',{unicodroute:true,unicod_details,data,data1});
 });
 router.get('/unicod_camp_report_view/:id',async function(req, res, next) {
   req.params.id
@@ -155,16 +168,19 @@ router.get('/unicod_camp_report_view/:id',async function(req, res, next) {
     const volunteer = await db.collection('volunteer_register').findOne({_id: objectID})
     data1.push(volunteer)
   }))
-  res.render('unicod/unicod_camp_report_view',{unicodroute:true,data,data1});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_camp_report_view',{unicodroute:true,unicod_details,data,data1});
 });
 
 router.get('/unicod_block', async function(req, res, next) {
   let data=await db.collection('po_register').find({status:true}).toArray()
-  res.render('unicod/unicod_block',{unicodroute:true,data});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_block',{unicodroute:true,unicod_details,data});
 });
 router.get('/unicod_unblock', async function(req, res, next) {
   let data=await db.collection('po_register').find({status:false}).toArray()
-  res.render('unicod/unicod_unblock',{unicodroute:true,data});
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  res.render('unicod/unicod_unblock',{unicodroute:true,unicod_details,data});
 });
 
 module.exports = router;

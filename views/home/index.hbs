@@ -1,5 +1,6 @@
-<br><br>
 
+<img class="logo1" src="\images\logo1.png" >
+<img class="swach" src="\images\swach.png" >
 <div class="na1">
   <a href="/" class="fa">Home</a>
   <a href="/suggestion " class="fa">Suggestions</a>
@@ -17,11 +18,47 @@
 
 <body>
 <img class="iimg" src="/images/i.jpg">
+
+
 <div style="display: flex;">
-<div class="ib">
-    <div class="ibh"></div>
+  <div>
+<img class="ilogo3" src="\images\logo.png" >
+
+<h1 class="iwh">Welcome to</h1>
+<h3 class="iwb">National Service Scheme</h3>
+
 </div>
-<div class="ib1">
-    <div class="ibh"></div>
-</div></div>
+<div class="ib">
+    <div class="ibh"><h2 class="ih">Latest Events</h></div>
+  {{#each data}}
+  <div>
+    <br>
+    <h5 class="ibb">{{event_date}}</h5>
+    <h6 class="ibb">{{event_name}} -
+    {{event_location}}</h6>
+    </div>
+   {{/each}}
+   </div>
+   <div class="ib1">
+    <div class="ibh"><h2 class="ih">Latest News</h></div>
+  {{#each data1}}
+  <div>
+    <br>
+    <h5 class="ibb">{{news_date}}</h5>
+    <h6 class="ibb"><b>{{heading}} </b>-
+    {{news}}</h6>
+    </div>
+   {{/each}}
+   </div>
+</div>
+<center>
+<h1 class="iwh1">SIMILAR ORGANISATIONS</h1>
+<br><br>
+
+<img  src="\images\ncc_logo.png" >
+<img src="\images\RedCross.png" >
+<img src="\images\bharat scouts.png" >
+<img src="\images\moefnew.png" >
+<img src="\images\download_2.jpg" >
+</center>
 </body>

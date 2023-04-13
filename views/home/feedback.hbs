@@ -2,8 +2,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
-
-<center>
     
 <BR><BR><br>
 <div class="abc13"><br>
@@ -16,15 +14,19 @@
          <tr><td><label class="af">Name</label></td><td><input name="name" class="aba"  type="text" class="form-control"></td></tr><br><br>
         <tr>
      <td><label class="af">University</label></td>
-       <td><select name="university_name" class="aba">
-        <option value="KTU" >KTU </option>
-        <option value="Calicut" >Calicut</option>
-       </select></td></tr><br><br>
+       <td><select name="university_name" class="aba" >
+        <option></option>
+        {{#each data}}
+        <option value="{{university_name}}">{{university_name}}</option>
+        {{/each}}
+      </select></td></tr><br><br>
        <td><label class="af">College</label></td>
-       <td><select name="institute_name" class="aba">
-        <option value="AWH" >AWH </option>
-        <option value="Calicut" >Calicut</option>
-       </select></td></tr><br><br>
+       <td><select name="institute_name" class="aba" >
+        <option></option>
+        {{#each data}}
+        <option value="{{institute_name}}">{{institute_name}}</option>
+        {{/each}}
+      </select></td></tr><br><br>
           <tr><td><label class="af">Description</label></td><td><textarea name="description" class="abb" ></textarea></td></tr><br><br>
         
 </table>

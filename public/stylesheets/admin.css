@@ -50,7 +50,6 @@
 }
 
 .ab {
-  margin-top: 130px;
   margin-left: 350px;
 }
 
@@ -522,7 +521,7 @@
   height: 500px;
   background-color: antiquewhite;
   margin-top: 50px;
-  margin-left: 420px;
+  margin-left: 140px;
 }
 .ib1 {
   width: 400px;
@@ -557,4 +556,52 @@
   display: block;
   background-color: #8f94bc;
   color: #2a7c90;
+}
+
+
+.ih{
+  color: aliceblue;
+    font-style: italic;
+    margin-left: 10px;
+}
+
+.ibb{
+  margin-left: 20px;
+}
+
+
+  .ilogo3 {
+    height: 250px;
+    margin-top: 80px;
+    margin-left: 50px;
+    
+  }
+
+
+.iwh{
+    font-weight: 800;
+    margin-top: 30px;
+    margin-left: 30px;
+    color: #303983;
+}
+
+.iwb {
+  margin-left: 30px;
+  font-weight: 600;
+}
+
+.logo1{
+  height: 100px;
+  margin-left: 50px;
+}
+.swach{
+  height: 100px;
+  margin-left: 830px;
+}
+
+
+.iwh1{
+  font-weight: 800;
+  margin-top: 80px;
+  color: #303983;
 }

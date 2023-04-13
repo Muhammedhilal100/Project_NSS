@@ -18,7 +18,12 @@
    </div>
    <div class="row ap">
     <div class="col">
-      <label class="af">University</label><input name="university" type="text" class="form-control" >
+      <label class="af">University</label><select name="university" class="form-control" >
+        <option></option>
+        {{#each data}}
+        <option>{{university_name}}</option>
+        {{/each}}
+      </select>
     </div>
     <div class="col">
       <label class="af">Institute Name</label><input name="institute_name" type="text" class="form-control">

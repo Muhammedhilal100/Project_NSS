@@ -1,103 +1,106 @@
 <div class="abc">
    <div class="text-center">
-    <img class="aaimg" src="/images/a.jpeg">
+
+    <img class="aaimg" src="/images/photo/{{unicod_details._id}}.jpg">
    </div>
   <div class="row ap">
     <div class="col">
-      <label class="af">Name</label><input type="text" class="form-control" >
+      <label class="af">Name</label><input  value="{{unicod_details.name}}" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Gender</label><input type="text" class="form-control">
+      <label class="af">Gender</label><input  value="{{unicod_details.gender}}" type="text" class="form-control">
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">Date of Birth</label><input type="text" class="form-control" >
+      <label class="af">Date of Birth</label><input  value="{{unicod_details.dob}}" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Condact Number</label><input type="text" class="form-control">
+      <label class="af">Condact Number</label><input  value="{{unicod_details.condact_number}}" type="text" class="form-control">
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">WhatsApp Number </label><input type="text" class="form-control" >
+      <label class="af">WhatsApp Number </label><input  value="{{unicod_details.whatsapp_number}}" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Religion</label><input type="text" class="form-control">
+      <label class="af">Religion</label><input  value="{{unicod_details.religion}}" type="text" class="form-control">
     </div></div>
      <div class="row ap">
     <div class="col">
-      <label class="af">Community </label><input type="text" class="form-control" >
+      <label class="af">Community </label><input  value="{{unicod_details.community}}" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Blood Group </label><input type="text" class="form-control">
+      <label class="af">Blood Group </label><input  value="{{unicod_details.blood_group}}" type="text" class="form-control">
     </div></div>
      <div class="row ap">
     <div class="col">
-      <label class="af">Height </label><input type="text" class="form-control" >
+      <label class="af">Height </label><input  value="{{unicod_details.height}}" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Weight</label><input type="text" class="form-control">
+      <label class="af">Weight</label><input  value="{{unicod_details.weight}}" type="text" class="form-control">
     </div></div>
      <div class="row ap">
     <div class="col">
-      <label class="af">District </label><input type="text" class="form-control" >
+      <label class="af">District </label><input  value="{{unicod_details.district}}" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Taluk</label><input type="text" class="form-control">
+      <label class="af">Taluk</label><input  value="{{unicod_details.taluk}}" type="text" class="form-control">
     </div></div>
      <div class="row ap">
     <div class="col">
-      <label class="af">Village </label><input type="text" class="form-control" >
+      <label class="af">Village </label><input  value="{{unicod_details.village}}" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Pincode</label><input type="text" class="form-control">
+      <label class="af">Pincode</label><input  value="{{unicod_details.pincode}}" type="text" class="form-control">
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">Name of Parent / Guardian  </label><input type="text" class="form-control" >
+      <label class="af">Name of Parent / Guardian  </label><input  value="{{unicod_details.name_of_parent}}" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Parent's Contact Number </label><input type="text" class="form-control">
+      <label class="af">Parent's Contact Number </label><input  value="{{unicod_details.parent_condact_number}}" type="text" class="form-control">
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">Permanent Address  </label><textarea class="form-control" ></textarea>
+      <label class="af">Permanent Address  </label>{{po_detail.spermanent_address}}<textarea class="form-control" ></textarea>
     </div>
     <div class="col">
-      <label class="af">Contact Address </label><textarea class="form-control" ></textarea>
+      <label class="af">Contact Address </label>{{unicod_details.condact_address}}<textarea class="form-control" ></textarea>
+    </div></div>
+    <div class="row ap">
+  <div class="col">
+      <b><label class="ah">Languages Known </label><br></b><br><br> 
+      <input readonly name="language_known" {{#if unicod_details.language_known }} checked{{/if}}  type="checkbox"> &nbsp;<label class="af">English </label>
+      <input readonly name="language_known2" {{#if unicod_details.language_known2 }} checked {{/if}}  type="checkbox">&nbsp;<label class="af">Hindi </label>
+      <input readonly name="language_known3" {{#if unicod_details.language_known3 }} checked{{/if}}   type="checkbox">&nbsp;<label class="af">Malayalam </label>
+      <input readonly name="language_known4"  {{#if unicod_details.language_known4 }} checked{{/if}}  type="checkbox">&nbsp;<label class="af">Others </label>
     </div></div>
     <div class="row ap">
     <div class="col">
-      <b><label class="ah">Languages Known </label><br></b><br><br>
-      <input type="checkbox"> &nbsp;<label class="af">English </label> 
-      <input type="checkbox">&nbsp;<label class="af">Hindi </label> 
-      <input type="checkbox">&nbsp;<label class="af">Malayalam </label> 
-       <input type="checkbox">&nbsp;<label class="af">Others </label>
+      <label class="af">Area of Interest </label>{{ unicod_details.area_of_intrest}}<textarea class="form-control" ></textarea>
+    </div>
+    <div class="col">
+      <label class="af">Hobbies</label>{{unicod_details.hobbies}}<textarea class="form-control" ></textarea>
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">Area of Interest </label><textarea class="form-control" ></textarea>
+      <label class="af">Prior Experience   </label>{{unicod_details.prior_experience}}<textarea class="form-control" ></textarea>
     </div>
     <div class="col">
-      <label class="af">Hobbies</label><textarea class="form-control" ></textarea>
+      <label class="af">Cultural talents </label>{{unicod_details.cultural_talents}}<textarea class="form-control" ></textarea>
     </div></div>
+    
     <div class="row ap">
-    <div class="col">
-      <label class="af">Prior Experience   </label><textarea class="form-control" ></textarea>
+      <div class="col">
+      <b><label class="ah">Are you interested in camps</label><br></b><br><br>
+      <input readonly name="interested_in_camps"{{#if unicod_details.interested_in_camps }}  checked{{/if}}  type="checkbox"> &nbsp;<label class="af">State </label>
+      <input readonly name="interested_in_camps1" {{#if unicod_details.interested_in_camps1 }}  checked{{/if}}  type="checkbox">&nbsp;<label class="af">National </label>
+      <input readonly name="interested_in_camps2" {{#if unicod_details.interested_in_camps2 }}  checked{{/if}}  type="checkbox">&nbsp;<label class="af">International </label> 
     </div>
     <div class="col">
-      <label class="af">Cultural talents </label><textarea class="form-control" ></textarea>
-    </div></div>
-    <div class="row ap">
-    <div class="col">
-      <b><label class="ah">Are you interested in camps</label></b><br><br>
-      <input type="checkbox"> &nbsp;<label class="af">State </label> 
-      <input type="checkbox">&nbsp;<label class="af">National </label> 
-      <input type="checkbox">&nbsp;<label class="af">International </label> 
-    </div>
-    <div class="col">
-      <img class="abimg" src="/images/b.jpeg">
+      <img class="abimg"src="/images/sign/{{unicod_details._id}}.jpg">
     </div>
     </div>
+ 
 <br>
     <button class="abutton">Update</button>
 

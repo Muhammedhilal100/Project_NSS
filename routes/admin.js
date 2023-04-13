@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const {ObjectId} = require('mongodb');
 const db = require('../config/connection');
 const admin_mongo = require('../mongodb_helper/admin_mongo');
-const session = require('express-session');
+const auth = require('../auth');
 var router = express.Router();
 
 
@@ -91,14 +91,9 @@ router.post('/unblock/:id',async function(req, res, next) {
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
- if(req.session.status){
+router.get('/',auth,async function(req, res, next) {
     res.render('admin/admin_home',{adminroute:true});
- }
- else{
-  res.redirect('/login')
- }
-});
+  });
 
 router.get('/admin_profile', function(req, res, next) {
   res.render('admin/admin_profile',{adminroute:true});

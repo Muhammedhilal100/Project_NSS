@@ -4,7 +4,90 @@ const {ObjectId} = require('mongodb');
 const db = require('../config/connection');
 const admin_mongo = require('../mongodb_helper/admin_mongo');
 const auth = require('../auth');
+const { po_register } = require('../mongodb_helper/home_mongo');
 var router = express.Router();
+
+
+
+// API FOR GET  DETAILS OF VOLUNTEER
+router.post('/getvolunteerDetails',async function(req, res, next) {
+  console.log(req.body);
+  const { getDetails,institute_name  } = req.body
+  let volunteer =await db.collection('volunteer_register').aggregate(
+    [
+      {
+        $match: { institute_name:institute_name,year:getDetails } 
+      },
+      { $project: { _id: 1, name: 1, } }
+    ]
+  ).toArray()
+ 
+  res.json(volunteer)
+});
+
+// API FOR GET  DETAILS OF PO
+router.post('/getpoDetails',async function(req, res, next) {
+  console.log(req.body);
+  const { getDetails,university  } = req.body
+  let po =await db.collection('po_register').aggregate(
+    [
+      {
+        $match: { university:university,year:getDetails } 
+      },
+      { $project: { _id: 1, name: 1,institute_name:1} }
+    ]
+  ).toArray()
+ console.log(po);
+  res.json(po)
+});
+
+// API FOR GET  DETAILS OF UNICOD
+router.post('/getunicodDetails',async function(req, res, next) {
+  console.log(req.body);
+  const { getDetails  } = req.body
+  let unicod =await db.collection('unicod_register').aggregate(
+    [
+      {
+        $match: { year:getDetails } 
+      },
+      { $project: { _id: 1, name: 1,university_name: 1} }
+    ]
+  ).toArray()
+ console.log(unicod);
+  res.json(unicod)
+});
+
+
+
+// API FOR GET  INSTITUTE
+router.post('/getInstitute',async function(req, res, next) {
+  let universityname = req.body.universityName
+  let institutename =await db.collection('po_register').aggregate(
+    [
+      {
+        $match: { university:universityname } 
+      },
+      { $project: { _id: 0, institute_name: 1,year:1 } }
+    ]
+  ).toArray()
+  res.json(institutename)
+ 
+});
+
+// API FOR GET YEAR
+router.post('/getYear',async function(req, res, next) {
+  let institutename = req.body.instituteName
+ 
+  let year =await db.collection('volunteer_register').aggregate(
+    [
+      {
+        $match: { institute_name:institutename } 
+      },
+      { $project: { _id: 0, year: 1 } }
+    ]
+  ).toArray()
+  res.json(year)
+});
 
 
 
@@ -152,12 +235,15 @@ router.get('/admin_unicod_views',async function(req, res, next) {
 
 router.get('/admin_po_views', async function(req, res, next) {
   let data=await db.collection('po_register').find({status:true}).toArray()
-  res.render('admin/admin_po_views',{adminroute:true,data});
+  let data1=await db.collection('unicod_register').find({status:true}).toArray()
+  res.render('admin/admin_po_views',{adminroute:true,data,data1});
 });
 
 router.get('/admin_volunteer_views',async function(req, res, next) {
   let data=await db.collection('volunteer_register').find({status:true}).toArray()
-  res.render('admin/admin_volunteer_views',{adminroute:true,data});
+  let data1=await db.collection('unicod_register').find({status:true}).toArray()
+  let data2=await db.collection('po_register').find({status:true}).toArray()
+  res.render('admin/admin_volunteer_views',{adminroute:true,data,data1,data2});
 });
 
 router.get('/admin_unicod_view/:id', async function(req, res, next) {

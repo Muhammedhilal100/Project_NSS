@@ -7,12 +7,16 @@
         <option value="fund type" >Fund type</option>
         <option value="normal" >Normal</option>
        </select></td></tr><br><br>  
-      <tr><td><label class="af">Amount</label></td><td><input name="amount" class="aba" type="number" class="form-control" ></td></tr><br><br>
-      <tr><td><label class="af">Date</label></td><td><input name="date" class="aba"  type="date" class="form-control"></td></tr><br><br>
-    <tr><td><label class="af">Accountant</label></td><td><input name="accountant" class="aba" type="text" class="form-control" ></td></tr><br><br>
+      <tr><td><label class="af">Amount</label></td><td><input required name="amount" class="aba" type="number" class="form-control" ></td></tr><br><br>
+      <tr><td><label class="af">Date</label></td><td><input required name="date" class="aba"  type="date" class="form-control"></td></tr><br><br>
+    <tr><td><label class="af">Accountant</label></td><td><input required name="accountant" class="aba" type="text" class="form-control" ></td></tr><br><br>
 </table><br><br>
 
 <button class="abutton">Submit</button>
+{{!--  --}}
+<input type="text" name="user_id" value="{{po_details.username}}" hidden>
+<input type="text" name="accept_id" value="{{po_details.accept_id}}" hidden>
+{{!--  --}}
 </form>
     </div>
 

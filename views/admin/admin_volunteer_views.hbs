@@ -1,40 +1,162 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+
+
 <table>
-    <tr>
-<td><select class="aa">
-        <option >Enrolment year</option>
-        <option >2021</option>
-       </select></td>
-    <td><select class="aa">
-        <option >University </option>
-        <option >KTU</option>
-       </select></td>
-    <td><select class="aa">
-        <option >Collage Name </option>
-        <option >AWH</option>
-       </select></td>
-       
-<td><button class="abutton1">View</button></td>
-</tr>
+  <tr>
+    <td><select onchange="getinstitute(this.value)" class="aa" id="university-select">
+        <option>University Name</option>
+        {{#each data1}}
+        <option>{{this.university_name}}</option>
+        {{/each}}
+      </select></td>
+    <td><select onchange="getyear(this.value)" class="aa" id="institute-select">
+
+        <option>Institute Name</option>
+
+      </select></td>
+    <td><select class="aa" id="year-select" onchange="getDetails(this.value)">
+        <option>Enrolment Year</option>
+      </select></td>
+
+    <td><button class="abutton1">View</button></td>
+  </tr>
 </table>
 <br><br><br>
-<table class="table">
-  <thead >
+
+
+<table class="table" id="table">
+  <thead>
     <tr>
-    
       <th scope="col"></th>
       <th scope="col">Name</th>
-      <th scope="col">  </th>
+      <th scope="col"> </th>
     </tr>
   </thead>
-  {{#each data}}
-  <tbody class="atd">
-    <tr>
-
+  <tbody class="atd" id="atd">
+  {{!-- {{#each data}} --}}
+    {{!-- <tr>
       <td><img class="dimg" src="/images/photo/{{this._id}}.jpg"></td>
-      <td>{{this.name}}</td>
+      <td id="dataName">{{this.name}}</td>
       <td> <a href="/admin/admin_volunteer_view/{{this._id}}"><button class="abutton1">more</button></td></a>
-    </tr>
-   
-{{/each}}
+    </tr> --}}
+    {{!-- {{/each}} --}}
+  </tbody>
 
 </table>
+
+
+<script>
+
+  // Change the style of the div when the page loads
+
+  $('#table').hide();
+
+
+
+
+  const universitySelect = $('#university-select');
+  const instituteSelect = $('#institute-select');
+  const yearSelect = $('#year-select');
+  const table=$('#atd')
+
+  //GET INSTITUTE IN DROPDOWN 
+
+  const getinstitute = (value) => {
+
+
+//GET INSTITUTE
+    $.ajax({
+      url: "/admin/getInstitute",
+      method: "POST",
+      data: {
+        universityName: value
+      },
+      success: function (response) {
+        instituteSelect.empty();
+        yearSelect.empty();
+        var option1 = $('<option>').attr('value', null).text('Select');
+        instituteSelect.append(option1);
+        response.map((value, index) => {
+
+          var option = $('<option>').attr('value', value.institute_name).text(value.institute_name);
+          instituteSelect.append(option);
+
+        });
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+
+
+
+  //GET YEAR IN DROPDOWN
+  const getyear = (value) => {
+
+    yearSelect.empty();
+    
+    $.ajax({
+      url: "/admin/getYear",
+      method: "POST",
+      data: {
+        instituteName: value
+      },
+
+      success: function (response) {
+        table.empty();
+
+  
+
+         var option1 = $('<option>').attr('value', null).text('Select');
+        yearSelect.append(option1);
+        response.map((value, index) => {
+          var option = $('<option>').attr('value', value.year).text(value.year);
+          yearSelect.append(option);
+
+        });
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+
+
+
+   const getDetails = (value) => {
+    table.empty()
+//var inputValue = $('#myInput').val();
+let institute_name = instituteSelect.val()
+    console.log(instituteSelect.val(),'universitySelect.val')
+
+    $.ajax({
+      url: "/admin/getvolunteerDetails",
+      method: "POST",
+      data: {
+        getDetails: value,
+        institute_name,
+      },
+      success: function (response) {
+        
+  $('#table').show();
+ 
+  response.map((value,index)=>{
+
+  let row =  `<tr>
+      <td><img class="dimg" src="/images/photo/${value._id}.jpg"></td>
+      <td id="dataName">${value.name}</td>
+      <td> <a href="/admin/admin_volunteer_view/${value._id}"><button class="abutton1">more</button></td></a>
+    </tr>`;
+      table.append(row);
+
+  })
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+</script>

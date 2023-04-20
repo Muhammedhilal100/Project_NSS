@@ -1,19 +1,27 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+
 <table>
     <tr>
-<td><select class="aa">
-        <option >Enrolment year</option>
-        <option >2021</option>
+<td><select onchange="getinstitute(this.value)" class="aa" id="university-select">
+        <option >University Name</option>
+        {{#each data1}}
+        <option >{{this.university_name}}</option>
+        {{/each}}
        </select></td>
-    <td><select class="aa">
-        <option >University </option>
-        <option >KTU</option>
+    <td><select onchange="getDetails(this.value)"  class="aa" id="year-select">
+        <option >Year </option>
+        {{!-- {{#each data}}
+        <option >{{this.year}}</option>
+        {{/each}} --}}
        </select></td>
        
 <td><button class="abutton1">View</button></td>
 </tr>
 </table>
 <br><br><br>
-<table class="table">
+<table class="table" id="table">
   <thead >
     <tr>
       <th scope="col"></th>
@@ -23,8 +31,8 @@
       <th scope="col">  </th>
     </tr>
   </thead>
-  {{#each data}}
-  <tbody class="atd">
+  <tbody class="atd" id="atd">
+  {{!-- {{#each data}}
     <tr>
       <th scope="row">1</th>
       <td><img class="dimg" src="/images/photo/{{this._id}}.jpg"></td>
@@ -32,7 +40,88 @@
       <td>{{this.institute_name}}</td>
       <td> <a href="/admin/admin_po_view/{{this._id}}"><button class="abutton1">more</button></td></a>
     </tr>
-   
-   {{/each}}
-
+   {{/each}} --}}
 </table>
+
+
+<script>
+
+ // Change the style of the div when the page loads
+
+  $('#table').hide();
+
+
+
+  const universitySelect = $('#university-select');
+    const yearSelect = $('#year-select');
+     const table=$('#atd')
+
+  const getinstitute = (value) => {
+
+
+//GET YEAR
+    $.ajax({
+      url: "/admin/getInstitute",
+      method: "POST",
+      data: {
+        universityName: value
+      },
+      success: function (response) {
+        yearSelect.empty();
+        var option1 = $('<option>').attr('value', null).text('Select');
+        yearSelect.append(option1);
+        response.map((value, index) => {
+
+          var option = $('<option>').attr('value', value.year).text(value.year);
+          yearSelect.append(option);
+
+        });
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+
+
+
+ const getDetails = (value) => {
+    table.empty()
+//var inputValue = $('#myInput').val();
+let university = universitySelect.val()
+    console.log(universitySelect.val(),'universitySelect.val')
+
+    $.ajax({
+      url: "/admin/getpoDetails",
+      method: "POST",
+      data: {
+        getDetails: value,
+        university,
+      },
+      success: function (response) {
+        
+  $('#table').show();
+ 
+  response.map((value,index)=>{
+
+  let row =  `   <tr>
+      <th scope="row">1</th>
+      <td><img class="dimg" src="/images/photo/${value._id}.jpg"></td>
+      <td>${value.name}</td>
+      <td>${value.institute_name}</td>
+      <td> <a href="/admin/admin_po_view/${value._id}"><button class="abutton1">more</button></td></a>
+    </tr>`;
+      table.append(row);
+
+  })
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+
+</script>
+
+
+

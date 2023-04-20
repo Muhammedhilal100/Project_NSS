@@ -43,32 +43,51 @@ else{
 
 
 
-router.post('/unicod_register', function(req, res, next) {
-  home_mongo.unicod_register(req.body,(callback)=>{
-    let photo = req.files.photo
-    let sign = req.files.sign
-    photo.mv('public/images/photo/'+callback.insertedId+'.jpg')
-    sign.mv('public/images/sign/'+callback.insertedId+'.jpg')
-    res.render('home/index',{indexhome:true});
-  })});
+router.post('/unicod_register', async function(req, res, next) {
+  let data=await db.collection('unicod_register').findOne({username:req.body.username})
+  if(data){
+    req.session.error='Username already exist'
+    res.redirect('/unicod_register')
+  }
+  else{
+    home_mongo.unicod_register(req.body,(callback)=>{
+      let photo = req.files.photo
+      let sign = req.files.sign
+      photo.mv('public/images/photo/'+callback.insertedId+'.jpg')
+      sign.mv('public/images/sign/'+callback.insertedId+'.jpg')
+      res.render('home/index',{indexhome:true});
+    })}});
   
-  router.post('/po_register', function(req, res, next) {
+  router.post('/po_register',async function(req, res, next) {
+    let data=await db.collection('po_register').findOne({username:req.body.username})
+    if(data){
+      req.session.error='Username already exist'
+      res.redirect('/po_register')
+    }
+    else{
     home_mongo.po_register(req.body,(callback)=>{
       let photo = req.files.photo
       let sign = req.files.sign
     photo.mv('public/images/photo/'+callback.insertedId+'.jpg')
     sign.mv('public/images/sign/'+callback.insertedId+'.jpg')
   res.render('home/index',{indexhome:true});
-})});
+})}});
 
-router.post('/volunteer_register', function(req, res, next) {
+router.post('/volunteer_register',async function(req, res, next) {
+  let data=await db.collection('volunteer_register').findOne({username:req.body.username})
+    if(data){
+      req.session.error='Username already exist'
+      res.redirect('/volunteer_register')
+    }
+    else{
   home_mongo.volunteer_register(req.body,(callback)=>{
     let photo = req.files.photo
     let sign = req.files.sign
     photo.mv('public/images/photo/'+callback.insertedId+'.jpg')
     sign.mv('public/images/sign/'+callback.insertedId+'.jpg')
   res.render('home/index',{indexhome:true});
-})});
+})}});
+
 router.post('/suggestion', function(req, res, next) {
   home_mongo.suggestion(req.body)
   res.render('home/index',{indexhome:true});
@@ -96,15 +115,18 @@ router.get('/',async function(req, res, next) {
   res.render('home/index',{indexhome:true,data,data1});
 });
 router.get('/unicod_register', function(req, res, next) {
-  res.render('home/unicod_register',{indexRoute:true});
+  let er=req.session.error
+  res.render('home/unicod_register',{indexRoute:true,er});
 });
 router.get('/po_register',async function(req, res, next) {
+  let er=req.session.error
   let data=await db.collection('unicod_register').find({status:true}).toArray()
-  res.render('home/po_register',{indexRoute:true,data});
+  res.render('home/po_register',{indexRoute:true,data,er});
 });
 router.get('/volunteer_register',async function(req, res, next) {
+  let er=req.session.error
   let data=await db.collection('po_register').find({status:true}).toArray()
-  res.render('home/volunteer_register',{indexRoute:true,data});
+  res.render('home/volunteer_register',{indexRoute:true,data,er});
 });
 router.get('/suggestion', function(req, res, next) {
   res.render('home/suggestion',{indexRoute:true});

@@ -2,11 +2,11 @@
     <form action="/admin/admin_index_event" method="post">
     <b><label class="ah">ADD EVENTS</label><br></b><br><br><br>
      <table class="at">
-             <tr><td><label class="af">Event Date</label></td><td><input name="event_date" class="aba" type="date" class="form-control" ></td></tr><br><br>
+             <tr><td><label class="af">Event Date</label></td><td><input required name="event_date" class="aba" type="date" class="form-control" ></td></tr><br><br>
 
-     <tr><td><label class="af">Event Name</label></td><td><input name="event_name" class="aba" type="text" class="form-control" ></td></tr><br><br>
+     <tr><td><label class="af">Event Name</label></td><td><input required name="event_name" class="aba" type="text" class="form-control" ></td></tr><br><br>
 
-     <tr><td><label class="af">Event Location</label></td><td><input name="event_location" class="aba" type="text" class="form-control" ></td></tr><br><br>
+     <tr><td><label class="af">Event Location</label></td><td><input required name="event_location" class="aba" type="text" class="form-control" ></td></tr><br><br>
 </table><br><br>
 
 <button  class="abutton2">ADD</button>
@@ -32,7 +32,7 @@
       <td>{{this.event_name}}</td>
       <td>{{this.event_location}}</td>
       <td><form action="/admin/delete/{{this._id}}" method="post">
-          <input class="abutton" type="submit"  value="Delete" >
+          <input required class="abutton" type="submit"  value="Delete" >
           </form> </td></a>
     </tr>
    {{/each}}

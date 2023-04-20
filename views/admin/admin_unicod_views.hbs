@@ -1,15 +1,21 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+
 <table>
     <tr>
-<td><select class="aaa">
+<td><select onchange="getDetails(this.value)"  class="aaa" id="year-select">
         <option >Enrolment year</option>
-        <option >2021</option>
+        {{#each data}}
+        <option >{{this.year}}</option>
+        {{/each}}
        </select></td>
        
 <td><button class="abutton1">View</button></td>
 </tr>
 </table>
 <br><br><br>
-<table class="table">
+<table class="table" id="table">
   <thead >
     <tr>
       <th scope="col"></th>
@@ -19,8 +25,8 @@
       <th scope="col">  </th>
     </tr>
   </thead>
-  <tbody class="atd">
-    {{#each data}}
+  <tbody class="atd" id="atd">
+    {{!-- {{#each data}}
     <tr>
       <td></td>
       <td><img class="dimg" src="/images/photo/{{this._id}}.jpg"></td>
@@ -29,6 +35,56 @@
 
       <td> <a href="/admin/admin_unicod_view/{{this._id}}"><button class="abutton1">more</button></td></a>
     </tr>
-   
-{{/each}}
+{{/each}} --}}
 </table>
+
+
+<script>
+
+  $('#table').hide();
+
+ const yearSelect = $('#year-select');
+    const table=$('#atd')
+
+
+
+ const getDetails = (value) => {
+    table.empty()
+//var inputValue = $('#myInput').val();
+let year = yearSelect.val()
+    console.log(yearSelect.val(),'universitySelect.val')
+
+    $.ajax({
+      url: "/admin/getunicodDetails",
+      method: "POST",
+      data: {
+        getDetails: value,
+  
+      },
+      success: function (response) {
+        
+  $('#table').show();
+ 
+  response.map((value,index)=>{
+
+  let row =  `<tr>
+      <td></td>
+      <td><img class="dimg" src="/images/photo/${value._id}.jpg"></td>
+      <td>${value.name}</td>
+      <td>${value.university_name}</td>
+
+      <td> <a href="/admin/admin_unicod_view/${value._id}"><button class="abutton1">more</button></td></a>
+    </tr>`;
+      table.append(row);
+
+  })
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+
+
+
+</script>

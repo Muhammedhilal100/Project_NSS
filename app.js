@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var fileUpload = require('express-fileupload');
 var session = require('express-session');
-
+let alert = require('alert'); 
+var cors = require('cors')
 var hbs=require('express-handlebars')
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
@@ -35,6 +36,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }))
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

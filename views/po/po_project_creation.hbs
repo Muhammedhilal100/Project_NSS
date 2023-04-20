@@ -2,17 +2,17 @@
     <br><br>
     <form action="/po/po_project_creation" method="post">
        
-    <input class="m2" name="date" type="date">
+    <input required class="m2" name="date" type="date">
 <br><br>
  {{!--  --}}
-      <input name="status" type="text" value="false" hidden>
-      <input name="sstatus" type="text" value="false" hidden>
+      <input  name="status" type="text" value="false" hidden>
+      <input  name="sstatus" type="text" value="false" hidden>
     {{!--  --}}
 <div class="col">
     
-<input class="m1" type="text" name="project_name" placeholder="Project Name">
+<input required class="m1" type="text" name="project_name" placeholder="Project Name">
        <br><br>
-       <textarea name="description" placeholder="  Description" class="m"></textarea>
+       <textarea required name="description" placeholder="  Description" class="m"></textarea>
     </div><br><br>
     
             <div class="container">
@@ -21,7 +21,7 @@
       {{#each data}}
     <div class="col-xl-4"  style=" display: flex; align-items: center; /* width: 103px; */ flex-direction: row;    margin: 8px 0px 8px 0px;">
 
-      <input class="form-check-input1 ck" name="volunteer" type="checkbox" value="{{_id}}" id="flexCheckIndeterminate">
+      <input  class="form-check-input1 ck" name="volunteer" type="checkbox" value="{{_id}}" id="flexCheckIndeterminate">
       <img class="acimg1" src="/images/photo/{{_id}}.jpg">
       <a href="#" class="scroll-a-tag" style="overflow: auto;display: block;margin-left: 13px;color:black;text-decoration:none">{{name}}</a>
     </div>  
@@ -35,7 +35,11 @@
 </style>
   </div><br><br><br>
     
- <input type="submit"  class="abutton2">
+ <input required type="submit"  class="abutton2">
+ {{!--  --}}
+<input type="text" name="user_id" value="{{po_details.username}}" hidden>
+<input type="text" name="accep_tid" value="{{po_details.accept_id}}" hidden>
+{{!--  --}}
 <br><br><br>
     </div>
 </form>

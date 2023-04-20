@@ -79,7 +79,7 @@ router.post('/po_volunteer_views',async function(req, res, next) {
 router.post('/accept/:id', async function(req, res, next) {
   req.params.id
   const objectID =  new ObjectId(req.params.id)
-  await db.collection('volunteer_register').updateOne({_id :objectID },{$set:{status:true}})
+  await db.collection('volunteer_register').updateOne({_id :objectID },{$set:{status:true,accept_id:req.session.po_id.username}})
   let data = await db.collection('volunteer_register').findOne({_id :objectID })
   let obj = {
     username:data.username,

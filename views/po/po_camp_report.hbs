@@ -3,103 +3,103 @@
         <form action="/po/po_camp_report/{{data._id}}" method="post" enctype="multipart/form-data">
         
     <br><br>
-    <input name="date" class="m2" type="date">
+    <input required name="date" class="m2" type="date">
 <br><br>
 <div class="col">
-       <input readonly name="camp_name" type="text" class="m1" value="  {{data.camp_name}}" placeholder="Camp Name">
+       <input  readonly name="camp_name" type="text" class="m1" value="  {{data.camp_name}}" placeholder="Camp Name">
        <br><br>
     </div><br>
     <div class="row ap">
     <div class="col">
-      <input name="year" type="number" class="m3" placeholder="Year">
+      <input required name="year" type="number" class="m3" placeholder="Year">
     </div>
     <div class="col">
-      <input name="category" type="text" class="m4" placeholder="Category">
+      <input required name="category" type="text" class="m4" placeholder="Category">
     </div></div>
       <div class="row ap" >
     <div class="col">
-      <input name="expence" type="number" class="m3" placeholder="Expence">
+      <input required name="expence" type="number" class="m3" placeholder="Expence">
     </div>
     <div class="col">
-      <input name="district" type="text" class="m4" placeholder="District">
+      <input required name="district" type="text" class="m4" placeholder="District">
     </div></div>
       <div class="row ap">
     <div class="col">
-      <input name="taluk" type="text" class="m3" placeholder="Taluk">
+      <input required name="taluk" type="text" class="m3" placeholder="Taluk">
     </div>
     <div class="col">
-      <input name="village" type="text" class="m4" placeholder="Village">
+      <input required name="village" type="text" class="m4" placeholder="Village">
     </div></div>
        <div class="row ap">
     <div class="col">
-      <input name="venue" type="text" class="m3" placeholder="Venue">
+      <input required name="venue" type="text" class="m3" placeholder="Venue">
     </div>
     <div class="col">
-      <input name="starting_date" type="date" class="m4" placeholder="Starting Date">
+      <input required name="starting_date" type="date" class="m4" placeholder="Starting Date">
     </div></div><br>
     <b><h5 class="ah1 ">Day 1 </h5></b>
        <div class="row ap">
     <div class="col">
-      <input type="file" class="m3" name="cr">
+      <input required type="file" class="m3" name="cr">
     </div>
     <div class="col">
-      <input type="file"  class="m4" name="cr" >
+      <input required type="file"  class="m4" name="cr" >
     </div></div>
-    <textarea name="description_1" class="m" placeholder="   Description" ></textarea><br><br>
+    <textarea required name="description_1" class="m" placeholder="   Description" ></textarea><br><br>
     <b><h5 class="ah1 ">Day 2 </h5></b>
        <div class="row ap">
     <div class="col">
-      <input type="file" class="m3" name="cr">
+      <input required type="file" class="m3" name="cr">
     </div>
     <div class="col">
-      <input type="file" class="m4" name="cr" >
+      <input required type="file" class="m4" name="cr" >
     </div></div>
-    <textarea name="description_2" class="m" placeholder="   Description" ></textarea><br><br>
+    <textarea required name="description_2" class="m" placeholder="   Description" ></textarea><br><br>
     <b><h5 class="ah1 ">Day 3 </h5></b>
        <div class="row ap">
     <div class="col">
-      <input type="file" class="m3" name="cr">
+      <input required type="file" class="m3" name="cr">
     </div>
     <div class="col">
-      <input type="file"  class="m4" name="cr" >
+      <input required type="file"  class="m4" name="cr" >
     </div></div>
-    <textarea name="description_3" class="m" placeholder="   Description" ></textarea><br><br>
+    <textarea required name="description_3" class="m" placeholder="   Description" ></textarea><br><br>
      <b><h5 class="ah1 ">Day 4 </h5></b>
        <div class="row ap">
     <div class="col">
-      <input type="file" class="m3" name="cr">
+      <input required type="file" class="m3" name="cr">
     </div>
     <div class="col">
-      <input type="file"  class="m4" name="cr" >
+      <input required type="file"  class="m4" name="cr" >
     </div></div>
-    <textarea name="description_4" class="m" placeholder="   Description" ></textarea><br><br>
+    <textarea required name="description_4" class="m" placeholder="   Description" ></textarea><br><br>
      <b><h5 class="ah1 ">Day 5 </h5></b>
        <div class="row ap">
     <div class="col">
-      <input type="file" class="m3" name="cr">
+      <input required type="file" class="m3" name="cr">
     </div>
     <div class="col">
-      <input type="file"  class="m4" name="cr" >
+      <input required type="file"  class="m4" name="cr" >
     </div></div>
-    <textarea name="description_5" class="m" placeholder="   Description" ></textarea><br><br>
+    <textarea required name="description_5" class="m" placeholder="   Description" ></textarea><br><br>
      <b><h5 class="ah1 ">Day 6 </h5></b>
        <div class="row ap">
     <div class="col">
-      <input type="file" class="m3" name="cr">
+      <input required type="file" class="m3" name="cr">
     </div>
     <div class="col">
-      <input type="file"  class="m4" name="cr" >
+      <input required type="file"  class="m4" name="cr" >
     </div></div>
-    <textarea name="description_6" class="m" placeholder="   Description" ></textarea><br><br>
+    <textarea required name="description_6" class="m" placeholder="   Description" ></textarea><br><br>
      <b><h5 class="ah1 ">Day 7 </h5></b>
        <div class="row ap">
     <div class="col">
-      <input type="file" class="m3" name="cr">
+      <input required type="file" class="m3" name="cr">
     </div>
     <div class="col">
-      <input type="file"  class="m4" name="cr" >
+      <input required type="file"  class="m4" name="cr" >
     </div></div>
-    <textarea name="description_7" class="m" placeholder="   Description" ></textarea><br><br><br>
+    <textarea required name="description_7" class="m" placeholder="   Description" ></textarea><br><br><br>
     
     
  <div class="container">
@@ -108,7 +108,7 @@
       {{#each data1}}
     <div class="col-xl-4"  style=" display: flex; align-items: center; /* width: 103px; */ flex-direction: row;    margin: 8px 0px 8px 0px;">
 
-      <input class="form-check-input1 ck" name="volunteer" type="checkbox" value="{{_id}}" id="flexCheckIndeterminate">
+      <input  class="form-check-input1 ck" name="volunteer" type="checkbox" value="{{_id}}" id="flexCheckIndeterminate">
       <img class="acimg1" src="/images/photo/{{_id}}.jpg">
       <a href="#" class="scroll-a-tag" style="overflow: auto;display: block;margin-left: 13px;color:black;text-decoration:none">{{name}}</a>
     </div>  
@@ -122,8 +122,11 @@
 </style>
   </div><br><br><br>
     
- <input type="submit"  class="abutton2">
-
+ <input  type="submit"  class="abutton2">
+ {{!--  --}}
+<input type="text" name="user_id" value="{{po_details.username}}" hidden>
+<input type="text" name="accept_id" value="{{po_details.accept_id}}" hidden>
+{{!--  --}}
 <br><br>
     </div>
 

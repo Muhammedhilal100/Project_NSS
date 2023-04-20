@@ -7,11 +7,16 @@
         <option value="Project name" >Project Name</option>
         <option value="blood donation" >Blood Donation</option>
        </select></td></tr><br><br>
-      <tr><td><label class="af">Date</label></td><td><input name="date" class="aba"  type="date" class="form-control"></td></tr><br><br>
-      <tr><td><label class="af">Hours</label></td><td><input name="hours" class="aba"  type="number" class="form-control"></td></tr><br><br>
-    <tr><td><label class="af">Description</label></td><td><textarea name="description" class="abb" ></textarea></td></tr><br><br>
+      <tr><td><label class="af">Date</label></td><td><input required name="date" class="aba"  type="date" class="form-control"></td></tr><br><br>
+      <tr><td><label class="af">Hours</label></td><td><input required name="hours" class="aba"  type="number" class="form-control"></td></tr><br><br>
+    <tr><td><label class="af">Description</label></td><td><textarea required name="description" class="abb" ></textarea></td></tr><br><br>
 </table>
 
 <button type="submit" class="abutton">Submit</button>
+{{!--  --}}
+<input type="text" name="user_id" value="{{volunteer_details.username}}" hidden>
+<input type="text" name="accept_id" value="{{volunteer_details.accept_id}}" hidden>
+
+{{!--  --}}
 </form>
     </div>

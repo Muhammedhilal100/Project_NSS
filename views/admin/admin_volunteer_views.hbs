@@ -16,7 +16,7 @@
         <option>Institute Name</option>
 
       </select></td>
-    <td><select class="aa" id="year-select" onchange="getDetails(this.value)">
+    <td><select  id="year-select" class="aa" onchange="getDetails(this.value)">
         <option>Enrolment Year</option>
       </select></td>
 
@@ -75,7 +75,6 @@
       },
       success: function (response) {
         instituteSelect.empty();
-        yearSelect.empty();
         var option1 = $('<option>').attr('value', null).text('Select');
         instituteSelect.append(option1);
         response.map((value, index) => {
@@ -95,8 +94,6 @@
 
   //GET YEAR IN DROPDOWN
   const getyear = (value) => {
-
-    yearSelect.empty();
     
     $.ajax({
       url: "/admin/getYear",
@@ -106,17 +103,7 @@
       },
 
       success: function (response) {
-        table.empty();
-
-  
-
-         var option1 = $('<option>').attr('value', null).text('Select');
-        yearSelect.append(option1);
-        response.map((value, index) => {
-          var option = $('<option>').attr('value', value.year).text(value.year);
-          yearSelect.append(option);
-
-        });
+        
       },
       error: function (xhr, status, error) {
         console.error("Request failed:", status, error);
@@ -130,7 +117,6 @@
     table.empty()
 //var inputValue = $('#myInput').val();
 let institute_name = instituteSelect.val()
-    console.log(instituteSelect.val(),'universitySelect.val')
 
     $.ajax({
       url: "/admin/getvolunteerDetails",
@@ -160,3 +146,21 @@ let institute_name = instituteSelect.val()
     });
   }
 </script>
+
+<script type="text/javascript">
+    window.onload = function () {
+        //Reference the DropDownList.
+        var ddlYears = document.getElementById("year-select");
+ 
+        //Determine the Current Year.
+        var currentYear = (new Date()).getFullYear();
+ 
+        //Loop and add the Year values to DropDownList.
+        for (var i = 2020; i <= currentYear; i++) {
+            var option = document.createElement("OPTION");
+            option.innerHTML = i;
+            option.value = i;
+            ddlYears.appendChild(option);
+        }
+    };
+</script>`

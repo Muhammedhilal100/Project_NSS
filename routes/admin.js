@@ -11,7 +11,6 @@ var router = express.Router();
 
 // API FOR GET  DETAILS OF VOLUNTEER
 router.post('/getvolunteerDetails',async function(req, res, next) {
-  console.log(req.body);
   const { getDetails,institute_name  } = req.body
   let volunteer =await db.collection('volunteer_register').aggregate(
     [
@@ -27,7 +26,6 @@ router.post('/getvolunteerDetails',async function(req, res, next) {
 
 // API FOR GET  DETAILS OF PO
 router.post('/getpoDetails',async function(req, res, next) {
-  console.log(req.body);
   const { getDetails,university  } = req.body
   let po =await db.collection('po_register').aggregate(
     [
@@ -43,7 +41,6 @@ router.post('/getpoDetails',async function(req, res, next) {
 
 // API FOR GET  DETAILS OF UNICOD
 router.post('/getunicodDetails',async function(req, res, next) {
-  console.log(req.body);
   const { getDetails  } = req.body
   let unicod =await db.collection('unicod_register').aggregate(
     [
@@ -77,7 +74,6 @@ router.post('/getInstitute',async function(req, res, next) {
 // API FOR GET YEAR
 router.post('/getYear',async function(req, res, next) {
   let institutename = req.body.instituteName
- 
   let year =await db.collection('volunteer_register').aggregate(
     [
       {
@@ -88,6 +84,8 @@ router.post('/getYear',async function(req, res, next) {
   ).toArray()
   res.json(year)
 });
+
+
 
 
 

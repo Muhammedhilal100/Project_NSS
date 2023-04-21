@@ -10,7 +10,7 @@
         <option >{{this.university_name}}</option>
         {{/each}}
        </select></td>
-    <td><select onchange="getDetails(this.value)"  class="aa" id="year-select">
+    <td><select id="year-select" onchange="getDetails(this.value)"  class="aa" >
         <option >Year </option>
         {{!-- {{#each data}}
         <option >{{this.year}}</option>
@@ -67,15 +67,6 @@
         universityName: value
       },
       success: function (response) {
-        yearSelect.empty();
-        var option1 = $('<option>').attr('value', null).text('Select');
-        yearSelect.append(option1);
-        response.map((value, index) => {
-
-          var option = $('<option>').attr('value', value.year).text(value.year);
-          yearSelect.append(option);
-
-        });
       },
       error: function (xhr, status, error) {
         console.error("Request failed:", status, error);
@@ -122,6 +113,22 @@ let university = universitySelect.val()
   }
 
 </script>
-
+<script type="text/javascript">
+    window.onload = function () {
+        //Reference the DropDownList.
+        var ddlYears = document.getElementById("year-select");
+ 
+        //Determine the Current Year.
+        var currentYear = (new Date()).getFullYear();
+ 
+        //Loop and add the Year values to DropDownList.
+        for (var i = 2020; i <= currentYear; i++) {
+            var option = document.createElement("OPTION");
+            option.innerHTML = i;
+            option.value = i;
+            ddlYears.appendChild(option);
+        }
+    };
+</script>`
 
 

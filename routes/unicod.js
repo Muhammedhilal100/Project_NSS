@@ -7,6 +7,23 @@ const db = require('../config/connection');
 const auth = require('../auth');
 
 
+// API FOR GET  DETAILS OF PO
+router.post('/getpoDetails',async function(req, res, next) {
+  const { getDetails  } = req.body
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+  let po =await db.collection('po_register').aggregate(
+    [
+      {
+        $match: { year:getDetails, status: true, university: unicod_details.university_name } 
+      },
+      { $project: { _id: 1, name: 1,university_name: 1} }
+    ]
+  ).toArray()
+  res.json(po)
+});
+
+
+
 
 router.post('/unicod_account', function(req, res, next) {
   unicod_mongo.unicod_account(req.body)

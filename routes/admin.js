@@ -66,10 +66,13 @@ router.post('/getInstitute',async function(req, res, next) {
       },
       { $project: { _id: 0, institute_name: 1,year:1 } }
     ]
-  ).toArray()
-  res.json(institutename)
- 
+    ).toArray()
+    console.log(institutename,'jihbuhn');
+    res.json(institutename)
 });
+
+
+
 
 // API FOR GET YEAR
 router.post('/getYear',async function(req, res, next) {
@@ -86,7 +89,50 @@ router.post('/getYear',async function(req, res, next) {
 });
 
 
+// API FOR GET  DETAILS OF PROJECT REPORT
+router.post('/getprojectDetails',async function(req, res, next) {
+  const { institute_name  } = req.body
+  // console.log(req.body);
+  let pr =await db.collection('po_project_report').aggregate(
+    [
+      {
+        $match: { institute_name } 
+      },
+      { $project: { _id: 1, project_name: 1,year:1 ,category:1} }
+    ]
+  ).toArray()
+  res.json(pr)
+});
 
+// API FOR GET  DETAILS OF CAMP REPORT
+router.post('/getcampDetails',async function(req, res, next) {
+  const { institute_name  } = req.body
+  // console.log(req.body);
+  let cr =await db.collection('po_camp_report').aggregate(
+    [
+      {
+        $match: { institute_name } 
+      },
+      { $project: { _id: 1, camp_name: 1,year:1 ,category:1} }
+    ]
+  ).toArray()
+  res.json(cr)
+});
+
+// API FOR GET  DETAILS OF ACCOUNT
+router.post('/getaccount',async function(req, res, next) {
+  const { university_name  } = req.body
+  // console.log(req.body);
+  let cr =await db.collection('admin_account').aggregate(
+    [
+      {
+        $match: { university_name } 
+      },
+      { $project: { _id: 1, fund_type: 1,amount:1 ,date:1} }
+    ]
+  ).toArray()
+  res.json(cr)
+});
 
 
 router.post('/admin_account', function(req, res, next) {
@@ -198,13 +244,15 @@ router.get('/admin_message', function(req, res, next) {
   res.render('admin/admin_message',{adminroute:true});
 });
 
-router.get('/admin_account', function(req, res, next) {
-  res.render('admin/admin_account',{adminroute:true});
+router.get('/admin_account',async function(req, res, next) {
+  let data=await db.collection('unicod_register').find({status:true}).toArray()
+  res.render('admin/admin_account',{adminroute:true,data});
 });
 
 router.get('/admin_account_view',async function(req, res, next) {
   let data= await db.collection('admin_account').find().toArray()
-  res.render('admin/admin_account_view',{adminroute:true,data});
+  let data1=await db.collection('unicod_register').find({status:true}).toArray()
+  res.render('admin/admin_account_view',{adminroute:true,data,data1});
 });
 
 router.get('/admin_feedback', async function(req, res, next) {
@@ -266,12 +314,16 @@ router.get('/admin_volunteer_view/:id',async function(req, res, next) {
 });
   
 router.get('/admin_project_report_views',async function(req, res, next) {
+  let data1=await db.collection('unicod_register').find({status:true}).toArray()
+  let data2=await db.collection('po_register').find({status:true}).toArray()
   let data = await db.collection('po_project_report').find().toArray()
-  res.render('admin/admin_project_report_views',{adminroute:true,data});
+  res.render('admin/admin_project_report_views',{adminroute:true,data,data1,data2});
 });
 router.get('/admin_camp_report_views',async function(req, res, next) {
+  let data1=await db.collection('unicod_register').find({status:true}).toArray()
+  let data2=await db.collection('po_register').find({status:true}).toArray()
   let data = await db.collection('po_camp_report').find().toArray()
-  res.render('admin/admin_camp_report_views',{adminroute:true,data});
+  res.render('admin/admin_camp_report_views',{adminroute:true,data,data1,data2});
 });
 router.get('/admin_project_report_view/:id',async function(req, res, next) {
   req.params.id

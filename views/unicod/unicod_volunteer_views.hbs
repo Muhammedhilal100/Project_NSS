@@ -1,19 +1,26 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
 <table>
     <tr>
-<td><select class="aa">
-        <option >Enrolment year</option>
-        <option >2021</option>
+<td><select onchange="getinstitute(this.value)" class="aa" id="institute-select">
+        <option >Institute Name</option>
+        {{#each data1}}
+        <option>{{this.institute_name}}</option>
+        {{/each}}
        </select></td>
-    <td><select class="aa">
-        <option >Collage Name</option>
-        <option >KTU</option>
+     <td><select id="year-select" onchange="getDetails(this.value)"  class="aa" >
+        <option >Year </option>
+        {{!-- {{#each data}}
+        <option >{{this.year}}</option>
+        {{/each}} --}}
        </select></td>
        
 <td><button class="abutton1">View</button></td>
 </tr>
 </table>
 <br><br><br>
-<table class="table">
+<table id="table" class="table">
   <thead >
     <tr>
       <th scope="col"></th>
@@ -22,8 +29,8 @@
       <th scope="col">  </th>
     </tr>
   </thead>
-  {{#each data}}
-  <tbody class="atd">
+  <tbody id="atd" class="atd">
+  {{!-- {{#each data}}
     <tr>
       <td></td>
       <td><img class="dimg" src="/images/photo/{{this._id}}.jpg"></td>
@@ -31,6 +38,72 @@
       <td> <a href="/unicod/unicod_volunteer_view/{{this._id}}"><button class="abutton1">more</button></td></a>
     </tr>
 {{/each}}
-   
-
+    --}}
+    </tbody>
 </table>
+<script type="text/javascript">
+    window.onload = function () {
+        //Reference the DropDownList.
+        var ddlYears = document.getElementById("year-select");
+ 
+        //Determine the Current Year.
+        var currentYear = (new Date()).getFullYear();
+ 
+        //Loop and add the Year values to DropDownList.
+        for (var i = 2020; i <= currentYear; i++) {
+            var option = document.createElement("OPTION");
+            option.innerHTML = i;
+            option.value = i;
+            ddlYears.appendChild(option);
+        }
+    };
+</script>`
+
+<script>
+
+ // Change the style of the div when the page loads
+
+  $('#table').hide();
+
+  const instituteSelect = $('#institute-select');
+    const yearSelect = $('#year-select');
+     const table=$('#atd')
+
+ const getDetails = (value) => {
+    table.empty()
+//institute name getting
+let institute = instituteSelect.val()
+    let year = yearSelect.val()
+
+    $.ajax({
+      url: "/unicod/getvolunteerDetails",
+      method: "POST",
+      data: {
+        institutename: institute,
+        year:year
+      },
+      success: function (response) {
+        console.log(response)
+        
+  $('#table').show();
+ 
+  response.map((value,index)=>{
+
+  let row =  `   <tr>
+      <th scope="row">1</th>
+      <td><img class="dimg" src="/images/photo/${value._id}.jpg"></td>
+      <td>${value.name}</td>
+      <td>${value.institute_name}</td>
+      <td> <a href="/unicod/unicod_po_view/${value._id}"><button class="abutton1">more</button></td></a>
+    </tr>`;
+      table.append(row);
+
+  })
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+
+</script>

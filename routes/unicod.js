@@ -23,7 +23,58 @@ router.post('/getpoDetails',async function(req, res, next) {
 });
 
 
+// API FOR GET  VOLUNTEER
+router.post('/getvolunteerDetails',async function(req, res, next) {
+  let {institutename,year} = req.body
+  let data = await db.collection('volunteer_register').find({status:true,institute_name:institutename,year:year}).toArray()
+  res.json(data)
+});
 
+
+// API FOR GET  DETAILS OF PROJECT REPORT
+router.post('/getprojectDetails',async function(req, res, next) {
+  const { institute_name  } = req.body
+  // console.log(req.body);
+  let pr =await db.collection('po_project_report').aggregate(
+    [
+      {
+        $match: { institute_name } 
+      },
+      { $project: { _id: 1, project_name: 1,year:1 ,category:1} }
+    ]
+  ).toArray()
+  res.json(pr)
+});
+
+// API FOR GET  DETAILS OF CAMP REPORT
+router.post('/getcampDetails',async function(req, res, next) {
+  const { institute_name  } = req.body
+  // console.log(req.body);
+  let cr =await db.collection('po_camp_report').aggregate(
+    [
+      {
+        $match: { institute_name } 
+      },
+      { $project: { _id: 1, camp_name: 1,year:1 ,category:1} }
+    ]
+  ).toArray()
+  res.json(cr)
+});
+
+// API FOR GET  DETAILS OF ACCOUNT
+router.post('/getaccount',async function(req, res, next) {
+  const { institute_name  } = req.body
+  // console.log(req.body);
+  let cr =await db.collection('unicod_account').aggregate(
+    [
+      {
+        $match: { institute_name } 
+      },
+      { $project: { _id: 1, fund_type: 1,amount:1 ,date:1} }
+    ]
+  ).toArray()
+  res.json(cr)
+});
 
 router.post('/unicod_account', function(req, res, next) {
   unicod_mongo.unicod_account(req.body)
@@ -104,13 +155,15 @@ router.get('/approval_po_view/:id',async function(req, res, next) {
 
 router.get('/unicod_account',async function(req, res, next) {
   let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
-  res.render('unicod/unicod_account',{unicodroute:true,unicod_details});
+  let data =await db.collection('po_register').find({status:true,university:unicod_details.university_name}).toArray()
+  res.render('unicod/unicod_account',{unicodroute:true,unicod_details,data});
 });
 
 router.get('/unicod_account_view',async function(req, res, next) {
   let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
   let data= await db.collection('unicod_account').find({userid:unicod_details.username}).toArray()
-  res.render('unicod/unicod_account_view',{unicodroute:true,unicod_details,data});
+  let data1 =await db.collection('po_register').find({status:true,university:unicod_details.university_name}).toArray()
+  res.render('unicod/unicod_account_view',{unicodroute:true,unicod_details,data,data1});
 });
 
 router.get('/unicod_po_views',async function(req, res, next) {
@@ -122,10 +175,20 @@ router.get('/unicod_po_views',async function(req, res, next) {
 
 router.get('/unicod_volunteer_views',async function(req, res, next) {
   let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
-  let data1 = await db.collection('po_register').findOne({university:unicod_details.university_name})
-  let data=await db.collection('volunteer_register').find({status:true,institute_name:data1.institute_name}).toArray()
-  res.render('unicod/unicod_volunteer_views',{unicodroute:true,unicod_details,data});
-});
+  let data1 = await db.collection('po_register').find({university:unicod_details.university_name}).toArray()
+  let data =[]
+  // data1.map(async(value)=>{
+
+  //   console.log('lkjnkjbkjb',value.institute_name);
+  // })
+  
+  
+  await Promise.all(data1.map(async (value) => {
+    data=await db.collection('volunteer_register').find({status:true,institute_name:value.institute_name}).toArray()
+    data.push(data)
+  }))
+    res.render('unicod/unicod_volunteer_views',{unicodroute:true,unicod_details,data,data1});
+  });
 
 router.get('/unicod_po_view/:id', async function(req, res, next) {
   req.params.id
@@ -155,14 +218,12 @@ router.get('/unicod_feedback',async function(req, res, next) {
 });
 router.get('/unicod_project_report_views',async function(req, res, next) {
   let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
-  let data1 = await db.collection('po_register').findOne({university:unicod_details.university_name})
-  let data = await db.collection('po_project_report').find().toArray()
-  res.render('unicod/unicod_project_report_views',{unicodroute:true,unicod_details,data});
+  let data = await db.collection('po_register').find({university:unicod_details.university_name}).toArray()
+  res.render('unicod/unicod_project_report_views',{unicodroute:true,unicod_details,data,});
 });
 router.get('/unicod_camp_report_views',async function(req, res, next) {
   let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
-  let data1 = await db.collection('po_register').findOne({university:unicod_details.university_name})
-  let data = await db.collection('po_camp_report').find().toArray()
+  let data = await db.collection('po_register').find({university:unicod_details.university_name}).toArray()
   res.render('unicod/unicod_camp_report_views',{unicodroute:true,unicod_details,data});
 });
 

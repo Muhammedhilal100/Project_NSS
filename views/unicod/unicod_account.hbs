@@ -4,17 +4,16 @@
         <tr>
      <td><label class="af">Institute Name</label></td>
        <td><select name="institute_name" class="aba">
-        <option value="University Name" >University Name</option>
-        <option value="KTU" >KTU</option>
+        <option >Institute Name</option>
+          {{#each data}}
+        <option>{{this.institute_name}}</option>
+        {{/each}}
        </select></td></tr><br><br>
-       <tr><td><label class="af">Fund type</label> </td>  
-      <td><select name="fund_type" class="aba">
-        <option value="fund type" >Fund type</option>
-        <option value="normal" >Normal</option>
-       </select></td></tr><br><br>  
+       <tr><td><label class="af">Fund type</label></td><td><input required name="fund_type" class="aba" type="text" class="form-control" ></td></tr><br><br>  
+      </td></tr><br><br>  
       <tr><td><label class="af">Amount</label></td><td><input required name="amount" class="aba" type="number" class="form-control" ></td></tr><br><br>
       <tr><td><label class="af">Date</label></td><td><input required name="date" class="aba"  type="date" class="form-control"></td></tr><br><br>
-    <tr><td><label class="af">Accountant</label></td><td><input required name="accountant" class="aba" type="text" class="form-control" ></td></tr><br><br>
+    <tr><td></td></tr><br><br>
 </table><br><br>
 
 <button class="abutton">Submit</button>

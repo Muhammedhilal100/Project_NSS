@@ -1,17 +1,18 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 
 <table>
     <tr>
-<td><select name="year" class="aaa">
-        <option ></option>
-  
+<td><select id="year-select"  onchange="getDetails(this.value)"  class="aaa">
+        <option >Enrolment year</option>
        </select></td>
        
-<td><input type="submit" class="abutton1"></td>
+<td><button class="abutton1">View</button></td>
 </tr>
 </table>
 <br><br><br>
 
-<table class="table">
+<table id="table" class="table">
   <thead >
     <tr>
       <th scope="col"></th>
@@ -22,8 +23,8 @@
     </tr>
   </thead>
 
-{{#each data}}
-  <tbody class="atd">
+  <tbody id="atd" class="atd">
+{{!-- {{#each data}}
     <tr>
       <td></td>
       <td><img class="dimg" src="/images/photo/{{this._id}}.jpg"></td>
@@ -31,8 +32,70 @@
       <td>{{this.course}}</td>
       <td> <a href="/po/po_volunteer_view/{{this._id}}"><button class="abutton1">more</button></td></a>
     </tr>
-   
 {{/each}}
+    --}}
    
-
 </table>
+<script type="text/javascript">
+    window.onload = function () {
+        //Reference the DropDownList.
+        var ddlYears = document.getElementById("year-select");
+ 
+        //Determine the Current Year.
+        var currentYear = (new Date()).getFullYear();
+ 
+        //Loop and add the Year values to DropDownList.
+        for (var i = 2020; i <= currentYear; i++) {
+            var option = document.createElement("OPTION");
+            option.innerHTML = i;
+            option.value = i;
+            ddlYears.appendChild(option);
+        }
+    };
+</script>
+
+
+<script>
+
+  $('#table').hide();
+
+ const yearSelect = $('#year-select');
+    const table=$('#atd')
+
+
+
+ const getDetails = (value) => {
+    table.empty()
+//var inputValue = $('#myInput').val();
+    let year = yearSelect.val()
+    $.ajax({
+      url: "/po/getvolunteerDetails",
+      method: "POST",
+      data: {
+        getDetails: value,
+  
+      },
+      success: function (response) {
+        
+  $('#table').show();
+ 
+  response.map((value,index)=>{
+
+  let row =  `  <tr>
+      <th scope="row">1</th>
+      <td><img class="dimg" src="/images/photo/${value._id}.jpg"></td>
+      <td>${value.name}</td>
+      <td>${value.course}</td>
+      <td> <a href="/po/po_volunteer_view/${value._id}"><button class="abutton1">more</button></td></a>
+    </tr>`;
+      table.append(row);
+
+  })
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+
+</script>

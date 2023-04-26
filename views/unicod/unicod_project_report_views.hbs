@@ -1,26 +1,31 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
 <table>
     <tr>
-<td><select class="aaa">
+<td><select onchange="getDetails(this.value)" class="aaa" id="institute-select">
         <option >Collage Name</option>
-        <option >AWH</option>
+        {{#each data}}
+        <option>{{this.institute_name}}</option>
+        {{/each}}
        </select></td>
        
 <td><button class="abutton1">View</button></td>
 </tr>
 </table>
 <br><br><br>
-<table class="table">
+<table id="table" class="table">
   <thead >
     <tr>
       <th scope="col"></th>
       <th scope="col">Project Name</th>
       <th scope="col">Year</th>
-      <td>Category</td>
+        <td>Category</td>
       <th scope="col">  </th>
     </tr>
   </thead>
-   <tbody class="atd">
-      {{#each data}}
+   <tbody id="atd" class="atd">
+      {{!-- {{#each data}}
     <tr>
 
       <td><img class="dimg" src="/images/project/{{this.pr.[0]}}.jpg"></td>
@@ -29,7 +34,51 @@
       <td>{{this.category}}</td>
       <td> <a href="/unicod/unicod_project_report_view/{{this._id}}"><button class="abutton">more</button></td></a>
     </tr>
-    {{/each}}
+    {{/each}} --}}
     
 
 </table>
+
+<script>
+
+  $('#table').hide();
+
+
+  const instituteSelect = $('#institute-select');
+  const table=$('#atd')
+
+
+const getDetails = (value) => {
+
+  table.empty()
+//GET INSTITUTE
+    $.ajax({
+      url: "/unicod/getprojectDetails",
+      method: "POST",
+      data: {
+        institute_name: value
+      },
+      success: function (response) {
+         $('#table').show();
+
+        response.map((value, index) => {
+       
+   let row =  ` <tr>
+    <td></td> 
+      <td>${value.project_name}</td>
+      <td>${value.year}</td>
+       <td>${value.category}</td>
+      <td> <a href="/unicod/unicod_project_report_view/${value._id}"><button class="abutton1">more</button></td></a>
+    </tr>`;
+    console.log(value)
+      table.append(row);
+    
+        });
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+
+</script>

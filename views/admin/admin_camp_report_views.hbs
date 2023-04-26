@@ -1,19 +1,25 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+
 <table>
     <tr>
-<td><select class="aa">
-        <option >University Name</option>
-        <option >KTU</option>
-       </select></td>
-    <td><select class="aa">
-        <option >Collage Name</option>
-        <option >AWH</option>
-       </select></td>
+<td><select onchange="getinstitute(this.value)" class="aa" id="university-select">
+        <option>University Name</option>
+        {{#each data1}}
+        <option>{{this.university_name}}</option>
+        {{/each}}
+      </select></td>
+    <td><select onchange="getDetails(this.value)" class="aa" id="institute-select">
+
+        <option>Institute Name</option>
+
+      </select></td>
        
-<td><button class="abutton1">View</button></td>
 </tr>
 </table>
 <br><br><br>
-<table class="table">
+<table id="table" class="table">
   <thead >
     <tr>
       <th scope="col"></th>
@@ -23,8 +29,8 @@
       <td></td>
     </tr>
   </thead>
-    <tbody class="atd">
-    {{#each data}}
+    <tbody id="atd" class="atd">
+    {{!-- {{#each data}}
     <tr>
       <th scope="row"> </th>
       <td><img class="dimg" src="/images/camp/{{this.cr.[0]}}.jpg"></td>
@@ -33,7 +39,89 @@
       <td>{{this.category}}</td>
       <td> <a href="/admin/admin_camp_report_view/{{this._id}}"><button class="abutton">more</button></td></a>
     </tr>
- {{/each}}
-  
+ {{/each}} --}}
 
 </table>
+
+
+<script>
+
+  // Change the style of the div when the page loads
+
+  $('#table').hide();
+
+
+  const universitySelect = $('#university-select');
+  const instituteSelect = $('#institute-select');
+  const table=$('#atd')
+
+  //GET INSTITUTE IN DROPDOWN 
+
+  const getinstitute = (value) => {
+
+table.empty()
+//GET INSTITUTE
+    $.ajax({
+      url: "/admin/getInstitute",
+      method: "POST",
+      data: {
+        universityName: value
+      },
+      success: function (response) {
+        instituteSelect.empty();
+        var option1 = $('<option>').attr('value', null).text('Select');
+        instituteSelect.append(option1);
+        response.map((value, index) => {
+
+          var option = $('<option>').attr('value', value.institute_name).text(value.institute_name);
+          instituteSelect.append(option);
+        });
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+
+
+//get table
+
+
+const getDetails = (value) => {
+
+//GET INSTITUTE
+    $.ajax({
+      url: "/admin/getcampDetails",
+      method: "POST",
+      data: {
+        institute_name: value
+      },
+      success: function (response) {
+         $('#table').show();
+       
+       
+      
+        response.map((value, index) => {
+       
+
+
+   let row =  ` <tr>
+    <td></td> 
+      <td>${value.camp_name}</td>
+      <td>${value.year}</td>
+            <td>${value.category}</td>
+      <td> <a href="/admin/admin_camp_report_view/${value._id}"><button class="abutton1">more</button></td></a>
+    </tr>`;
+    console.log(value)
+      table.append(row);
+    
+        });
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+
+
+</script>

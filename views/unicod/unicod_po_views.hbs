@@ -48,9 +48,7 @@
  const getDetails = (value) => {
     table.empty()
 //var inputValue = $('#myInput').val();
-let year = yearSelect.val()
-    console.log(yearSelect.val(),'universitySelect.val')
-
+    let year = yearSelect.val()
     $.ajax({
       url: "/unicod/getpoDetails",
       method: "POST",

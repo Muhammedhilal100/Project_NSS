@@ -1,30 +1,76 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
 <table>
     <tr>
-<td><select class="aaa">
-        <option >Institute Name</option>
-        <option >KTU</option>
-       </select></td>
-       
-<td><button class="abutton1">View</button></td>
+<td><select onchange="getDetails(this.value)" class="aaa" id="university-select">
+        <option>University Name</option>
+        {{#each data1}}
+        <option>{{this.institute_name}}</option>
+        {{/each}}
+      </select></td>   
 </tr>
 </table>
 <br><br><br>
-<table class="table ">
+<table id="table" class="table ">
   <thead >
     <tr>
+      <th></th>
       <th scope="col">Fund Type</th>
       <th scope="col">Amount</th>
-      <th scope="col">Accountant</th>
       <th scope="col">Date</th>
     </tr>
-    <tbody class="atd">
-      {{#each data}}
+    <tbody id="atd" class="atd">
+      {{!-- {{#each data}}
     <tr>
       <td>{{this.fund_type}}</td>
       <td>{{this.amount}}</td>
-      <td>{{this.accountant}}</td>
       <td>{{this.date}}</td>
     </tr>
-{{/each}}
+{{/each}} --}}
   </thead>
 </table>
+
+<script>
+
+  // Change the style of the div when the page loads
+
+  $('#table').hide();
+
+  const instituteSelect = $('#institute-select');
+  const table=$('#atd')
+
+const getDetails = (value) => {
+        table.empty();
+
+//GET INSTITUTE
+    $.ajax({
+      url: "/unicod/getaccount",
+      method: "POST",
+      data: {
+        institute_name: value
+      },
+      success: function (response) {
+         $('#table').show();
+       
+        response.map((value, index) => {
+       
+   let row =  ` <tr>
+    <td></td> 
+      <td>${value.fund_type}</td>
+      <td>${value.amount}</td>  
+            <td>${value.date}</td>
+    </tr>`;
+    console.log(value)
+      table.append(row);
+    
+        });
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+
+
+</script>

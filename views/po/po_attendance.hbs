@@ -1,13 +1,17 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
 <table>
     <tr>
-<td><select class="aaa">
+<td><select id="year-select"  onchange="getDetails(this.value)"  class="aaa">
         <option >Enrolment year</option>
-        <option >2021</option>
        </select></td>
        
 <td><button class="abutton1">View</button></td>
 </tr>
-</table><br><br><br><br>
+</table>
+<br><br><br><br>
 <table class="table">
   <thead >
     <tr>
@@ -33,3 +37,22 @@
    
 
 </table>
+
+
+<script type="text/javascript">
+    window.onload = function () {
+        //Reference the DropDownList.
+        var ddlYears = document.getElementById("year-select");
+ 
+        //Determine the Current Year.
+        var currentYear = (new Date()).getFullYear();
+ 
+        //Loop and add the Year values to DropDownList.
+        for (var i = 2020; i <= currentYear; i++) {
+            var option = document.createElement("OPTION");
+            option.innerHTML = i;
+            option.value = i;
+            ddlYears.appendChild(option);
+        }
+    };
+</script>

@@ -29,7 +29,9 @@ router.get('/',auth,async function(req, res, next) {
 
   router.get('/volunteer_workdairy',async function(req, res, next) {
     let volunteer_details =await db.collection('volunteer_register').findOne({username:req.session.volunteer_id.username})
-    res.render('volunteer/volunteer_workdairy',{volunteerroute:true,volunteer_details});
+    let data=await db.collection('po_project_report').find({user_id:volunteer_details.accept_id}).toArray()
+    let result = data.filter((value)=>value.volunteer.includes(req.session.volunteer_id.reg_id)).map((value)=>value.project_name)
+    res.render('volunteer/volunteer_workdairy',{volunteerroute:true,volunteer_details,result});
   });
 
   router.get('/volunteer_workdairy_view',async function(req, res, next) {

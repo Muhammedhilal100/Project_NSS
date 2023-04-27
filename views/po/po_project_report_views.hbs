@@ -1,16 +1,30 @@
-<table class="table">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+<table>
+    <tr>
+<td><select id="year-select"  onchange="getDetails(this.value)"  class="aaa">
+        <option >Enrolment year</option>
+       </select></td>
+       
+<td><button class="abutton1">View</button></td>
+</tr>
+</table>
+
+<br><br><br>
+<table id="table" class="table">
   <thead >
     <tr>
       <th scope="col"></th>
-      <th scope="col"></th>
       <th scope="col">Project Name</th>
       <th scope="col">Year</th>
-      <th scope="col"> Category </th>
-      <th> </th>
+        <td scope="col">Category</td>
+      <th scope="col">  </th>
     </tr>
   </thead>
-  <tbody class="atd">
-      {{#each data}}
+   <tbody id="atd" class="atd">
+  {{!-- {{#each data}}
     <tr>
       <th scope="row">1</th>
       <td><img class="dimg" src="/images/project/{{this.pr.[0]}}.jpg"></td>
@@ -19,6 +33,69 @@
       <td>{{this.category}}</td>
       <td> <a href="/po/po_project_report_view/{{this._id}}"><button class="abutton">more</button></td></a>
     </tr>
-    {{/each}}
-    </tbody>
+    {{/each}} --}}
+    
+
 </table>
+
+<script>
+
+  $('#table').hide();
+
+
+  const instituteSelect = $('#institute-select');
+  const table=$('#atd')
+
+
+const getDetails = (value) => {
+
+  table.empty()
+//GET INSTITUTE
+    $.ajax({
+      url: "/po/getprojectDetails",
+      method: "POST",
+      data: {
+        year: value
+      },
+      success: function (response) {
+         $('#table').show();
+
+        response.map((value, index) => {
+       
+   let row =  ` <tr>
+    <td></td> 
+      <td>${value.project_name}</td>
+      <td>${value.year}</td>
+       <td>${value.category}</td>
+      <td> <a href="/po/po_project_report_view/${value._id}"><button class="abutton1">more</button></td></a>
+    </tr>`;
+    console.log(value)
+      table.append(row);
+    
+        });
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+
+</script>
+
+<script type="text/javascript">
+    window.onload = function () {
+        //Reference the DropDownList.
+        var ddlYears = document.getElementById("year-select");
+ 
+        //Determine the Current Year.
+        var currentYear = (new Date()).getFullYear();
+ 
+        //Loop and add the Year values to DropDownList.
+        for (var i = 2020; i <= currentYear; i++) {
+            var option = document.createElement("OPTION");
+            option.innerHTML = i;
+            option.value = i;
+            ddlYears.appendChild(option);
+        }
+    };
+</script>

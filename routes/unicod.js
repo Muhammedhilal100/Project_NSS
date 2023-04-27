@@ -96,6 +96,7 @@ router.post('/accept/:id', async function(req, res, next) {
     username:data.username,
     password:data.password,
     type:data.type,
+    reg_id:data._id+'',
   }
   await db.collection('login').insertOne(obj)
   res.redirect('/unicod/approval_po');

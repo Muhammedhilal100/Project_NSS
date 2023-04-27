@@ -164,6 +164,7 @@ router.post('/accept/:id', async function(req, res, next) {
     username:data.username,
     password:data.password,
     type:data.type,
+    reg_id:data._id+" "
   }
   await db.collection('login').insertOne(obj)
   await db.collection('login').updateOne({_id :objectID },{$set:{lstatus:true}})

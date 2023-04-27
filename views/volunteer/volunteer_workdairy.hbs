@@ -4,8 +4,10 @@
         <tr>
      <td><label class="af">Project Name</label></td>
        <td><select name="project_name" class="aba">
-        <option value="Project name" >Project Name</option>
-        <option value="blood donation" >Blood Donation</option>
+        <option >Project Name</option>
+          {{#each result}}
+        <option >{{this}}</option>
+        {{/each}}
        </select></td></tr><br><br>
       <tr><td><label class="af">Date</label></td><td><input required name="date" class="aba"  type="date" class="form-control"></td></tr><br><br>
       <tr><td><label class="af">Hours</label></td><td><input required name="hours" class="aba"  type="number" class="form-control"></td></tr><br><br>

@@ -6,6 +6,16 @@ var router = express.Router();
 
 
 
+//////ajax
+router.get('/get_status_secretary_project_selection',async function(req, res, next) {
+  let volunteer_details =await db.collection('volunteer_register').findOne({username:req.session.volunteer_id.username})
+  res.json(volunteer_details)
+});
+
+
+
+
+
 
 router.post('/secretary_project/:id',async function(req, res, next) {
   let arr =[]
@@ -50,7 +60,7 @@ router.post('/secretary_camp/:id',async function(req, res, next) {
 
 router.post('/secretary_message', function(req, res, next) {
   secretary_mongo.secretary_message(req.body)
-  res.render('secretary/secretary_message',{secretaryroute:true});
+  res.render('secretary/secretary_message',{volunteerroute:true});
 });
 
 
@@ -58,34 +68,48 @@ router.post('/secretary_message', function(req, res, next) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('secretary/secretary_home',{secretaryroute:true});
+    res.render('secretary/secretary_home',{volunteerroute:true});
   });
 
+
+
   router.get('/secretary_project_selection',async function(req, res, next) {
-    let data=await db.collection('po_project_creation').find({sstatus:"false"}).toArray()
-    res.render('secretary/secretary_project_selection',{secretaryroute:true,data});
+    let volunteer_details =await db.collection('volunteer_register').findOne({username:req.session.volunteer_id.username})
+    let data=await db.collection('po_project_creation').find({sstatus:"false",user_id:volunteer_details.accept_id}).toArray()
+    console.log(volunteer_details.secretary_satatus);
+    let Secretary_Option_Status = false
+    res.render('secretary/secretary_project_selection',{volunteerroute:true,Secretary_Option_Status,data,volunteer_details,example:'example page'});
   });
+
+    
+  
+
+
   router.get('/secretary_camp_selection',async function(req, res, next) {
-    let data=await db.collection('po_camp_creation').find({sstatus:"false"}).toArray()
-    res.render('secretary/secretary_camp_selection',{secretaryroute:true,data});
+    let volunteer_details =await db.collection('volunteer_register').findOne({username:req.session.volunteer_id.username})
+    let data=await db.collection('po_camp_creation').find({sstatus:"false",user_id:volunteer_details.accept_id}).toArray()
+    res.render('secretary/secretary_camp_selection',{volunteerroute:true,data,volunteer_details});
   });
   router.get('/secretary_project/:id',async function(req, res, next) {
+    let volunteer_details =await db.collection('volunteer_register').findOne({username:req.session.volunteer_id.username})
     req.params.id
     const objectID =  new ObjectId(req.params.id)
     let data =await db.collection('po_project_creation').findOne({_id :objectID })
     console.log(objectID);
-    res.render('secretary/secretary_project',{secretaryroute:true,data});
+    res.render('secretary/secretary_project',{volunteerroute:true,data,volunteer_details});
   });
 
   router.get('/secretary_camp/:id',async function(req, res, next) {
+    let volunteer_details =await db.collection('volunteer_register').findOne({username:req.session.volunteer_id.username})
     req.params.id
     const objectID =  new ObjectId(req.params.id)
     let data =await db.collection('po_camp_creation').findOne({_id :objectID })
-    res.render('secretary/secretary_camp',{secretaryroute:true,data});
+    res.render('secretary/secretary_camp',{volunteerroute:true,data,volunteer_details});
   });
 
-  router.get('/secretary_message', function(req, res, next) {
-    res.render('secretary/secretary_message',{secretaryroute:true});
+  router.get('/secretary_message',async function(req, res, next) {
+    let volunteer_details =await db.collection('volunteer_register').findOne({username:req.session.volunteer_id.username})
+    res.render('secretary/secretary_message',{volunteerroute:true,volunteer_details});
   });
 
 

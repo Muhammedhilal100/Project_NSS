@@ -209,7 +209,8 @@ router.get('/unicod_volunteer_view/:id',async function(req, res, next) {
 
 router.get('/unicod_message',async function(req, res, next) {
   let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
-  res.render('unicod/unicod_message',{unicodroute:true,unicod_details});
+  let data=await db.collection('po_register').find({status:true,accept_id:req.session.unicod_id.username}).toArray()
+  res.render('unicod/unicod_message',{unicodroute:true,unicod_details,data});
 });
 
 router.get('/unicod_feedback',async function(req, res, next) {

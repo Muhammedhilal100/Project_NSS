@@ -241,8 +241,9 @@ router.get('/approval_unicod_view/:id', async function(req, res, next) {
 });
 
 
-router.get('/admin_message', function(req, res, next) {
-  res.render('admin/admin_message',{adminroute:true});
+router.get('/admin_message',async function(req, res, next) {
+  let data=await db.collection('unicod_register').find({status:true}).toArray()
+  res.render('admin/admin_message',{adminroute:true,data});
 });
 
 router.get('/admin_account',async function(req, res, next) {

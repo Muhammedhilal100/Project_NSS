@@ -5,8 +5,10 @@
     <h4 class="ah ">Message to all Univercity Coordinator </h4><br><br><br>
    </center></div>
        <select name="to" class="am">
-        <option value="manu" >Manu</option>
-        <option value="hilal" >Hilal</option>
+        <option value="manu" >UNIVERSITY COORDINATOR</option>
+        {{#each data}}
+        <option  >{{this.name}}</option>
+        {{/each}} 
        </select><br><br><br>    
       <textarea name="message" class="am" ></textarea><br><br>
 

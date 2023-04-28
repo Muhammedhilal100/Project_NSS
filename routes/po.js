@@ -69,8 +69,12 @@ router.post('/po_account', function(req, res, next) {
   po_mongo.po_account(req.body)
   res.redirect('/po/po_account');
 });
-router.post('/po_workdairy', function(req, res, next) {
+router.post('/po_workdairy',async function(req, res, next) {
   po_mongo.po_workdairy(req.body)
+  req.params.id
+  const objectID =  new ObjectId(req.params.id)
+  await db.collection('po_project_report').updateOne({_id :objectID },{$set:{dairy_status:'true'}})
+  console.log(objectID);
   res.redirect('/po/po_workdairy');
 });
 
@@ -83,7 +87,6 @@ router.post('/po_camp_creation', function(req, res, next) {
   res.redirect('/po/po_camp_creation');
 });
 router.post('/po_project_report/:id',async function(req, res, next) {
-  console.log(req.files);
   let arr =[]
   for (let index = 1; index <= 2; index++) {
     const objectID =  new ObjectId()
@@ -252,8 +255,10 @@ router.get('/',auth,async function(req, res, next) {
     let po_details =await db.collection('po_register').findOne({username:req.session.po_id.username})  
     res.render('po/po_volunteer_view',{poroute:true,data,po_details});
   });
-  router.get('/po_message', function(req, res, next) {
-    res.render('po/po_message',{poroute:true});
+  router.get('/po_message',async function(req, res, next) {
+    let po_details =await db.collection('po_register').findOne({username:req.session.po_id.username})
+    let data=await db.collection('volunteer_register').find({status:true,accept_id:req.session.po_id.username}).toArray()
+    res.render('po/po_message',{poroute:true,po_details,data});
   });
   router.get('/po_feedback',async function(req, res, next) {
     let data =await db.collection('feedback').find().toArray()
@@ -262,7 +267,7 @@ router.get('/',auth,async function(req, res, next) {
   });
   router.get('/po_workdairy',async function(req, res, next) {
     let po_details =await db.collection('po_register').findOne({username:req.session.po_id.username})
-    let data=await db.collection('po_project_report').find({user_id:req.session.po_id.username}).toArray()
+    let data=await db.collection('po_project_report').find({dairy_status:'false',user_id:req.session.po_id.username}).toArray()
     res.render('po/po_workdairy',{poroute:true,po_details,data});
   });
   router.get('/po_workdairy_view',async function(req, res, next) {
@@ -312,8 +317,11 @@ router.get('/',auth,async function(req, res, next) {
     const objectID =  new ObjectId(req.params.id)
     let data =await db.collection('po_camp_creation').findOne({_id :objectID })
     let data1 = await db.collection('volunteer_register').find({status:true,accept_id:req.session.po_id.username}).toArray()
+    let ccid=String(objectID)
+    let data2 = await db.collection('secretary_camp').findOne({cid:ccid})
+    console.log(data2);
     let po_details =await db.collection('po_register').findOne({username:req.session.po_id.username})
-    res.render('po/po_camp_report',{poroute:true,data,data1,po_details});
+    res.render('po/po_camp_report',{poroute:true,data,data1,po_details,data2});
   });
   router.get('/po_project_report_views',async function(req, res, next) {
     let po_details =await db.collection('po_register').findOne({username:req.session.po_id.username})

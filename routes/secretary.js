@@ -109,7 +109,8 @@ router.get('/', function(req, res, next) {
 
   router.get('/secretary_message',async function(req, res, next) {
     let volunteer_details =await db.collection('volunteer_register').findOne({username:req.session.volunteer_id.username})
-    res.render('secretary/secretary_message',{volunteerroute:true,volunteer_details});
+    let data=await db.collection('volunteer_register').find({status:true,accept_id:req.session.volunteer_id.username}).toArray()
+    res.render('secretary/secretary_message',{volunteerroute:true,volunteer_details,data});
   });
 
 

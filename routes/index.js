@@ -9,7 +9,6 @@ router.post('/login',async function(req, res, next) {
   if(!req.body.username=='')
   {
   
-  
   await db.collection('login').findOne({username:req.body.username,password:req.body.password}).then((response)=>{
     if(response.username=='admin@gmail.com' && response.password=='admin'){
       req.session.status=true

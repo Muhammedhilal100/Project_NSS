@@ -21,6 +21,80 @@ router.post('/getvolunteerDetails',async function(req, res, next) {
   res.json(volunteer)
 });
 
+
+
+// API FOR GET  DETAILS OF VOLUNTEER FOR ATTENDENCE
+router.post('/getvolunteerDetails1',async function(req, res, next) {
+  const { getDetails  } = req.body
+  let volunteer =await db.collection('volunteer_register').aggregate(
+    [
+      {
+        $match: { year:getDetails, status: true,accept_id:req.session.po_id.username } 
+      },
+      { $project: { _id: 1, name: 1,course:1} }
+    ]
+  ).toArray()
+  let data = await db.collection('po_project_report').find({user_id:req.session.po_id.username}).toArray()
+  
+  console.log(volunteer);
+  
+  
+  
+  
+  let Obj =[]
+  let result = volunteer.map(async(value)=>{
+    data.map((report_value)=>{
+      if(report_value.volunteer.includes(value._id+'')){
+        Obj.push({
+          name: report_value.project_name,
+          hours: report_value.hours,
+          volunteer_id : value._id+''
+        }); 
+      }
+    })
+  })
+  // console.log();
+    // console.log(Obj,'obj');
+    // let totalHourse = Array()
+    // volunteer.map((value_of_voulunteer)=>{
+    //   Obj.map((value_of_new_Object)=>{
+    //     if(value_of_voulunteer._id+''===value_of_new_Object.volunteer_id===true){
+    //       // value_of_new_Object.hours
+    //       // totalHourse += parseInt(value_of_new_Object.hours)
+    //       // let total = 0
+    //       // totalHourse.push({
+    //       //   total:total+parseInt(value_of_new_Object.hours)
+    //       // }); 
+    //     }
+    //     // console.log();
+    //     // console.log(value_of_new_Object,'iddd');
+    //   })
+    // })
+    console.log(Obj,'------------');
+  
+
+  //  Obj.push =  report_value.project_name,report_value.hours
+    // let volunteer_id =  value._id
+    // console.log(data.length );
+    // ['a','b','c']
+    // [
+    //   {
+    //     id:'',
+    //     names:['','',]
+    //   },
+    // ]
+  // console.log(volunteer,'volunteer');
+  // console.log(Obj,'lists of names and hours');
+
+
+
+
+  // console.log(volunteer);
+  // console.log(result);
+    res.json(volunteer)
+});
+
+
 // API FOR GET  DETAILS OF SECRETARY
 router.post('/getsecrataryDetails',async function(req, res, next) {
   const { getDetails  } = req.body
@@ -73,7 +147,7 @@ router.post('/po_workdairy',async function(req, res, next) {
   po_mongo.po_workdairy(req.body)
   req.params.id
   const objectID =  new ObjectId(req.params.id)
-  await db.collection('po_project_report').updateOne({_id :objectID },{$set:{dairy_status:'true'}})
+  await db.collection('po_project_report').updateOne({_id :objectID },{$set:{dairy_status:"true"}})
   console.log(objectID);
   res.redirect('/po/po_workdairy');
 });
@@ -177,6 +251,11 @@ router.post('/reject/:id',async function(req, res, next) {
   res.redirect('/po/approval_volunteer');
 });
 
+
+
+
+
+
 router.get('/approve/:id',async function(req, res, next) {
   console.log(req.body);
   req.params.id
@@ -203,6 +282,29 @@ router.post('/unblock/:id',async function(req, res, next) {
   res.redirect('/po/po_unblock');
 });
 
+
+
+
+router.post('/po_profile/:id',async function(req, res, next) {
+  const Objectid=new ObjectId(req.params.id)
+
+  const {po_id}= req.body
+  if(req.files){
+    if(req.files.photo) {
+
+      let photo = req.files.photo
+      photo.mv('public/images/photo/'+po_id+'.jpg')
+    }
+    if(req.files.sign){
+
+      let sign  = req.files.sign 
+      sign.mv('public/images/sign/'+po_id+'.jpg')
+    }
+  }
+  await db.collection('po_register').updateOne({_id:Objectid},{$set:req.body})
+  await db.collection('old_register').insertOne(req.body)
+ res.redirect('/po');
+});
 
 
 

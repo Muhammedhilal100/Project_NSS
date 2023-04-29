@@ -10,7 +10,7 @@ module.exports ={
     
 
      unicod_register :function(value,callback){
-        db.collection('unicod_register').insertOne(value).then((response)=>{
+         db.collection('unicod_register').insertOne(value).then((response)=>{
             callback(response)
         })},
      po_register :function(value,callback){

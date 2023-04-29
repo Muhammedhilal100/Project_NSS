@@ -167,6 +167,7 @@ router.post('/accept/:id', async function(req, res, next) {
     reg_id:data._id+" "
   }
   await db.collection('login').insertOne(obj)
+  await db.collection('old_register').insertOne(req.body)
   await db.collection('login').updateOne({_id :objectID },{$set:{lstatus:true}})
   res.redirect('/admin/approval_unicod')
 });

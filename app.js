@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var fileUpload = require('express-fileupload');
 var session = require('express-session');
+const MongoStore = require('connect-mongo')
 let alert = require('alert'); 
 var cors = require('cors')
 var hbs=require('express-handlebars')
@@ -35,6 +36,7 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
+store: MongoStore.create({ mongoUrl: 'mongodb://0.0.0.0:27017/nss' })
 }))
 app.use(cors())
 app.use(logger('dev'));

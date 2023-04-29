@@ -126,6 +126,13 @@ router.post('/unblock/:id',async function(req, res, next) {
 });
 
 
+router.post('/unicod_profile/:id',async function(req, res, next) {
+  const Objectid=new ObjectId(req.params.id)
+  await db.collection('unicod_register').updateOne({_id:Objectid},{$set:req.body})
+  await db.collection('old_register').insertOne(req.body)
+ res.redirect('/unicod');
+});
+
 
 
 

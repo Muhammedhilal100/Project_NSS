@@ -3,11 +3,23 @@
      <table class="att">
         <tr>
      <td><label class="af">Project Name</label></td>
-       <td><select name="project_name" class="aba">
-        <option >Project Name</option>
+       <td><select id="mySelect"  onchange="document.getElementById('prject_id').value = this.value;getSelectedOption()" class="aba">
           {{#each result}}
-        <option >{{this}}</option>
+        <option value="{{this.id}}" >{{this.name}}</option>
         {{/each}}
+        <script>
+          function getSelectedOption() {
+           
+  var selectElement = document.getElementById("mySelect");
+  var selectedOption = selectElement.options[selectElement.selectedIndex];
+  var selectedOptionText = selectedOption.text;
+ 
+  document.getElementById('project_name').value = selectedOptionText
+}
+
+        </script>
+        <input type="text"  name="prject_id"  id="prject_id" hidden>
+        <input type="text" id="project_name" name="project_name" hidden>
        </select></td></tr><br><br>
       <tr><td><label class="af">Date</label></td><td><input required name="date" class="aba"  type="date" class="form-control"></td></tr><br><br>
       <tr><td><label class="af">Hours</label></td><td><input required name="hours" class="aba"  type="number" class="form-control"></td></tr><br><br>
@@ -17,7 +29,6 @@
 <button type="submit" class="abutton">Submit</button>
 {{!--  --}}
 <input type="text" name="user_id" value="{{volunteer_details.username}}" hidden>
-<input type="text" name="accept_id" value="{{volunteer_details.accept_id}}" hidden>
 {{!--  --}}
 </form>
     </div>

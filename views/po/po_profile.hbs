@@ -1,107 +1,192 @@
-<div class="abc">
-   <div class="text-center">
+<form action="/po/po_profile/{{po_details._id}}" enctype="multipart/form-data" method="post">
+  <div class="abc">
+    <div class="text-center">
+      <img class="aaimg" id="blah" src="/images/photo/{{po_details._id}}.jpg">
+      <input type="file" name="photo" id="imgInp" style="display: none;">
 
-    <img class="aaimg" src="/images/photo/{{po_details._id}}.jpg">
-   </div>
-  <div class="row ap">
-    <div class="col">
-      <label class="af">Name</label><input  value="{{po_details.name}}" type="text" class="form-control" >
+
+      <input type="text" hidden value="{{po_details._id}}" name="po_id">
+
+
+
+      {{!-- imagre preview of profile photo--}}
+      <script>
+        $('#blah').click(function () { $('#imgInp').trigger('click'); });
+
+
+
+        imgInp.onchange = evt => {
+          const [file] = imgInp.files
+          if (file) {
+            blah.src = URL.createObjectURL(file)
+          }
+        }
+      </script>
+      {{!-- --}}
+
     </div>
-    <div class="col">
-      <label class="af">Gender</label><input  value="{{po_details.gender}}" type="text" class="form-control">
-    </div></div>
-    <div class="row ap">
-    <div class="col">
-      <label class="af">Date of Birth</label><input  value="{{po_details.dob}}" type="text" class="form-control" >
-    </div>
-    <div class="col">
-      <label class="af">Contact Number</label><input  value="{{po_details.contact_number}}" type="text" class="form-control">
-    </div></div>
-    <div class="row ap">
-    <div class="col">
-      <label class="af">WhatsApp Number </label><input  value="{{po_details.whatsapp_number}}" type="text" class="form-control" >
-    </div>
-    <div class="col">
-      <label class="af">Religion</label><input  value="{{po_details.religion}}" type="text" class="form-control">
-    </div></div>
-     <div class="row ap">
-    <div class="col">
-      <label class="af">Community </label><input  value="{{po_details.community}}" type="text" class="form-control" >
-    </div>
-    <div class="col">
-      <label class="af">Blood Group </label><input  value="{{po_details.blood_group}}" type="text" class="form-control">
-    </div></div>
-     <div class="row ap">
-    <div class="col">
-      <label class="af">Height </label><input  value="{{po_details.height}}" type="text" class="form-control" >
-    </div>
-    <div class="col">
-      <label class="af">Weight</label><input  value="{{po_details.weight}}" type="text" class="form-control">
-    </div></div>
-     <div class="row ap">
-    <div class="col">
-      <label class="af">District </label><input  value="{{po_details.district}}" type="text" class="form-control" >
-    </div>
-    <div class="col">
-      <label class="af">Taluk</label><input  value="{{po_details.taluk}}" type="text" class="form-control">
-    </div></div>
-     <div class="row ap">
-    <div class="col">
-      <label class="af">Village </label><input  value="{{po_details.village}}" type="text" class="form-control" >
-    </div>
-    <div class="col">
-      <label class="af">Pincode</label><input  value="{{po_details.pincode1}}" type="text" class="form-control">
-    </div></div>
-    <div class="row ap">
-    <div class="col">
-      <label class="af">Name of Parent / Guardian  </label><input  value="{{po_details.name_of_parent}}" type="text" class="form-control" >
-    </div>
-    <div class="col">
-      <label class="af">Parent's Contact Number </label><input  value="{{po_details.parent_contact_number}}" type="text" class="form-control">
-    </div></div>
-    <div class="row ap">
-    <div class="col">
-      <label class="af">Permanent Address  </label>{{po_detail.spermanent_address}}<textarea class="form-control" ></textarea>
-    </div>
-    <div class="col">
-      <label class="af">Contact Address </label>{{po_details.contact_address}}<textarea class="form-control" ></textarea>
-    </div></div>
-    <div class="row ap">
-  <div class="col">
-      <b><label class="ah">Languages Known </label><br></b><br><br> 
-      <input readonly name="language_known" {{#if po_details.language_known }} checked{{/if}}  type="checkbox"> &nbsp;<label class="af">English </label>
-      <input readonly name="language_known2" {{#if po_details.language_known2 }} checked {{/if}}  type="checkbox">&nbsp;<label class="af">Hindi </label>
-      <input readonly name="language_known3" {{#if po_details.language_known3 }} checked{{/if}}   type="checkbox">&nbsp;<label class="af">Malayalam </label>
-      <input readonly name="language_known4"  {{#if po_details.language_known4 }} checked{{/if}}  type="checkbox">&nbsp;<label class="af">Others </label>
-    </div></div>
-    <div class="row ap">
-    <div class="col">
-      <label class="af">Area of Interest </label>{{ po_details.area_of_intrest}}<textarea class="form-control" ></textarea>
-    </div>
-    <div class="col">
-      <label class="af">Hobbies</label>{{po_details.hobbies}}<textarea class="form-control" ></textarea>
-    </div></div>
-    <div class="row ap">
-    <div class="col">
-      <label class="af">Prior Experience   </label>{{po_details.prior_experience}}<textarea class="form-control" ></textarea>
-    </div>
-    <div class="col">
-      <label class="af">Cultural talents </label>{{po_details.cultural_talents}}<textarea class="form-control" ></textarea>
-    </div></div>
-    
     <div class="row ap">
       <div class="col">
-      <b><label class="ah">Are you interested in camps</label><br></b><br><br>
-      <input readonly name="interested_in_camps"{{#if po_details.interested_in_camps }}  checked{{/if}}  type="checkbox"> &nbsp;<label class="af">State </label>
-      <input readonly name="interested_in_camps1" {{#if po_details.interested_in_camps1 }}  checked{{/if}}  type="checkbox">&nbsp;<label class="af">National </label>
-      <input readonly name="interested_in_camps2" {{#if po_details.interested_in_camps2 }}  checked{{/if}}  type="checkbox">&nbsp;<label class="af">International </label> 
+        <label class="af">Name</label><input name="name" value="{{po_details.name}}" name="" type="text"
+          value="{{po_details.name}}" class="form-control">
+      </div>
+      <div class="col">
+        <label class="af">Gender</label><input name="gender" value="{{po_details.gender}}" type="text"
+          class="form-control">
+      </div>
     </div>
-    <div class="col">
-      <img class="abimg"src="/images/sign/{{po_details._id}}.jpg">
+    <div class="row ap">
+      <div class="col">
+        <label class="af">Date of Birth</label><input name="dob" value="{{po_details.dob}}" type="text"
+          class="form-control">
+      </div>
+      <div class="col">
+        <label class="af">Contact Number</label><input name="contact_number1" value="{{po_details.contact_number1}}"
+          type="text" class="form-control">
+      </div>
     </div>
+    <div class="row ap">
+      <div class="col">
+        <label class="af">WhatsApp Number </label><input name="whatsapp_number" value="{{po_details.whatsapp_number}}"
+          type="text" class="form-control">
+      </div>
+      <div class="col">
+        <label class="af">Religion</label><input name="religion" value="{{po_details.religion}}" type="text"
+          class="form-control">
+      </div>
     </div>
- 
-<br>
-    <button class="abutton">Update</button>
+    <div class="row ap">
+      <div class="col">
+        <label class="af">Community </label><input name="community" value="{{po_details.community}}" type="text"
+          class="form-control">
+      </div>
+      <div class="col">
+        <label class="af">Blood Group </label><input name="blood_group" value="{{po_details.blood_group}}" type="text"
+          class="form-control">
+      </div>
+    </div>
+    <div class="row ap">
+      <div class="col">
+        <label class="af">Height </label><input name="height" value="{{po_details.height}}" type="text"
+          class="form-control">
+      </div>
+      <div class="col">
+        <label class="af">Weight</label><input name="weight" value="{{po_details.weight}}" type="text"
+          class="form-control">
+      </div>
+    </div>
+    <div class="row ap">
+      <div class="col">
+        <label class="af">District </label><input name="district1" value="{{po_details.district1}}" type="text"
+          class="form-control">
+      </div>
+      <div class="col">
+        <label class="af">Taluk</label><input name="taluk" value="{{po_details.taluk}}" type="text"
+          class="form-control">
+      </div>
+    </div>
+    <div class="row ap">
+      <div class="col">
+        <label class="af">Village </label><input name="village" value="{{po_details.village}}" type="text"
+          class="form-control">
+      </div>
+      <div class="col">
+        <label class="af">Pincode</label><input name="pincode1" value="{{po_details.pincode1}}" type="text"
+          class="form-control">
+      </div>
+    </div>
+    <div class="row ap">
+      <div class="col">
+        <label class="af">Name of Parent / Guardian </label><input name="name_of_parent"
+          value="{{po_details.name_of_parent}}" type="text" class="form-control">
+      </div>
+      <div class="col">
+        <label class="af">Parent's Contact Number </label><input name="parent_contact_number"
+          value="{{po_details.parent_contact_number}}" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="row ap">
+      <div class="col">
+        <label class="af">Permanent Address </label><textarea name="permanent_address"
+          class="form-control"> {{po_details.permanent_address}}</textarea>
+      </div>
+      <div class="col">
+        <label class="af">Contact Address </label><textarea name="contact_address"
+          class="form-control"> {{po_details.contact_address}}</textarea>
+      </div>
+    </div>
+    <div class="row ap">
+      <div class="col">
+        <b><label class="ah">Languages Known </label><br></b><br><br>
+        <input value="English" name="{{po_details.language_known}}" {{#if po_details.language_known }} checked{{/if}}
+          type="checkbox"> &nbsp;<label class="af">English </label>
+        <input value="Hindi" name="{{po_details.language_known2}}" {{#if po_details.language_known2 }} checked {{/if}}
+          type="checkbox">&nbsp;<label class="af">Hindi </label>
+        <input value="Malayalam" name="{{po_details.language_known3}}" {{#if po_details.language_known3 }}
+          checked{{/if}} type="checkbox">&nbsp;<label class="af">Malayalam </label>
+        <input name="language_known4" name="{{po_details.language_known4}}" {{#if po_details.language_known4 }}
+          checked{{/if}} type="checkbox">&nbsp;<label class="af">Others </label>
+      </div>
+    </div>
+    <div class="row ap">
+      <div class="col">
+        <label class="af">Area of Interest </label><textarea name="area_of_intrest"
+          class="form-control"> {{po_details.area_of_intrest}}</textarea>
+      </div>
+      <div class="col">
+        <label class="af">Hobbies</label><textarea name="hobbies"
+          class="form-control"> {{po_details.hobbies}}</textarea>
+      </div>
+    </div>
+    <div class="row ap">
+      <div class="col">
+        <label class="af">Prior Experience </label><textarea name="prior_experience"
+          class="form-control"> {{po_details.prior_experience}}</textarea>
+      </div>
+      <div class="col">
+        <label class="af">Cultural talents </label><textarea name="cultural_talents"
+          class="form-control"> {{po_details.cultural_talents}}</textarea>
+      </div>
+    </div>
+    <div class="row ap">
+      <div class="col">
+        <b><label class="ah">Are you interested in camps</label><br></b><br><br>
+        <input name="{{po_details.interested_in_camps}}" {{#if po_details.interested_in_camps }} checked{{/if}}
+          type="checkbox"> &nbsp;<label class="af">State </label>
+        <input name="{{po_details.interested_in_camps1}}" {{#if po_details.interested_in_camps1 }} checked{{/if}}
+          type="checkbox">&nbsp;<label class="af">National </label>
+        <input name="{{po_details.interested_in_camps2}}" {{#if po_details.interested_in_camps2 }} checked{{/if}}
+          type="checkbox">&nbsp;<label class="af">International </label>
+      </div>
+      <div class="col">
+        <img id="signature" class="abimg" src="/images/sign/{{po_details._id}}.jpg">
+        <input type="file" name="sign" id="signatureInput" style="display: none;">
 
-</div>
+        {{!-- imagre preview of signature photo --}}
+        <script>
+          $('#signature').click(function () { $('#signatureInput').trigger('click'); });
+
+          signatureInput.onchange = evt => {
+            const [file] = signatureInput.files
+            if (file) {
+              signature.src = URL.createObjectURL(file)
+            }
+          }
+        </script>
+        {{!-- --}}
+
+
+      </div>
+    </div>
+
+    <br>
+    <button class="abutton" type="submit">Update</button>
+
+
+
+    <input type="text" name="accept_id" value="{{po_details.accept_id}}" hidden>
+    <input type="text" name="university" value="{{po_details.university}}" hidden>
+
+
+  </div>
+</form>

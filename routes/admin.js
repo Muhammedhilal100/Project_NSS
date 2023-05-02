@@ -5,6 +5,7 @@ const db = require('../config/connection');
 const admin_mongo = require('../mongodb_helper/admin_mongo');
 const auth = require('../auth');
 const { po_register } = require('../mongodb_helper/home_mongo');
+const nodemailer = require("nodemailer");
 var router = express.Router();
 
 
@@ -148,6 +149,25 @@ router.post('/admin_index_news', function(req, res, next) {
   res.redirect('/admin/admin_index_news');
 });
 router.post('/admin_message', function(req, res, next) {
+  async function sentmail() {
+    // let testAccount = await nodemailer.createTestAccount();
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'muhammedhilal100@gmail.com',
+      pass: 'ncapfhnpzcqvlnln'
+  }
+  });
+  // documentation
+  // https://miracleio.me/snippets/use-gmail-with-nodemailer/
+  let info = await transporter.sendMail({
+    from: '<muhammedhilal100@gmail.com>', // sender address
+    to: req.body.to, // list of receivers
+    subject: req.body.subject, // Subject line
+    // text: req.body.message, // plain text body
+    html: req.body.message, // html body
+  });}
+  sentmail()
   admin_mongo.admin_message(req.body)
   res.redirect('/admin/admin_message');
 });

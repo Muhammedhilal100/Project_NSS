@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const {ObjectId} = require('mongodb');
 const db = require('../config/connection');
 const auth = require('../auth');
+const nodemailer = require("nodemailer");
 
 
 // API FOR GET  DETAILS OF PO
@@ -80,7 +81,28 @@ router.post('/unicod_account', function(req, res, next) {
   unicod_mongo.unicod_account(req.body)
   res.redirect('/unicod/unicod_account');
 });
-router.post('/unicod_message', function(req, res, next) {
+router.post('/unicod_message',async function(req, res, next) {
+  let unicod_details =await db.collection('unicod_register').findOne({username:req.session.unicod_id.username})
+
+  async function sentmail() {
+    // let testAccount = await nodemailer.createTestAccount();
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: unicod_details.username,
+      pass: unicod_details.security_code
+  }
+  });
+  // documentation
+  // https://miracleio.me/snippets/use-gmail-with-nodemailer/
+  let info = await transporter.sendMail({
+    from: unicod_details.username, // sender address
+    to: req.body.to, // list of receivers
+    subject: req.body.subject, // Subject line
+    // text: req.body.message, // plain text body
+    html: req.body.message, // html body
+  });}
+  sentmail()
   unicod_mongo.unicod_message(req.body)
   res.redirect('/unicod/unicod_message');
 });
@@ -128,6 +150,23 @@ router.post('/unblock/:id',async function(req, res, next) {
 
 router.post('/unicod_profile/:id',async function(req, res, next) {
   const Objectid=new ObjectId(req.params.id)
+
+  
+  const {unicod_id}= req.body
+  if(req.files){
+    if(req.files.photo) {
+
+      let photo = req.files.photo
+      photo.mv('public/images/photo/'+unicod_id+'.jpg')
+    }
+    if(req.files.sign){
+
+      let sign  = req.files.sign 
+      sign.mv('public/images/sign/'+unicod_id+'.jpg')
+    }
+  }
+
+
   await db.collection('unicod_register').updateOne({_id:Objectid},{$set:req.body})
   await db.collection('old_register').insertOne(req.body)
  res.redirect('/unicod');

@@ -78,7 +78,7 @@
 
 .abc2 {
   width: 350px;
-  height: 350px;
+  height: 450px;
   background-color: #d8d9e7;
   margin-left: 50px;
   line-height: 20px;
@@ -341,6 +341,13 @@
   width: 600px;
   height: 40px;
   margin-left: 40px;
+  border-radius: 10px;
+}
+.am1 {
+  width: 600px;
+  height: 60px;
+  margin-left: 40px;
+  border-radius: 10px;
 }
 
 .aba {

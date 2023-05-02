@@ -1,7 +1,9 @@
-<form action="/unicod/unicod_profile/{{unicod_details._id}}" method="post">
+<form action="/unicod/unicod_profile/{{unicod_details._id}}" enctype="multipart/form-data" method="post">
 <div class="abc">
    <div class="text-center">
-    <img class="aaimg" src="/images/photo/{{unicod_details._id}}.jpg">
+    <img class="aaimg" id="blah" src="/images/photo/{{unicod_details._id}}.jpg">
+      <input type="file" name="photo" id="imgInp" style="display: none;">
+      <input type="text" hidden value="{{unicod_details._id}}" name="unicod_id">
   </div>
   <div class="row ap">
     <div class="col">
@@ -108,7 +110,8 @@
       <input   name="{{unicod_details.interested_in_camps2}}"{{#if unicod_details.interested_in_camps2 }}  checked{{/if}}  type="checkbox">&nbsp;<label class="af">International </label>
    </div>
     <div class="col">
-      <img class="abimg"src="/images/sign/{{unicod_details._id}}.jpg">
+       <img id="signature" class="abimg" src="/images/sign/{{unicod_details._id}}.jpg">
+        <input type="file" name="sign" id="signatureInput" style="display: none;">
     </div>
     </div>
  
@@ -118,5 +121,35 @@
 
 <input type="text" name="university" value="{{unicod_details.university_name}}" hidden>
 
-
 </div></form>
+
+
+
+{{!-- imagre preview of profile photo--}}
+      <script>
+        $('#blah').click(function () { $('#imgInp').trigger('click'); });
+
+
+
+        imgInp.onchange = evt => {
+          const [file] = imgInp.files
+          if (file) {
+            blah.src = URL.createObjectURL(file)
+          }
+        }
+      </script>
+      {{!-- --}}
+
+       {{!-- imagre preview of signature photo --}}
+        <script>
+          $('#signature').click(function () { $('#signatureInput').trigger('click'); });
+
+          signatureInput.onchange = evt => {
+            const [file] = signatureInput.files
+            if (file) {
+              signature.src = URL.createObjectURL(file)
+            }
+          }
+        </script>
+        {{!-- --}}
+

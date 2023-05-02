@@ -3,8 +3,9 @@
      <table class="att">
         <tr>
      <td><label class="af">Project Name</label></td>
-       <td><select id="mySelect"  onchange="document.getElementById('prject_id').value = this.value;getSelectedOption()" class="aba">
-          {{#each result}}
+       <td><select id="mySelect" required onchange="document.getElementById('project_id').value = this.value;getSelectedOption()" class="aba">
+          <option>Project Name </option>
+          {{#each newArry}}
         <option value="{{this.id}}" >{{this.name}}</option>
         {{/each}}
         <script>
@@ -18,17 +19,18 @@
 }
 
         </script>
-        <input type="text"  name="prject_id"  id="prject_id" hidden>
+        <input type="text"  name="project_id"  id="project_id" hidden>
         <input type="text" id="project_name" name="project_name" hidden>
        </select></td></tr><br><br>
       <tr><td><label class="af">Date</label></td><td><input required name="date" class="aba"  type="date" class="form-control"></td></tr><br><br>
-      <tr><td><label class="af">Hours</label></td><td><input required name="hours" class="aba"  type="number" class="form-control"></td></tr><br><br>
+      <tr><td><label class="af">Hours</label></td><td><input required name="hours" maxlength="3" class="aba"  type="number" class="form-control"></td></tr><br><br>
     <tr><td><label class="af">Description</label></td><td><textarea required name="description" class="abb" ></textarea></td></tr><br><br>
 </table>
 
 <button type="submit" class="abutton">Submit</button>
 {{!--  --}}
 <input type="text" name="user_id" value="{{volunteer_details.username}}" hidden>
+<input type="text" name="wr_id" value="{{volunteer_details._id}}" hidden>
 {{!--  --}}
 </form>
     </div>

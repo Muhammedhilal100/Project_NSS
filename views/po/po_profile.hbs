@@ -3,27 +3,7 @@
     <div class="text-center">
       <img class="aaimg" id="blah" src="/images/photo/{{po_details._id}}.jpg">
       <input type="file" name="photo" id="imgInp" style="display: none;">
-
-
       <input type="text" hidden value="{{po_details._id}}" name="po_id">
-
-
-
-      {{!-- imagre preview of profile photo--}}
-      <script>
-        $('#blah').click(function () { $('#imgInp').trigger('click'); });
-
-
-
-        imgInp.onchange = evt => {
-          const [file] = imgInp.files
-          if (file) {
-            blah.src = URL.createObjectURL(file)
-          }
-        }
-      </script>
-      {{!-- --}}
-
     </div>
     <div class="row ap">
       <div class="col">
@@ -162,20 +142,6 @@
         <img id="signature" class="abimg" src="/images/sign/{{po_details._id}}.jpg">
         <input type="file" name="sign" id="signatureInput" style="display: none;">
 
-        {{!-- imagre preview of signature photo --}}
-        <script>
-          $('#signature').click(function () { $('#signatureInput').trigger('click'); });
-
-          signatureInput.onchange = evt => {
-            const [file] = signatureInput.files
-            if (file) {
-              signature.src = URL.createObjectURL(file)
-            }
-          }
-        </script>
-        {{!-- --}}
-
-
       </div>
     </div>
 
@@ -190,3 +156,31 @@
 
   </div>
 </form>
+
+  {{!-- imagre preview of profile photo--}}
+      <script>
+        $('#blah').click(function () { $('#imgInp').trigger('click'); });
+
+
+
+        imgInp.onchange = evt => {
+          const [file] = imgInp.files
+          if (file) {
+            blah.src = URL.createObjectURL(file)
+          }
+        }
+      </script>
+      {{!-- --}}
+
+       {{!-- imagre preview of signature photo --}}
+        <script>
+          $('#signature').click(function () { $('#signatureInput').trigger('click'); });
+
+          signatureInput.onchange = evt => {
+            const [file] = signatureInput.files
+            if (file) {
+              signature.src = URL.createObjectURL(file)
+            }
+          }
+        </script>
+        {{!-- --}}

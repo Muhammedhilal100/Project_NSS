@@ -2,24 +2,24 @@
 
 
 <table>
-  
-    <tr>
-<td><select id="year-select"  onchange="getDetails(this.value)"  class="aaa" >
+
+  <tr>
+    <td><select id="year-select" onchange="getDetails(this.value)" class="aaa">
         <option>Enrolment Year</option>
-       </select></td>
-       
-<td><button  class="abutton1">View</button></td>
-</tr>
+      </select></td>
+
+    <td><button class="abutton1">View</button></td>
+  </tr>
 </table>
 <br><br><br>
 <table class="table" id="table">
-  <thead >
+  <thead>
     <tr>
       <th scope="col"></th>
       <th scope="col"></th>
       <th scope="col">Name</th>
       <th scope="col">University Name</th>
-      <th scope="col">  </th>
+      <th scope="col"> </th>
     </tr>
   </thead>
   <tbody class="atd" id="atd">
@@ -32,7 +32,7 @@
 
       <td> <a href="/admin/admin_unicod_view/{{this._id}}"><button class="abutton1">more</button></td></a>
     </tr>
-{{/each}} --}}
+    {{/each}} --}}
 </table>
 
 
@@ -40,31 +40,31 @@
 
   $('#table').hide();
 
- const yearSelect = $('#year-select');
-    const table=$('#atd')
+  const yearSelect = $('#year-select');
+  const table = $('#atd')
 
 
 
- const getDetails = (value) => {
+  const getDetails = (value) => {
     table.empty()
-//var inputValue = $('#myInput').val();
-let year = yearSelect.val()
-    console.log(yearSelect.val(),'universitySelect.val')
+    //var inputValue = $('#myInput').val();
+    let year = yearSelect.val()
+    console.log(yearSelect.val(), 'universitySelect.val')
 
     $.ajax({
       url: "/admin/getunicodDetails",
       method: "POST",
       data: {
         getDetails: value,
-  
+
       },
       success: function (response) {
-        
-  $('#table').show();
- 
-  response.map((value,index)=>{
 
-  let row =  `<tr>
+        $('#table').show();
+
+        response.map((value, index) => {
+
+          let row = `<tr>
       <td></td>
       <td><img class="dimg" src="/images/photo/${value._id}.jpg"></td>
       <td>${value.name}</td>
@@ -72,9 +72,9 @@ let year = yearSelect.val()
 
       <td> <a href="/admin/admin_unicod_view/${value._id}"><button class="abutton1">more</button></td></a>
     </tr>`;
-      table.append(row);
+          table.append(row);
 
-  })
+        })
       },
       error: function (xhr, status, error) {
         console.error("Request failed:", status, error);
@@ -85,19 +85,19 @@ let year = yearSelect.val()
 </script>
 
 <script type="text/javascript">
-    window.onload = function () {
-        //Reference the DropDownList.
-        var ddlYears = document.getElementById("year-select");
- 
-        //Determine the Current Year.
-        var currentYear = (new Date()).getFullYear();
- 
-        //Loop and add the Year values to DropDownList.
-        for (var i = 2020; i <= currentYear; i++) {
-            var option = document.createElement("OPTION");
-            option.innerHTML = i;
-            option.value = i;
-            ddlYears.appendChild(option);
-        }
-    };
+  window.onload = function () {
+    //Reference the DropDownList.
+    var ddlYears = document.getElementById("year-select");
+
+    //Determine the Current Year.
+    var currentYear = (new Date()).getFullYear();
+
+    //Loop and add the Year values to DropDownList.
+    for (var i = 2020; i <= currentYear; i++) {
+      var option = document.createElement("OPTION");
+      option.innerHTML = i;
+      option.value = i;
+      ddlYears.appendChild(option);
+    }
+  };
 </script>

@@ -4,13 +4,15 @@
         <form action="/admin/admin_message" method="post">
     <h4 class="ah ">Message to all Univercity Coordinator </h4><br><br><br>
    </center></div>
-       <select name="to" class="am">
-        <option value="manu" >UNIVERSITY COORDINATOR</option>
+       <select  name="to" class="am">
+        <option  value="to" >UNIVERSITY COORDINATOR</option>
         {{#each data}}
-        <option  >{{this.name}}</option>
+        <option value="{{this.username}}" >{{this.name}}</option>
         {{/each}} 
-       </select><br><br><br>    
-      <textarea name="message" class="am" ></textarea><br><br>
+       </select><br><br><br>  
+       <input class="am" name="subject" type="text" placeholder="Subject">  
+       <br><br> 
+      <textarea name="message" class="am1" placeholder="Message" ></textarea><br><br>
 
       <button type="submit" class="abutton">Send</button>
     </div>

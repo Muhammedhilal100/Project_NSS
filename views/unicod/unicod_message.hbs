@@ -5,12 +5,14 @@
     <h4 class="ah ">Message to all Program Officers </h4><br><br><br>
    </center></div>
       <select name="to" class="am">
-      <option value="manu" >Program Officer</option>
+      <option value="" >Program Officer</option>
         {{#each data}}
-        <option  >{{this.name}}</option>
+        <option value="{{this.username}}"  >{{this.name}}</option>
         {{/each}}    
       </select><br><br><br> 
-      <textarea name="message" class="am" ></textarea><br><br>
+       <input class="am" name="subject" type="text" placeholder="Subject">  
+       <br><br> 
+      <textarea name="message" class="am1" placeholder="Message" ></textarea><br><br>
 
       <button type="submit" class="abutton">Send</button>
     </div>

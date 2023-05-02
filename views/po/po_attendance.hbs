@@ -21,7 +21,7 @@
       <th scope="col"> Course </th>
       <th scope="col"> Programs </th>
       <th scope="col"> Total Hrs </th>
-        
+        <th scope="col"></th>
     </tr>
   </thead>
 
@@ -79,16 +79,18 @@
       },
       success: function (response) {
         
+    console.log(response)
   $('#table').show();
- 
+ console.log(response)
   response.map((value,index)=>{
 
-  let row =  `  <tr>
-      <th scope="row">1</th>
-      <td><img class="dimg" src="/images/photo/${value._id}.jpg"></td>
-      <td>${value.name}</td>
-      <td>${value.course}</td>
-      <td></td>
+  let row =  `  <tr >
+      <th scope="row"></th>
+      <td width="10%"><img class="dimg" src="/images/photo/${value.user_id}.jpg"></td>
+      <td width="20%">${value.name}</td>
+      <td width="20%">${value.course}</td>
+      <td width="40%">${value.project_name}</td>
+      <td width="20%">${value.totalHours}</td>
       <td></td>
     </tr>`;
       table.append(row);

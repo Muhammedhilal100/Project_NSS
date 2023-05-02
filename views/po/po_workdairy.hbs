@@ -3,14 +3,27 @@
      <table class="att">
         <tr>
      <td><label class="af">Project Name</label></td>
-       <td><select name="project_name" class="aba">
+       <td><select id="mySelect" required onchange="document.getElementById('project_id').value = this.value;getSelectedOption()" class="aba">
         <option >Project Name</option>
           {{#each data}}
-        <option >{{this.project_name}}</option>
+        <option value="{{this._id}}" >{{this.project_name}}</option>
         {{/each}}
        </select></td></tr><br><br>
+
+<script>
+          function getSelectedOption() {
+  var selectElement = document.getElementById("mySelect");
+  var selectedOption = selectElement.options[selectElement.selectedIndex];
+  var selectedOptionText = selectedOption.text;
+ 
+  document.getElementById('project_name').value = selectedOptionText
+}
+        </script>
+        
+   <input type="text"  name="project_id"  id="project_id" hidden>
+   <input type="text" id="project_name" name="project_name" hidden >
       <tr><td><label class="af">Date</label></td><td><input required name="date" class="aba"  type="date" class="form-control"></td></tr><br><br>
-      <tr><td><label class="af">Hours</label></td><td><input required name="hours" class="aba"  type="number" class="form-control"></td></tr><br><br>
+      <tr><td><label class="af">Hours</label></td><td><input required   name="hours" class="aba"  type="number" class="form-control"></td></tr><br><br>
     <tr><td><label class="af">Description</label></td><td><textarea required name="description" class="abb" ></textarea></td></tr><br><br>
 </table>
 
@@ -18,6 +31,9 @@
 {{!--  --}}
 <input type="text" name="user_id" value="{{po_details.username}}" hidden>
 {{!--  --}}
+
+
+        
 </form>
     </div>
 

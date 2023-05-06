@@ -33,10 +33,10 @@
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">Pincode</label><input required name="pincode" type="number" class="form-control" >
+      <label class="af">Pincode</label><input required name="pincode"   id="phone"  type="tel" maxlength="6" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Contact Number</label><input required name="contact_number1" type="number"  maxlength="10" class="form-control">
+      <label class="af">Contact Number</label><input required name="contact_number1" maxlength="10"  id="phone"  type="tel" pattern="[1-9]{1}[0-9]{9}" class="form-control">
     </div></div>
      <div class="row ap">
     <div class="col">
@@ -98,7 +98,7 @@
       <label class="af">Date of Birth</label><input required name="dob" type="date" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Contact Number</label><input required name="contact_number" type="number" maxlength="10" class="form-control">
+      <label class="af">Contact Number</label><input required name="contact_number" maxlength="10" id="phone"  type="tel" pattern="[1-9]{1}[0-9]{9}"class="form-control">
     </div></div>
     <div class="row ap">
     <div class="col">
@@ -143,14 +143,14 @@
       <label class="af">Village </label><input required name="village" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Pincode</label><input required name="pincode1" type="number" class="form-control">
+      <label class="af">Pincode</label><input required name="pincode1"  id="phone"  type="tel" maxlength="6"class="form-control">
     </div></div>
     <div class="row ap">
     <div class="col">
       <label class="af">Name of Parent / Guardian  </label><input required name="name_of_parent" type="text" class="form-control" >
     </div>
     <div class="col">
-      <label class="af">Parent's Contact Number </label><input required name="parent_contact_number" type="number" maxlength="10" class="form-control">
+      <label class="af">Parent's Contact Number </label><input required name="parent_contact_number" maxlength="10" id="phone"  type="tel" pattern="[1-9]{1}[0-9]{9}" class="form-control">
     </div></div>
     <div class="row ap">
     <div class="col">
@@ -203,7 +203,22 @@
    </form>
     </div></div>
 
-    
-     
-
 </div>
+
+
+<script>
+  // Add event listeners to all input fields
+  const inputs = document.querySelectorAll('input');
+  inputs.forEach(input => {
+    input.addEventListener('input', (event) => {
+      // Check the input value against a regular expression
+      if (input.type === 'tel' && !/^[0-9 +()-]*$/.test(input.value)) {
+        // If the input is not a valid phone number, remove the last character
+        input.value = input.value.slice(0, -1);
+      } else if (input.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(input.value)) {
+        // If the input is not a valid email address, remove the last character
+        input.value = input.value.slice(0, -1);
+      }
+    });
+  });
+</script>

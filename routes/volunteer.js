@@ -2,7 +2,41 @@ var express = require('express');
 const db = require('../config/connection');
 const volunteer_mongo = require('../mongodb_helper/volunteer_mongo');
 const auth = require('../auth');
+const { ObjectId } = require('mongodb');
 var router = express.Router();
+
+
+// API FOR GET  DETAILS OF PROJECT REPORT FOR WORK DAIRY
+router.post('/getprojectDetails1', async function (req, res, next) {
+  let volunteer_details = await db.collection('volunteer_register').findOne({ username: req.session.volunteer_id.username })
+  const { _id } = req.body
+  // console.log(req.body);
+  const objectID = new ObjectId(_id)
+  let pr = await db.collection('po_project_report').aggregate(
+    [
+      {
+        $match: { _id:objectID, user_id: volunteer_details.accept_id }
+      },
+      { $project: { _id: 1, project_name: 1, year: 1, category: 1,date:1,hours:1 } }
+    ]
+  ).toArray()
+  console.log(pr);
+  res.json(pr)
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 router.post('/volunteer_workdairy', function (req, res, next) {
@@ -60,6 +94,11 @@ router.get('/volunteer_extra_view', async function (req, res, next) {
   res.render('volunteer/volunteer_extra_view', { volunteerroute: true, volunteer_details, data });
 });
 
+
+router.get('/logout',auth,async function(req, res, next) {
+  req.session.volunteer_id=null
+  res.redirect('/');
+});
 
 
 module.exports = router;

@@ -3,12 +3,30 @@
      <table class="att">
         <tr>
      <td><label class="af">Project Name</label></td>
-       <td><select id="mySelect" required onchange="document.getElementById('project_id').value = this.value;getSelectedOption()" class="aba">
+       <td><select id="mySelect" required onchange="document.getElementById('project_id').value = this.value;getSelectedOption();getDetails(this.value)" class="aba">
         <option >Project Name</option>
           {{#each data}}
         <option value="{{this._id}}" >{{this.project_name}}</option>
         {{/each}}
        </select></td></tr><br><br>
+
+
+        
+   <input type="text"  name="project_id"  id="project_id" hidden>
+   <input type="text" id="project_name" name="project_name" hidden >
+      <tr><td><label class="af">Date</label></td><td><input readonly required id="date" name="date" class="aba" type="text" class="form-control"></td></tr><br><br>
+      <tr><td><label class="af">Hours</label></td><td><input readonly required id="hours"  name="hours" class="aba"  type="number" class="form-control"></td></tr><br><br>
+    <tr><td><label class="af">Description</label></td><td><textarea required name="description" class="abb" ></textarea></td></tr><br><br>
+</table>
+
+<button type="submit" class="abutton">Submit</button>
+{{!--  --}}
+<input type="text" name="user_id" value="{{po_details.username}}" hidden>
+{{!--  --}}
+       
+</form>
+    </div>
+
 
 <script>
           function getSelectedOption() {
@@ -19,21 +37,27 @@
   document.getElementById('project_name').value = selectedOptionText
 }
         </script>
-        
-   <input type="text"  name="project_id"  id="project_id" hidden>
-   <input type="text" id="project_name" name="project_name" hidden >
-      <tr><td><label class="af">Date</label></td><td><input required name="date" class="aba"  type="date" class="form-control"></td></tr><br><br>
-      <tr><td><label class="af">Hours</label></td><td><input required   name="hours" class="aba"  type="number" class="form-control"></td></tr><br><br>
-    <tr><td><label class="af">Description</label></td><td><textarea required name="description" class="abb" ></textarea></td></tr><br><br>
-</table>
 
-<button type="submit" class="abutton">Submit</button>
-{{!--  --}}
-<input type="text" name="user_id" value="{{po_details.username}}" hidden>
-{{!--  --}}
+<script>
+  const getDetails= (value) => {
+    console.log(value)
 
+     $.ajax({
+      url: "/po/getprojectDetails1",
+      method: "POST",
+      data: {
+        _id:value
+      },
+      success: function (response) {
+        console.log(response[0].hours)
+        document.getElementById('hours').value=response[0].hours
+         document.getElementById('date').value=response[0].date
 
-        
-</form>
-    </div>
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+</script>
 

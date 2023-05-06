@@ -10,6 +10,9 @@ router.post('/login',async function(req, res, next) {
   {
   
   await db.collection('login').findOne({username:req.body.username,password:req.body.password}).then((response)=>{
+    if(response){
+
+    
     if(response.username=='admin@gmail.com' && response.password=='admin'){
       req.session.status=true
       req.session.admin_id=response
@@ -31,10 +34,17 @@ else if(response.username==req.body.username && response.password==req.body.pass
   req.session.volunteer_id=response
   res.redirect('/volunteer')
 }
+}else{
+    req.session.error='Invalid author'
+  res.redirect('/login')
+}
+
+
 })
 }
 else{
-  res.redirect('/login')}
+ res.redirect('/login')
+}
   
 });
 
@@ -116,16 +126,19 @@ router.get('/',async function(req, res, next) {
 router.get('/unicod_register', function(req, res, next) {
   let er=req.session.error
   res.render('home/unicod_register',{indexRoute:true,er});
+  req.session.error=null
 });
 router.get('/po_register',async function(req, res, next) {
   let er=req.session.error
   let data=await db.collection('unicod_register').find({status:true}).toArray()
   res.render('home/po_register',{indexRoute:true,data,er});
+  req.session.error=null
 });
 router.get('/volunteer_register',async function(req, res, next) {
   let er=req.session.error
   let data=await db.collection('po_register').find({status:true}).toArray()
   res.render('home/volunteer_register',{indexRoute:true,data,er});
+  req.session.error=null
 });
 router.get('/suggestion', function(req, res, next) {
   res.render('home/suggestion',{indexRoute:true});
@@ -137,7 +150,9 @@ router.get('/feedback',async function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('home/login',{indexRoute:true});
+
+  res.render('home/login',{indexRoute:true,error:req.session.error});
+  req.session.error = null
 });
 
 module.exports = router;

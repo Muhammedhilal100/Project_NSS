@@ -3,7 +3,7 @@
      <table class="att">
         <tr>
      <td><label class="af">Project Name</label></td>
-       <td><select id="mySelect" required onchange="document.getElementById('project_id').value = this.value;getSelectedOption()" class="aba">
+       <td><select id="mySelect" required onchange="document.getElementById('project_id').value = this.value;getSelectedOption();getDetails(this.value)" class="aba">
           <option>Project Name </option>
           {{#each newArry}}
         <option value="{{this.id}}" >{{this.name}}</option>
@@ -22,8 +22,8 @@
         <input type="text"  name="project_id"  id="project_id" hidden>
         <input type="text" id="project_name" name="project_name" hidden>
        </select></td></tr><br><br>
-      <tr><td><label class="af">Date</label></td><td><input required name="date" class="aba"  type="date" class="form-control"></td></tr><br><br>
-      <tr><td><label class="af">Hours</label></td><td><input required name="hours" maxlength="3" class="aba"  type="number" class="form-control"></td></tr><br><br>
+      <tr><td><label class="af">Date</label></td><td><input required readonly id="date" name="date" class="aba"  type="text" class="form-control"></td></tr><br><br>
+      <tr><td><label class="af">Hours</label></td><td><input required readonly id="hours" name="hours" class="aba"  type="number" class="form-control"></td></tr><br><br>
     <tr><td><label class="af">Description</label></td><td><textarea required name="description" class="abb" ></textarea></td></tr><br><br>
 </table>
 
@@ -35,3 +35,26 @@
 </form>
     </div>
 
+
+<script>
+  const getDetails= (value) => {
+    console.log(value)
+
+     $.ajax({
+      url: "/volunteer/getprojectDetails1",
+      method: "POST",
+      data: {
+        _id:value
+      },
+      success: function (response) {
+        console.log(response[0].hours)
+        document.getElementById('hours').value=response[0].hours
+         document.getElementById('date').value=response[0].date
+
+      },
+      error: function (xhr, status, error) {
+        console.error("Request failed:", status, error);
+      }
+    });
+  }
+</script>

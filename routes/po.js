@@ -84,11 +84,30 @@ router.post('/getprojectDetails', async function (req, res, next) {
       {
         $match: { year, user_id: req.session.po_id.username }
       },
-      { $project: { _id: 1, project_name: 1, year: 1, category: 1 } }
+      { $project: { _id: 1, project_name: 1, year: 1, category: 1,date:1,hours:1 } }
     ]
   ).toArray()
   res.json(pr)
 });
+
+// API FOR GET  DETAILS OF PROJECT REPORT FOR WORK DAIRY
+router.post('/getprojectDetails1', async function (req, res, next) {
+  const { _id } = req.body
+  // console.log(req.body);
+  const objectID = new ObjectId(_id)
+  let pr = await db.collection('po_project_report').aggregate(
+    [
+      {
+        $match: { _id:objectID, user_id: req.session.po_id.username }
+      },
+      { $project: { _id: 1, project_name: 1, year: 1, category: 1,date:1,hours:1 } }
+    ]
+  ).toArray()
+  res.json(pr)
+});
+
+
+
 
 // API FOR GET  DETAILS OF CAMP REPORT
 router.post('/getcampDetails', async function (req, res, next) {
@@ -470,7 +489,10 @@ router.get('/po_unblock', async function (req, res, next) {
   res.render('po/po_unblock', { poroute: true, data, po_details });
 });
 
-
+router.get('/logout',auth,async function(req, res, next) {
+  req.session.po_id=null
+  res.redirect('/');
+});
 
 
 module.exports = router;

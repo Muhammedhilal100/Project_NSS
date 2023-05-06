@@ -313,4 +313,9 @@ router.get('/unicod_unblock', async function(req, res, next) {
   res.render('unicod/unicod_unblock',{unicodroute:true,unicod_details,data});
 });
 
+router.get('/logout',auth,async function(req, res, next) {
+  req.session.unicod_id=null
+  res.redirect('/');
+});
+
 module.exports = router;

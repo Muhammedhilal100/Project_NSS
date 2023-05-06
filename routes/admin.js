@@ -244,6 +244,11 @@ router.get('/',auth,async function(req, res, next) {
     res.render('admin/admin_home',{adminroute:true});
   });
 
+  router.get('/logout',auth,async function(req, res, next) {
+    req.session.admin_id=null
+    res.redirect('/');
+  });
+
 router.get('/admin_profile', function(req, res, next) {
   res.render('admin/admin_profile',{adminroute:true});
 });

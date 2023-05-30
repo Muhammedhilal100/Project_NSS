@@ -26,7 +26,9 @@
       <th scope="col"></th>
       <th scope="col"></th>
       <th scope="col">Name</th>
-      <th scope="col">  </th>
+      <th scope="col">Institute Name  </th>
+            <th scope="col">  </th>
+
     </tr>
   </thead>
   <tbody id="atd" class="atd">
@@ -90,11 +92,11 @@ let institute = instituteSelect.val()
   response.map((value,index)=>{
 
   let row =  `   <tr>
-      <th scope="row">1</th>
+      <th scope="row"></th>
       <td><img class="dimg" src="/images/photo/${value._id}.jpg"></td>
       <td>${value.name}</td>
       <td>${value.institute_name}</td>
-      <td> <a href="/unicod/unicod_po_view/${value._id}"><button class="abutton1">more</button></td></a>
+      <td> <a href="/unicod/unicod_volunteer_view/${value._id}"><button class="abutton1">more</button></td></a>
     </tr>`;
       table.append(row);
 

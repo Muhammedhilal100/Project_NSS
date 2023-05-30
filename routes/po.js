@@ -23,6 +23,9 @@ router.post('/getvolunteerDetails', async function (req, res, next) {
 
 
 
+
+
+
 // API FOR GET  DETAILS OF VOLUNTEER FOR ATTENDENCE
 router.post('/getvolunteerDetails1', async function (req, res, next) {
   const { getDetails } = req.body
@@ -70,6 +73,23 @@ router.post('/getsecrataryDetails', async function (req, res, next) {
         $match: { year: getDetails, status: true, secretary_satatus: 'false', accept_id: req.session.po_id.username }
       },
       { $project: { _id: 1, name: 1 } }
+    ]
+  ).toArray()
+  res.json(volunteer)
+});
+
+
+
+
+// API FOR GET  DETAILS OF SECRETARY which is accepter
+router.post('/getsecrataryDetails1', async function (req, res, next) {
+  const { getDetails } = req.body
+  let volunteer = await db.collection('volunteer_register').aggregate(
+    [
+      {
+        $match: { year: getDetails, status: true, secretary_satatus: 'true', accept_id: req.session.po_id.username }
+      },
+      { $project: { _id: 1, name: 1 ,course:1} }
     ]
   ).toArray()
   res.json(volunteer)
@@ -475,7 +495,9 @@ router.get('/po_secretary', async function (req, res, next) {
 });
 router.get('/po_secretary_view', async function (req, res, next) {
   let po_details = await db.collection('po_register').findOne({ username: req.session.po_id.username })
-  res.render('po/po_secretary_view', { poroute: true, po_details });
+  let data = await db.collection('volunteer_register').find({secretary_satatus:"true",accept_id: req.session.po_id.username }).toArray()
+  console.log(data);
+  res.render('po/po_secretary_view', { poroute: true, po_details,data });
 });
 
 router.get('/po_block', async function (req, res, next) {

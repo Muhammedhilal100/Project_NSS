@@ -1,5 +1,5 @@
-<div class="abc1">
   {{#if data}}
+<div class="abc1">
    <div class="text-center">
     <img class="aaimg" src="/images/photo/{{data._id}}.jpg">
    </div>
@@ -15,7 +15,7 @@
     </div></div>
     <div class="row ap">
     <div class="col">
-      <label class="af">Institute Address  </label><textarea class="form-control" ></textarea>
+      <label class="af">Institute Address  </label><textarea readonly class="form-control" >{{data.institute_address}}</textarea>
     </div>
     <div class="col">
       <label class="af">District</label><input readonly value="{{data.district}}" type="text" class="form-control">
@@ -166,5 +166,6 @@
     <div class="col">
       <img class="abimg" src="/images/sign/{{data._id}}.jpg">
     </div>
-    {{/if}}
   </div>
+    {{/if}}
+</div>

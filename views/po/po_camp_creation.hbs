@@ -2,7 +2,7 @@
     <br><br>
     <form action="/po/po_camp_creation" method="post">
        
-    <input required class="m2" name="date" type="date">
+    <input required class="m2" name="date" id="datepicker1" type="date">
 <br><br>
  {{!--  --}}
       <input  name="status" type="text" value="false" hidden>
@@ -46,3 +46,7 @@
 </form>
 
 </div>
+
+<script>
+	datepicker1.min=new Date().toISOString().split("T")[0];
+</script>

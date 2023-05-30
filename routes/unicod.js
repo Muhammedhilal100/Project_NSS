@@ -17,7 +17,7 @@ router.post('/getpoDetails',async function(req, res, next) {
       {
         $match: { year:getDetails, status: true, university: unicod_details.university_name } 
       },
-      { $project: { _id: 1, name: 1,university_name: 1} }
+      { $project: { _id: 1, name: 1,institute_name: 1} }
     ]
   ).toArray()
   res.json(po)

@@ -137,7 +137,7 @@
 
 .abc7 {
   width: 650px;
-  height: 1750px;
+  height: fit-content;
   background-color: #d8d9e7;
   margin-left: 120px;
   line-height: 20px;
